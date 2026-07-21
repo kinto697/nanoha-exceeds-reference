@@ -7,14 +7,14 @@
 <style>
 :root {
   --nanoha-pink: #e85d8a;
-  --nanoha-pink-light: #fde8f0;
+  --nanoha-pink-light: #fef0f5;
   --nanoha-sakura: #f5a0bf;
-  --fate-gold: #e8b830;
-  --fate-gold-light: #fdf6e0;
-  --fate-gold-dark: #c49820;
+  --fate-gold: #d4a020;
+  --fate-gold-light: #fef9ee;
   --shina-orange: #e87040;
-  --shina-orange-light: #fef0e8;
+  --shina-orange-light: #fef3ee;
   --yukina-blue: #5ba0d8;
+  --starward-cyan: #3cb8d0;
   --bg: #fdfaf7;
   --bg-card: #ffffff;
   --text: #2c2440;
@@ -23,7 +23,7 @@
   --border: #e8e0ed;
   --border-strong: #d8cce4;
   --shadow-sm: 0 2px 8px rgba(120,80,120,0.06);
-  --shadow-md: 0 4px 20px rgba(120,80,120,0.10);
+  --shadow-md: 0 4px 24px rgba(120,80,120,0.10);
   --shadow-lg: 0 8px 40px rgba(120,80,120,0.14);
   --radius: 14px;
   --radius-sm: 8px;
@@ -40,544 +40,386 @@ body {
   overflow-x: hidden;
 }
 
-/* ── Floating sparkles background ── */
+/* ── Background sparkles ── */
 body::before {
   content: '';
-  position: fixed;
-  top: 0; left: 0; width: 100%; height: 100%;
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
   pointer-events: none; z-index: 0;
   background:
-    radial-gradient(2px 2px at 12% 18%, rgba(232,93,138,0.3), transparent),
-    radial-gradient(2px 2px at 28% 72%, rgba(232,184,48,0.3), transparent),
-    radial-gradient(1px 1px at 55% 15%, rgba(232,93,138,0.25), transparent),
-    radial-gradient(2px 2px at 68% 35%, rgba(232,184,48,0.25), transparent),
-    radial-gradient(1px 1px at 82% 58%, rgba(232,93,138,0.3), transparent),
-    radial-gradient(2px 2px at 40% 88%, rgba(232,184,48,0.25), transparent),
-    radial-gradient(1px 1px at 75% 80%, rgba(232,93,138,0.2), transparent),
-    radial-gradient(2px 2px at 90% 8%, rgba(232,184,48,0.3), transparent),
-    radial-gradient(1px 1px at 18% 42%, rgba(200,150,200,0.25), transparent),
-    radial-gradient(2px 2px at 48% 55%, rgba(232,93,138,0.2), transparent),
-    radial-gradient(1px 1px at 62% 90%, rgba(232,184,48,0.2), transparent),
-    radial-gradient(2px 2px at 8% 85%, rgba(200,150,200,0.2), transparent);
+    radial-gradient(3px 3px at 12% 18%, rgba(232,93,138,0.28), transparent),
+    radial-gradient(3px 3px at 28% 60%, rgba(212,160,32,0.25), transparent),
+    radial-gradient(2px 2px at 55% 12%, rgba(232,93,138,0.22), transparent),
+    radial-gradient(3px 3px at 72% 32%, rgba(212,160,32,0.22), transparent),
+    radial-gradient(2px 2px at 85% 55%, rgba(232,93,138,0.25), transparent),
+    radial-gradient(3px 3px at 40% 80%, rgba(212,160,32,0.2), transparent),
+    radial-gradient(2px 2px at 68% 85%, rgba(232,93,138,0.18), transparent),
+    radial-gradient(3px 3px at 92% 10%, rgba(212,160,32,0.25), transparent),
+    radial-gradient(2px 2px at 18% 45%, rgba(200,150,200,0.2), transparent),
+    radial-gradient(3px 3px at 45% 50%, rgba(232,93,138,0.15), transparent);
 }
 
-/* ── Magic circle decoration (top right) ── */
+/* ── Magic circle (top-right) ── */
 body::after {
   content: '';
-  position: fixed;
-  top: -120px; right: -120px;
-  width: 400px; height: 400px;
+  position: fixed; top: -140px; right: -140px;
+  width: 420px; height: 420px;
   pointer-events: none; z-index: 0;
   border-radius: 50%;
-  border: 2px solid rgba(232,93,138,0.12);
-  box-shadow: 0 0 0 60px rgba(232,93,138,0.03), 0 0 0 120px rgba(232,93,138,0.02);
-  opacity: 0.7;
+  border: 2px solid rgba(232,93,138,0.10);
+  box-shadow: 0 0 0 55px rgba(232,93,138,0.025), 0 0 0 115px rgba(212,160,32,0.018);
 }
 
-/* ── Hero ── */
+/* ═══════════ HERO ═══════════ */
 .hero {
-  position: relative;
-  z-index: 1;
+  position: relative; z-index: 1;
   background: linear-gradient(170deg, #fef5f8 0%, #fefaf5 30%, #fdf7fb 60%, #fef8f3 100%);
   border-bottom: 2px solid var(--nanoha-pink-light);
   padding: 70px 20px 60px;
-  text-align: center;
-  overflow: hidden;
+  text-align: center; overflow: hidden;
 }
 .hero::before {
   content: '';
-  position: absolute;
-  top: 20%; left: 50%;
+  position: absolute; top: 22%; left: 50%;
   transform: translate(-50%, -50%);
-  width: 360px; height: 360px;
+  width: 320px; height: 320px;
   border-radius: 50%;
-  border: 1.5px solid rgba(232,93,138,0.15);
-  box-shadow:
-    0 0 0 40px rgba(232,93,138,0.04),
-    0 0 0 80px rgba(232,184,48,0.03),
-    0 0 0 130px rgba(232,93,138,0.02);
+  border: 1.5px solid rgba(232,93,138,0.13);
+  box-shadow: 0 0 0 38px rgba(232,93,138,0.035), 0 0 0 78px rgba(212,160,32,0.025), 0 0 0 125px rgba(232,93,138,0.015);
   z-index: 0;
-  animation: magicPulse 6s ease-in-out infinite;
+  animation: magicPulse 7s ease-in-out infinite;
 }
 @keyframes magicPulse {
-  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
-  50% { transform: translate(-50%, -50%) scale(1.08); opacity: 1; }
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.75; }
+  50% { transform: translate(-50%, -50%) scale(1.07); opacity: 1; }
 }
-/* Inner magic circle geometry */
 .hero::after {
   content: '';
-  position: absolute;
-  top: 20%; left: 50%;
+  position: absolute; top: 22%; left: 50%;
   transform: translate(-50%, -50%);
-  width: 120px; height: 120px;
+  width: 100px; height: 100px;
   z-index: 0;
-  background:
-    conic-gradient(from 0deg, transparent 0deg, rgba(232,93,138,0.12) 30deg, transparent 60deg,
-                            transparent 120deg, rgba(232,184,48,0.10) 150deg, transparent 180deg,
-                            transparent 240deg, rgba(232,93,138,0.10) 270deg, transparent 300deg);
+  background: conic-gradient(from 0deg, transparent 0deg, rgba(232,93,138,0.10) 30deg, transparent 60deg,
+                              transparent 120deg, rgba(212,160,32,0.08) 150deg, transparent 180deg,
+                              transparent 240deg, rgba(232,93,138,0.08) 270deg, transparent 300deg);
   border-radius: 50%;
-  border: 1px solid rgba(232,93,138,0.15);
-  animation: magicSpin 20s linear infinite;
+  border: 1px solid rgba(232,93,138,0.12);
+  animation: magicSpin 22s linear infinite;
 }
 @keyframes magicSpin {
   from { transform: translate(-50%, -50%) rotate(0deg); }
   to { transform: translate(-50%, -50%) rotate(360deg); }
 }
-
 .hero > * { position: relative; z-index: 2; }
 .hero .badge {
   display: inline-block;
   background: linear-gradient(135deg, var(--nanoha-pink), #d44d78);
-  color: #fff;
-  font-size: 12px;
-  font-weight: 700;
-  padding: 5px 20px;
-  border-radius: 20px;
-  margin-bottom: 24px;
-  letter-spacing: 3px;
-  box-shadow: 0 4px 16px rgba(232,93,138,0.25);
+  color: #fff; font-size: 12px; font-weight: 700;
+  padding: 5px 22px; border-radius: 20px;
+  margin-bottom: 24px; letter-spacing: 3px;
+  box-shadow: 0 4px 18px rgba(232,93,138,0.25);
 }
 .hero h1 {
-  font-size: clamp(30px, 5.5vw, 56px);
-  font-weight: 900;
-  letter-spacing: 3px;
-  margin-bottom: 12px;
-  line-height: 1.25;
-  background: linear-gradient(135deg, #d44d78 0%, #e87060 35%, #e8b830 70%, #c49820 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  font-size: clamp(30px, 5.5vw, 56px); font-weight: 900;
+  letter-spacing: 3px; margin-bottom: 12px; line-height: 1.25;
+  background: linear-gradient(135deg, #d44d78 0%, #e87060 35%, #d4a020 70%, #b08018 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
 .hero .subtitle {
-  color: var(--text2);
-  font-size: clamp(14px, 2vw, 18px);
-  margin-bottom: 8px;
-  font-weight: 500;
+  color: var(--text2); font-size: clamp(14px, 2vw, 18px); margin-bottom: 8px; font-weight: 500;
 }
-.hero .subtitle .highlight-text {
+.hero .highlight-text {
   display: inline-block;
   background: linear-gradient(135deg, var(--nanoha-pink-light), var(--fate-gold-light));
-  padding: 2px 10px;
-  border-radius: 6px;
-  font-weight: 700;
-  color: #c04060;
+  padding: 2px 12px; border-radius: 6px; font-weight: 700; color: #c04060;
 }
-.hero .meta {
-  color: var(--text3);
-  font-size: 13px;
-}
+.hero .meta { color: var(--text3); font-size: 13px; }
 .hero .deco-star {
-  position: absolute;
-  z-index: 0;
-  opacity: 0.25;
-  font-size: 20px;
-  animation: starFloat 4s ease-in-out infinite;
+  position: absolute; z-index: 0; opacity: 0.22; font-size: 20px;
+  animation: starFloat 4.5s ease-in-out infinite;
 }
-.hero .deco-star:nth-child(1) { top: 15%; left: 10%; animation-delay: 0s; }
-.hero .deco-star:nth-child(2) { top: 70%; left: 8%; animation-delay: 1.2s; font-size: 14px; }
-.hero .deco-star:nth-child(3) { top: 12%; right: 12%; animation-delay: 2.4s; }
-.hero .deco-star:nth-child(4) { top: 65%; right: 8%; animation-delay: 0.6s; font-size: 16px; }
 @keyframes starFloat {
-  0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.25; }
-  50% { transform: translateY(-14px) rotate(10deg); opacity: 0.45; }
+  0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.22; }
+  50% { transform: translateY(-16px) rotate(10deg); opacity: 0.42; }
 }
 
-/* ── Container ── */
+/* ═══════════ CONTAINER ═══════════ */
 .container {
-  max-width: 940px;
-  margin: 0 auto;
-  padding: 0 24px;
-  position: relative;
-  z-index: 1;
+  max-width: 960px; margin: 0 auto; padding: 0 24px;
+  position: relative; z-index: 1;
 }
 
-/* ── Sections ── */
-section {
-  margin: 52px 0;
-}
-.section-header {
-  margin-bottom: 24px;
-}
+/* ═══════════ SECTION HEADERS ═══════════ */
+section { margin: 56px 0; }
+.section-header { margin-bottom: 24px; }
 .section-num {
-  display: inline-block;
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 2px;
-  color: var(--nanoha-pink);
-  text-transform: uppercase;
-  margin-bottom: 4px;
+  display: inline-block; font-size: 11px; font-weight: 800;
+  letter-spacing: 2.5px; text-transform: uppercase; margin-bottom: 4px;
 }
+.section-num.pink { color: var(--nanoha-pink); }
+.section-num.gold { color: var(--fate-gold); }
+.section-num.orange { color: var(--shina-orange); }
+.section-num.cyan { color: var(--starward-cyan); }
+
 .section-title {
-  font-size: clamp(20px, 3vw, 28px);
-  font-weight: 800;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  color: #3a2848;
+  font-size: clamp(20px, 3vw, 28px); font-weight: 800;
+  display: flex; align-items: center; gap: 12px; color: #3a2848;
 }
 .section-title .icon {
-  display: inline-flex;
-  align-items: center; justify-content: center;
-  width: 40px; height: 40px;
-  border-radius: 12px;
-  font-size: 1.15em;
-  flex-shrink: 0;
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 42px; height: 42px; border-radius: 12px; font-size: 1.15em; flex-shrink: 0;
 }
-.icon-pink  { background: var(--nanoha-pink-light); }
-.icon-gold  { background: var(--fate-gold-light); }
+.icon-pink   { background: var(--nanoha-pink-light); }
+.icon-gold   { background: var(--fate-gold-light); }
 .icon-orange { background: var(--shina-orange-light); }
-.icon-blue   { background: rgba(91,160,216,0.12); }
-
+.icon-cyan   { background: rgba(60,184,208,0.10); }
 .section-desc {
-  color: var(--text2);
-  font-size: 14px;
-  margin-top: 4px;
-  padding-left: 52px;
+  color: var(--text2); font-size: 14px; margin-top: 6px; padding-left: 54px;
 }
 
-/* ── Cards ── */
+/* ═══════════ CARDS ═══════════ */
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 18px;
 }
 .card {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 26px;
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 26px;
   box-shadow: var(--shadow-sm);
   transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
-  position: relative;
-  overflow: hidden;
+  position: relative; overflow: hidden;
 }
-.card::after {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0; height: 3px;
-}
-.card:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-lg);
-}
-.card h3 {
-  font-size: 19px;
-  margin-bottom: 2px;
-  letter-spacing: 0.5px;
-}
-.card .cv {
-  font-size: 12px;
-  color: var(--text3);
-  margin-bottom: 14px;
-}
-.card .tag-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin: 10px 0;
-}
+.card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+.card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+.card h3 { font-size: 19px; margin-bottom: 2px; letter-spacing: 0.5px; }
+.card .cv { font-size: 12px; color: var(--text3); margin-bottom: 14px; }
+.card .tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0; }
 .tag {
-  display: inline-block;
-  padding: 3px 12px;
-  border-radius: 12px;
-  font-size: 12px;
-  font-weight: 600;
+  display: inline-block; padding: 3px 12px; border-radius: 12px;
+  font-size: 12px; font-weight: 600;
 }
+.card.nanoha  { border-color: rgba(232,93,138,0.25); }
+.card.nanoha::after  { background: linear-gradient(90deg, var(--nanoha-pink), var(--nanoha-sakura)); }
+.card.nanoha:hover   { border-color: var(--nanoha-pink); box-shadow: var(--shadow-md), 0 0 0 5px rgba(232,93,138,0.06); }
+.card.nanoha .tag    { background: var(--nanoha-pink-light); color: #b84060; }
+.card.nanoha h3      { color: #c84068; }
+.card.fate    { border-color: rgba(212,160,32,0.30); }
+.card.fate::after    { background: linear-gradient(90deg, var(--fate-gold), #e8c840); }
+.card.fate:hover     { border-color: var(--fate-gold); box-shadow: var(--shadow-md), 0 0 0 5px rgba(212,160,32,0.07); }
+.card.fate .tag      { background: var(--fate-gold-light); color: #907020; }
+.card.fate h3        { color: #a08820; }
+.card.shina   { border-color: rgba(232,112,64,0.25); }
+.card.shina::after   { background: linear-gradient(90deg, var(--shina-orange), #f09060); }
+.card.shina:hover    { border-color: var(--shina-orange); box-shadow: var(--shadow-md), 0 0 0 5px rgba(232,112,64,0.06); }
+.card.shina .tag     { background: var(--shina-orange-light); color: #b85830; }
+.card.shina h3       { color: #c85830; }
+.card.yukina  { border-color: rgba(91,160,216,0.25); }
+.card.yukina::after  { background: linear-gradient(90deg, var(--yukina-blue), #80c0f0); }
+.card.yukina:hover   { border-color: var(--yukina-blue); box-shadow: var(--shadow-md), 0 0 0 5px rgba(91,160,216,0.06); }
+.card.yukina .tag    { background: rgba(91,160,216,0.10); color: #3878b0; }
+.card.yukina h3      { color: #3878b0; }
 
-/* Character variants */
-.card.nanoha {
-  border-color: rgba(232,93,138,0.25);
-}
-.card.nanoha::after { background: linear-gradient(90deg, var(--nanoha-pink), var(--nanoha-sakura)); }
-.card.nanoha:hover { border-color: var(--nanoha-pink); box-shadow: var(--shadow-md), 0 0 0 4px rgba(232,93,138,0.06); }
-.card.nanoha .tag { background: var(--nanoha-pink-light); color: #b84060; }
-.card.nanoha h3 { color: #c84068; }
+/* Starward cards */
+.card.starward { border-color: rgba(60,184,208,0.25); }
+.card.starward::after { background: linear-gradient(90deg, var(--starward-cyan), #60d8f0); }
+.card.starward:hover  { border-color: var(--starward-cyan); box-shadow: var(--shadow-md), 0 0 0 5px rgba(60,184,208,0.06); }
+.card.starward .tag   { background: rgba(60,184,208,0.08); color: #2878a0; }
+.card.starward h3     { color: #2078a0; }
 
-.card.fate {
-  border-color: rgba(232,184,48,0.30);
-}
-.card.fate::after { background: linear-gradient(90deg, var(--fate-gold), #f0d060); }
-.card.fate:hover { border-color: var(--fate-gold); box-shadow: var(--shadow-md), 0 0 0 4px rgba(232,184,48,0.08); }
-.card.fate .tag { background: var(--fate-gold-light); color: #a08020; }
-.card.fate h3 { color: #b09020; }
-
-.card.shina {
-  border-color: rgba(232,112,64,0.25);
-}
-.card.shina::after { background: linear-gradient(90deg, var(--shina-orange), #f09060); }
-.card.shina:hover { border-color: var(--shina-orange); box-shadow: var(--shadow-md), 0 0 0 4px rgba(232,112,64,0.06); }
-.card.shina .tag { background: var(--shina-orange-light); color: #b85830; }
-.card.shina h3 { color: #c85830; }
-
-.card.yukina {
-  border-color: rgba(91,160,216,0.25);
-}
-.card.yukina::after { background: linear-gradient(90deg, var(--yukina-blue), #80c0f0); }
-.card.yukina:hover { border-color: var(--yukina-blue); box-shadow: var(--shadow-md), 0 0 0 4px rgba(91,160,216,0.06); }
-.card.yukina .tag { background: rgba(91,160,216,0.1); color: #3878b0; }
-.card.yukina h3 { color: #3878b0; }
-
-/* ── Info boxes ── */
-.info-box {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 20px 26px;
+/* ═══════════ IMAGE GALLERY ═══════════ */
+.img-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
   margin: 16px 0;
-  box-shadow: var(--shadow-sm);
 }
-.info-box.warn {
-  border-left: 4px solid #e8a040;
-  background: #fffdf7;
+.img-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius); overflow: hidden;
+  box-shadow: var(--shadow-sm); transition: box-shadow 0.25s;
 }
-.info-box.tip {
-  border-left: 4px solid #40b880;
-  background: #f7fdf9;
+.img-card:hover { box-shadow: var(--shadow-lg); }
+.img-card img {
+  width: 100%; height: auto; display: block;
+  object-fit: cover; aspect-ratio: 16/10;
+  background: #f8f4fa;
 }
-.info-box h4 { font-size: 15px; margin-bottom: 8px; }
+.img-card .img-label {
+  padding: 10px 14px; font-size: 13px; color: var(--text2);
+  text-align: center; border-top: 1px solid var(--border);
+}
 
-/* ── Tables ── */
+/* ═══════════ INFO BOXES ═══════════ */
+.info-box {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 20px 26px;
+  margin: 16px 0; box-shadow: var(--shadow-sm);
+}
+.info-box.warn { border-left: 4px solid #e8a040; background: #fffdf7; }
+.info-box.tip  { border-left: 4px solid #40b880; background: #f7fdf9; }
+.info-box h4   { font-size: 15px; margin-bottom: 8px; }
+
+/* ═══════════ TABLES ═══════════ */
 .table-wrap {
-  overflow-x: auto;
-  border-radius: var(--radius);
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow-sm);
+  overflow-x: auto; border-radius: var(--radius);
+  border: 1px solid var(--border); box-shadow: var(--shadow-sm);
 }
-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 14px;
-}
-th, td {
-  padding: 12px 16px;
-  text-align: left;
-}
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th, td { padding: 12px 16px; text-align: left; }
 th {
-  background: #fdf5f8;
-  font-weight: 700;
-  color: #8a4060;
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
+  background: #fdf5f8; font-weight: 700; color: #8a4060;
+  font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px;
   border-bottom: 2px solid var(--nanoha-pink-light);
 }
-td {
-  border-bottom: 1px solid var(--border);
-  background: var(--bg-card);
-}
+td { border-bottom: 1px solid var(--border); background: var(--bg-card); }
 tr:last-child td { border-bottom: none; }
 tr:hover td { background: #fefafc; }
 
-/* ── Relationship diagram ── */
+/* ═══════════ RELATIONSHIP ═══════════ */
 .rel-box {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  gap: 0;
-  align-items: center;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 36px 28px;
-  margin: 16px 0;
-  text-align: center;
-  box-shadow: var(--shadow-sm);
-  position: relative;
-  overflow: hidden;
+  display: grid; grid-template-columns: 1fr auto 1fr;
+  align-items: center; background: var(--bg-card);
+  border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 36px 28px; margin: 16px 0; text-align: center;
+  box-shadow: var(--shadow-sm); position: relative; overflow: hidden;
 }
 .rel-box::before {
-  content: '';
-  position: absolute;
-  top: 50%; left: 50%;
+  content: ''; position: absolute; top: 50%; left: 50%;
   transform: translate(-50%, -50%);
-  width: 160px; height: 160px;
-  border-radius: 50%;
-  border: 1px solid rgba(232,93,138,0.10);
-  box-shadow: 0 0 0 40px rgba(232,93,138,0.03), 0 0 0 80px rgba(232,184,48,0.02);
+  width: 160px; height: 160px; border-radius: 50%;
+  border: 1px solid rgba(232,93,138,0.09);
+  box-shadow: 0 0 0 38px rgba(232,93,138,0.025), 0 0 0 76px rgba(212,160,32,0.015);
 }
-.rel-center {
-  font-size: 36px;
-  padding: 0 10px;
-  position: relative;
-  z-index: 1;
-}
+.rel-center { font-size: 36px; padding: 0 10px; position: relative; z-index: 1; }
 .rel-left, .rel-right { position: relative; z-index: 1; }
 .rel-left h3 { color: #c84068; font-size: 20px; }
-.rel-right h3 { color: #b09020; font-size: 20px; }
+.rel-right h3 { color: #a08820; font-size: 20px; }
 .rel-detail {
-  grid-column: 1 / -1;
-  margin-top: 18px;
-  padding-top: 18px;
-  border-top: 1px solid var(--border);
-  font-size: 13.5px;
-  color: var(--text2);
-  line-height: 1.9;
+  grid-column: 1 / -1; margin-top: 18px; padding-top: 18px;
+  border-top: 1px solid var(--border); font-size: 13.5px;
+  color: var(--text2); line-height: 1.9;
 }
 
-/* ── PV phases ── */
+/* ═══════════ PV SCRIPT ═══════════ */
 .pv-phase {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 22px 26px;
-  margin: 14px 0;
-  box-shadow: var(--shadow-sm);
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 22px 26px;
+  margin: 14px 0; box-shadow: var(--shadow-sm);
   transition: box-shadow 0.2s;
 }
 .pv-phase:hover { box-shadow: var(--shadow-md); }
 .pv-phase .phase-num {
-  display: inline-flex;
-  align-items: center; justify-content: center;
+  display: inline-flex; align-items: center; justify-content: center;
   background: linear-gradient(135deg, var(--nanoha-pink), #d44d78);
-  color: #fff;
-  width: 30px; height: 30px;
-  border-radius: 50%;
-  font-size: 14px; font-weight: 800;
-  margin-right: 8px;
-  flex-shrink: 0;
+  color: #fff; width: 30px; height: 30px; border-radius: 50%;
+  font-size: 14px; font-weight: 800; margin-right: 8px; flex-shrink: 0;
 }
-.pv-phase .phase-header {
-  display: flex;
-  align-items: center;
-  margin-bottom: 14px;
-}
-.pv-phase h4 {
-  font-size: 17px;
-  line-height: 1.3;
-}
-.pv-phase .shot-list {
-  padding-left: 20px;
-}
-.pv-phase .shot-list li {
-  margin: 7px 0;
-  font-size: 14px;
-  color: var(--text2);
-}
+.pv-phase .phase-header { display: flex; align-items: center; margin-bottom: 14px; }
+.pv-phase h4 { font-size: 17px; line-height: 1.3; }
+.pv-phase .shot-list { padding-left: 20px; }
+.pv-phase .shot-list li { margin: 7px 0; font-size: 14px; color: var(--text2); }
 .pv-phase .shot-list li strong { color: var(--text); }
 .pv-phase.star-phase { border-left: 3px solid var(--nanoha-pink); }
+.pv-phase.starward-phase { border-left: 3px solid var(--starward-cyan); }
 
-/* ── Color swatches ── */
+.pv-world-tag {
+  display: inline-block; font-size: 10px; font-weight: 700;
+  padding: 2px 10px; border-radius: 10px; letter-spacing: 1px;
+  margin-left: 8px; vertical-align: middle;
+}
+.pv-world-tag.starward { background: rgba(60,184,208,0.12); color: #2890b0; }
+.pv-world-tag.nanoha   { background: var(--nanoha-pink-light); color: #b84060; }
+.pv-world-tag.crossover { background: rgba(160,100,200,0.10); color: #8050a0; }
+
+/* ═══════════ COLOR SWATCHES ═══════════ */
 .swatch-group { margin-bottom: 28px; }
 .swatch-group h4 { font-size: 15px; margin-bottom: 12px; color: #3a2848; }
-.swatches {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-}
+.swatches { display: flex; flex-wrap: wrap; gap: 14px; }
 .swatch-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  padding: 8px 14px 8px 8px;
-  box-shadow: var(--shadow-sm);
+  display: flex; align-items: center; gap: 10px;
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 8px 14px 8px 8px; box-shadow: var(--shadow-sm);
 }
-.swatch {
-  width: 44px; height: 44px;
-  border-radius: 10px;
-  border: 2px solid rgba(0,0,0,0.06);
-  flex-shrink: 0;
-}
+.swatch { width: 44px; height: 44px; border-radius: 10px; border: 2px solid rgba(0,0,0,0.06); flex-shrink: 0; }
 .swatch-label { font-size: 13px; color: var(--text2); }
 
-/* ── Highlight ── */
-.highlight {
-  background: linear-gradient(135deg, rgba(232,93,138,0.10), rgba(232,184,48,0.10));
-  padding: 2px 10px;
-  border-radius: 5px;
-  font-weight: 600;
-  white-space: nowrap;
-}
-
-/* ── Badge row for skill mapping ── */
-.badge-row {
-  display: flex; flex-wrap: wrap; gap: 8px;
-  margin: 10px 0;
-}
-.badge-row .badge-sm {
-  font-size: 11px; font-weight: 700;
-  padding: 3px 10px; border-radius: 10px;
-  letter-spacing: 0.5px;
-}
-.badge-pink  { background: var(--nanoha-pink-light); color: #b84060; }
-.badge-gold  { background: var(--fate-gold-light); color: #a08020; }
-.badge-orange { background: var(--shina-orange-light); color: #b85830; }
-.badge-blue  { background: rgba(91,160,216,0.1); color: #3878b0; }
-
-/* ── Strategy callout ── */
+/* ═══════════ STRATEGY GRID ═══════════ */
 .strategy-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 12px;
-  margin-top: 14px;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px; margin-top: 14px;
 }
 .strategy-item {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  padding: 16px 18px;
-  text-align: center;
-  box-shadow: var(--shadow-sm);
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 16px 18px;
+  text-align: center; box-shadow: var(--shadow-sm);
 }
-.strategy-item .big-emoji { font-size: 28px; margin-bottom: 6px; }
+.strategy-item .big-emoji { font-size: 30px; margin-bottom: 6px; }
 .strategy-item strong { display: block; font-size: 14px; margin-bottom: 4px; }
 .strategy-item span { font-size: 12px; color: var(--text2); }
 
-/* ── Footer ── */
+/* Badges */
+.badge-sm {
+  font-size: 11px; font-weight: 700; padding: 3px 10px;
+  border-radius: 10px; letter-spacing: 0.5px;
+}
+.badge-pink   { background: var(--nanoha-pink-light); color: #b84060; }
+.badge-gold   { background: var(--fate-gold-light); color: #907020; }
+.badge-orange { background: var(--shina-orange-light); color: #b85830; }
+.badge-cyan   { background: rgba(60,184,208,0.10); color: #2880a0; }
+
+.highlight {
+  background: linear-gradient(135deg, rgba(232,93,138,0.10), rgba(212,160,32,0.10));
+  padding: 2px 10px; border-radius: 5px; font-weight: 600; white-space: nowrap;
+}
+
+/* ═══════════ FOOTER ═══════════ */
 .footer {
-  text-align: center;
-  padding: 44px 20px;
-  border-top: 1px solid var(--border);
-  color: var(--text3);
-  font-size: 13px;
-  margin-top: 60px;
-  position: relative;
-  z-index: 1;
+  text-align: center; padding: 44px 20px;
+  border-top: 1px solid var(--border); color: var(--text3);
+  font-size: 13px; margin-top: 60px; position: relative; z-index: 1;
 }
 .footer strong { color: var(--nanoha-pink); }
 
-/* ── Responsive ── */
+/* ═══════════ RESPONSIVE ═══════════ */
 @media (max-width: 600px) {
   .rel-box { grid-template-columns: 1fr; }
   .rel-center { transform: rotate(90deg); padding: 10px 0; font-size: 28px; }
   .rel-left, .rel-right { margin: 6px 0; }
-  .card-grid { grid-template-columns: 1fr; }
+  .card-grid, .img-gallery { grid-template-columns: 1fr; }
   .strategy-grid { grid-template-columns: 1fr 1fr; }
   section { margin: 34px 0; }
   .hero { padding: 44px 16px 36px; }
   .section-desc { padding-left: 0; }
 }
 
-/* ── Animations ── */
+/* Animations */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(12px); }
   to { opacity: 1; transform: translateY(0); }
 }
-.card, .info-box, .pv-phase, .rel-box {
+.card, .info-box, .pv-phase, .rel-box, .img-card {
   animation: fadeIn 0.5s ease-out backwards;
 }
-.card:nth-child(1) { animation-delay: 0.05s; }
-.card:nth-child(2) { animation-delay: 0.12s; }
-.card:nth-child(3) { animation-delay: 0.19s; }
-.card:nth-child(4) { animation-delay: 0.26s; }
 </style>
 </head>
 <body>
 
 <!-- ═══════════ HERO ═══════════ -->
 <div class="hero">
-  <span class="deco-star" style="top:15%;left:10%;">✦</span>
-  <span class="deco-star" style="top:70%;left:8%;">✧</span>
-  <span class="deco-star" style="top:12%;right:12%;">✦</span>
-  <span class="deco-star" style="top:65%;right:8%;">✧</span>
+  <span class="deco-star" style="top:14%;left:8%;">✦</span>
+  <span class="deco-star" style="top:72%;left:10%;">✧</span>
+  <span class="deco-star" style="top:10%;right:10%;">✦</span>
+  <span class="deco-star" style="top:68%;right:6%;">✧</span>
+  <span class="deco-star" style="top:40%;left:92%;font-size:14px;">✧</span>
+  <span class="deco-star" style="top:55%;left:4%;font-size:14px;">✦</span>
 
-  <div class="badge">MAGICAL GIRL LYRICAL NANOHA</div>
+  <div class="badge">MAGICAL GIRL LYRICAL NANOHA · 20TH ANNIVERSARY</div>
   <h1>魔法少女奈叶 EXCEEDS<br>Gun Blaze Vengeance</h1>
   <p class="subtitle">
     <span class="highlight-text">星之翼</span> × 魔法少女奈叶 联动参考文档
   </p>
-  <p class="meta">2026年7月4日首播 · 全12话 · Seven Arcs 制作 · 原作／脚本：都筑真纪</p>
+  <p class="meta">2026年7月4日首播 · 全12话 · Seven Arcs 制作 · 原作／脚本：都筑真纪 · 导演：滨名孝行</p>
 </div>
 
 <div class="container">
@@ -585,11 +427,9 @@ tr:hover td { background: #fefafc; }
 <!-- ═══════════ 一、作品概览 ═══════════ -->
 <section>
   <div class="section-header">
-    <div class="section-num">Chapter 01</div>
-    <div class="section-title">
-      <span class="icon icon-pink">📋</span> 作品概览
-    </div>
-    <div class="section-desc">《魔法少女奈叶 EXCEEDS》是系列20周年纪念企划，包含<strong>漫画</strong>与<strong>TV动画</strong>两部相辅相成的作品。动画于2026年7月4日首播，是系列时隔8年的完全新作。</div>
+    <div class="section-num pink">Chapter 01</div>
+    <div class="section-title"><span class="icon icon-pink">📋</span> 作品概览</div>
+    <div class="section-desc">《魔法少女奈叶 EXCEEDS》是系列20周年纪念企划，包含<strong>漫画</strong>与<strong>TV动画</strong>两部作品。动画于2026年7月4日首播（全12话），是时隔8年的完全新作TV动画。</div>
   </div>
 
   <div class="info-box warn">
@@ -601,27 +441,74 @@ tr:hover td { background: #fefafc; }
   <table>
     <tr><th>项目</th><th>漫画 EXCEEDS</th><th>TV动画 Gun Blaze Vengeance</th></tr>
     <tr><td>主角</td><td>高町奈叶（13岁）</td><td>久濑诗奈（新主角）</td></tr>
-    <tr><td>时间线</td><td>接续剧场版Detonation，填补9→19岁空白</td><td>30年后末日世界观 · 侵略种威胁下的极东岛国"瑞穗"</td></tr>
+    <tr><td>时间线</td><td>接续剧场版 Detonation，填补9→19岁空白</td><td>30年后末日世界观 · 侵略种威胁下的极东岛国「瑞穗」</td></tr>
     <tr><td>连载／播出</td><td>2025年4月起 · 讲谈社「星期三的天狼星」</td><td>2026年7月4日 · 全12话 · 首集1小时SP</td></tr>
     <tr><td>作画／设计</td><td>川上修一</td><td>角色设计：新垣一成 · 原案：川上修一</td></tr>
-    <tr><td>奈叶＆菲特定位</td><td>绝对主角</td><td>EXCEEDS组织调查员 · 经典角色登场</td></tr>
+    <tr><td>奈叶＆菲特定位</td><td>绝对主角</td><td>EXCEEDS 组织调查员 · 经典角色登场</td></tr>
   </table>
   </div>
 </section>
 
-<!-- ═══════════ 二、核心角色档案 ═══════════ -->
+<!-- ═══════════ 二、官方视觉图 / 设定图 ═══════════ -->
 <section>
   <div class="section-header">
-    <div class="section-num">Chapter 02</div>
-    <div class="section-title">
-      <span class="icon icon-pink">👤</span> 核心角色档案
+    <div class="section-num pink">Chapter 02</div>
+    <div class="section-title"><span class="icon icon-pink">🖼️</span> 官方视觉图 / 设定参考</div>
+    <div class="section-desc">以下为 EXCEEDS 官方已公开的视觉图，点击可查看大图。所有图片来自官方 X 账号 <strong>@exgv_official</strong> 发布的高清原图（pbs.twimg.com）。</div>
+  </div>
+
+  <div class="img-gallery">
+    <div class="img-card">
+      <img src="https://pbs.twimg.com/media/HEQoHI2aIAAGGTl.jpg?format=jpg&name=large"
+           alt="Visual Story Vol.3 — 奈叶与菲特全新防护服"
+           loading="lazy"
+           onerror="this.parentElement.style.display='none'">
+      <div class="img-label">📸 Visual Story Vol.3 — 奈叶 & 菲特 · 全新 Barrier Jacket 立于烈焰之前</div>
     </div>
+    <div class="img-card">
+      <img src="https://pbs.twimg.com/media/HEQoZ9hbMAABoUI.jpg?format=jpg&name=large"
+           alt="Visual Story Vol.3 — 菲特单独视觉"
+           loading="lazy"
+           onerror="this.parentElement.style.display='none'">
+      <div class="img-label">📸 Visual Story Vol.3 — 菲特单人 · 黑色防护服 + 单马尾新造型</div>
+    </div>
+    <div class="img-card">
+      <img src="https://pbs.twimg.com/media/HLVGd_oaoAAlLeb.jpg?format=jpg&name=large"
+           alt="PV第2弹视觉图 — 左右阵营"
+           loading="lazy"
+           onerror="this.parentElement.style.display='none'">
+      <div class="img-label">📸 PV第2弹 主视觉图 — 诗奈阵营 vs 敌方魔人 · 全角色集结</div>
+    </div>
+    <div class="img-card">
+      <img src="https://pbs.twimg.com/media/HLaOSYJbMAA_Fir.jpg?format=jpg&name=large"
+           alt="Visual Story Vol.4"
+           loading="lazy"
+           onerror="this.parentElement.style.display='none'">
+      <div class="img-label">📸 Visual Story Vol.4 — EXCEEDS 组织全景 · 奈叶/菲特/疾风/琳齐聚</div>
+    </div>
+  </div>
+
+  <div class="info-box tip" style="margin-top:16px;">
+    <h4>💡 更多图片资源获取方式</h4>
+    <p>
+      <strong>官方 X：</strong><a href="https://x.com/exgv_official" target="_blank" style="color:var(--nanoha-pink);">@exgv_official</a> — 所有主视觉图、角色设定图均在此首发<br>
+      <strong>动画官网：</strong><a href="https://nanoha.com/EXGV/" target="_blank" style="color:var(--nanoha-pink);">nanoha.com/EXGV/</a> — Character 页面有角色介绍与设定图<br>
+      <strong>微博：</strong>搜索「魔法少女奈叶 EXCEEDS」— 奈叶/菲特/疾风/琳的单人角色设定图已由官方同步公开<br>
+      <strong>提示：</strong>由于动画刚开播，完整设定集尚未出版。随着动画播出，官网和官X会陆续公开更多角色立绘与设定稿。
+    </p>
+  </div>
+</section>
+
+<!-- ═══════════ 三、核心角色档案 ═══════════ -->
+<section>
+  <div class="section-header">
+    <div class="section-num pink">Chapter 03</div>
+    <div class="section-title"><span class="icon icon-pink">👤</span> EXCEEDS 核心角色档案</div>
     <div class="section-desc">按联动优先级排列。奈叶和菲特是粉丝认知度的核心，诗奈是本作正式女主角。</div>
   </div>
 
   <div class="card-grid">
 
-    <!-- Nanoha -->
     <div class="card nanoha">
       <h3>高町奈叶</h3>
       <div class="cv">Takamachi Nanoha · CV：田村由香里（20年未更换）</div>
@@ -634,42 +521,30 @@ tr:hover td { background: #fefafc; }
       <p style="font-size:14px;margin-top:8px;">
         <strong>本作新设计：</strong>全新防护服（Barrier Jacket），身材更修长纤细。旭日之心（Raising Heart）魔导器保留。第三弹主视觉图中与菲特并肩立于烈焰之前。
       </p>
-      <p style="font-size:14px;margin-top:8px;">
-        <strong>粉丝认知：</strong>系列灵魂人物，20年积累核心粉丝群。"SLB（星光爆裂）"= 地图炮代名词。"魔法少女最凶最恶"代表。
-      </p>
     </div>
 
-    <!-- Fate -->
     <div class="card fate">
       <h3>菲特·T·哈洛温</h3>
-      <div class="cv">Fate Testarossa Harlaown · CV：水树奈奈（兼OP演唱）</div>
+      <div class="cv">Fate Testarossa Harlaown · CV：水树奈奈（兼 OP 演唱）</div>
       <div class="tag-row">
         <span class="tag">宠妃</span><span class="tag">金色闪电</span><span class="tag">雷光战斧</span><span class="tag">奈叶的「丈夫」</span>
       </div>
       <p style="margin-top:12px;font-size:14px;">
-        奈叶的<strong>伴侣</strong>（官方设定：菲特 = 奈叶的"丈夫"）。初登场冷漠孤独，被奈叶"以炮交友"收服后变得温柔爱操心。
-      </p>
-      <p style="font-size:14px;margin-top:8px;">
-        <strong>本作新设计：</strong>防护服回归<strong>全黑底色</strong>初代风格，发型为<strong>单马尾</strong>（区别于以往双马尾）。巴鲁迪修（Bardiche）魔导器保留。OP《CRIMSON BULLET》由水树奈奈演唱。
+        奈叶的<strong>伴侣</strong>（官方设定：菲特 = 奈叶的"丈夫"）。被奈叶"以炮交友"收服后变得温柔。防护服回归<strong>全黑底色</strong>初代风格，发型为<strong>单马尾</strong>。
       </p>
     </div>
 
-    <!-- Shiina -->
     <div class="card shina">
       <h3>久濑诗奈</h3>
       <div class="cv">Kuze Shiina · CV：橘杏咲</div>
       <div class="tag-row">
-        <span class="tag">EXCEEDS新主角</span><span class="tag">猎人少女</span><span class="tag">火焰魔炮</span><span class="tag">魔人之力继承者</span>
+        <span class="tag">EXCEEDS 新主角</span><span class="tag">猎人少女</span><span class="tag">火焰魔炮</span><span class="tag">魔人之力继承者</span>
       </div>
       <p style="margin-top:12px;font-size:14px;">
-        <strong>本作正式女主角。</strong>离岛高中生，以驱除侵略种为业的猎人。唯一愿望是与义妹雪奈平静度日。
-      </p>
-      <p style="font-size:14px;margin-top:8px;">
-        <strong>🔑 第1集关键剧情：</strong>被敌方"魔人"袭击，妹妹雪奈为保护她被吞噬，临终前将<strong>魔人之力全部转移</strong>。诗奈以觉醒的<strong>Fire Magic Blast（火焰魔炮）</strong>消灭敌方。此后前往本岛，遇到EXCEEDS调查员奈叶。
+        <strong>本作正式女主角。</strong>离岛高中生猎人。第1集妹妹雪奈为保护她被吞噬，临终前将<strong>魔人之力全部转移</strong>。诗奈以<strong>Fire Magic Blast（火焰魔炮）</strong>消灭敌方。此后前往本岛，遇到 EXCEEDS 调查员奈叶。
       </p>
     </div>
 
-    <!-- Yukina -->
     <div class="card yukina">
       <h3>久濑雪奈</h3>
       <div class="cv">Kuze Setsuna · CV：日高里菜</div>
@@ -677,26 +552,75 @@ tr:hover td { background: #fefafc; }
         <span class="tag">义妹</span><span class="tag">魔人</span><span class="tag">牺牲与传承</span><span class="tag">诗奈的力量之源</span>
       </div>
       <p style="margin-top:12px;font-size:14px;">
-        诗奈的<strong>义妹（无血缘）</strong>，真实身份为"魔人"。诗奈早已察觉她的异常，仍视她为最珍爱的妹妹。
-      </p>
-      <p style="font-size:14px;margin-top:8px;">
-        <strong>🔑 第1集关键剧情：</strong>为保护姐姐解放魔人之力，肉体被敌方吞噬，但<strong>力量完整转移给诗奈</strong>。此后可能以精神体／回忆／力量残留形式持续出现。
-      </p>
-      <p style="font-size:14px;margin-top:8px;">
-        <strong>联动意义：</strong>可作为诗奈觉醒演出的情感trigger（幻影/声音），姐妹情深是诗奈角色弧光的核心。
+        诗奈的<strong>义妹（无血缘）</strong>，真实身份为「魔人」。第1集为保护姐姐牺牲，力量完整转移给诗奈。联动中可作为诗奈觉醒演出的情感 trigger（幻影/声音）。
       </p>
     </div>
   </div>
 </section>
 
-<!-- ═══════════ 三、奈叶×菲特 CP ═══════════ -->
+<!-- ═══════════ 四、星之翼侧角色（PV出场候选） ═══════════ -->
 <section>
   <div class="section-header">
-    <div class="section-num">Chapter 03</div>
-    <div class="section-title">
-      <span class="icon icon-gold">💕</span> 奈叶×菲特 — 联动的最大情感卖点
+    <div class="section-num cyan">Chapter 04</div>
+    <div class="section-title"><span class="icon icon-cyan">🎮</span> 星之翼侧 · PV出场角色候选</div>
+    <div class="section-desc">联动PV的世界观主场地在<strong>星之翼侧</strong>——奈叶等人作为「异世界来客」闯入星之翼的世界。以下是适合在PV中出场的星之翼角色，优先选择有主角相、认知度高的角色。</div>
+  </div>
+
+  <div class="card-grid">
+    <div class="card starward">
+      <h3>光（HIKARI）</h3>
+      <div class="cv">皇家星导学院 · 自称「女武神」</div>
+      <div class="tag-row">
+        <span class="tag">⭐ PV首选</span><span class="tag">主角格</span><span class="tag">近战特化</span>
+      </div>
+      <p style="margin-top:12px;font-size:14px;">
+        星之翼中最具<strong>「主角感」</strong>的角色。性格尖锐但通情达理，自称女武神的插班生。适合作为PV中<strong>最先发现异常</strong>、<strong>最先与奈叶等人接触</strong>的星之翼侧代表。
+      </p>
     </div>
-    <div class="section-desc">这对CP是系列最核心的资产，粉丝最在意的内容。联动中任何涉及两人互动的设计都<strong>必须尊重这层关系</strong>。</div>
+    <div class="card starward">
+      <h3>迪卡莉恩（DEUCALION）</h3>
+      <div class="cv">通天塔 · 自称「探求者」</div>
+      <div class="tag-row">
+        <span class="tag">天才少女</span><span class="tag">遗迹调查</span><span class="tag">智囊担当</span>
+      </div>
+      <p style="margin-top:12px;font-size:14px;">
+        调查各地遗迹的天才少女。适合作为PV中<strong>分析异世界魔法阵/能量反应</strong>的角色，用台词解释「有什么东西要过来了」。
+      </p>
+    </div>
+    <div class="card starward">
+      <h3>秋雨（QIUYU）</h3>
+      <div class="cv">东洲 · 自称「虚剑行」</div>
+      <div class="tag-row">
+        <span class="tag">高人气</span><span class="tag">剑士</span><span class="tag">皮肤多</span>
+      </div>
+      <p style="margin-top:12px;font-size:14px;">
+        游历世界行侠仗义的神秘少女，高人气角色（有多个皮肤）。适合作为PV战斗段落中的<strong>星之翼侧主战力</strong>，与奈叶菲特并肩作战。
+      </p>
+    </div>
+    <div class="card starward">
+      <h3>风（KAZE）</h3>
+      <div class="cv">皇家星导学院 · 光的后辈</div>
+      <div class="tag-row">
+        <span class="tag">远程型</span><span class="tag">光的搭档</span>
+      </div>
+      <p style="margin-top:12px;font-size:14px;">
+        光的后辈，性格更平易近人，擅长远程攻击。与光组成搭档出场，增加星之翼侧的<strong>角色厚度</strong>。
+      </p>
+    </div>
+  </div>
+
+  <div class="info-box tip" style="margin-top:16px;">
+    <h4>💡 PV角色选择建议</h4>
+    <p>上述4个角色不需要全部出场。预算有限的情况下，<strong>光 + 迪卡莉恩</strong>是最精简方案（一个战斗担当 + 一个解说担当）。预算充足可以加上秋雨（增加人气角色）和风（完善编队感）。具体还要看你们内部哪个角色已有现成的3D模型和动画资源——<strong>优先用已有资产的</strong>。</p>
+  </div>
+</section>
+
+<!-- ═══════════ 五、奈叶×菲特 CP ═══════════ -->
+<section>
+  <div class="section-header">
+    <div class="section-num gold">Chapter 05</div>
+    <div class="section-title"><span class="icon icon-gold">💕</span> 奈叶×菲特 — 最大情感卖点</div>
+    <div class="section-desc">这对CP是系列最核心资产。任何涉及两人互动的设计都<strong>必须尊重这层关系</strong>。</div>
   </div>
 
   <div class="rel-box">
@@ -712,99 +636,198 @@ tr:hover td { background: #fefafc; }
       <p style="font-size:13px;color:var(--text3);">巴鲁迪修 · 雷光战斧</p>
     </div>
     <div class="rel-detail">
-      <strong>关系演变：</strong>敌人 → 被SLB轰入海中 → 挚友 → 伴侣 → 共同抚养女儿薇薇欧<br>
+      <strong>关系演变：</strong>敌人 → 被 SLB 轰入海中 → 挚友 → 伴侣 → 共同抚养女儿薇薇欧<br>
       <strong>官方设定：</strong>菲特 = 奈叶的「丈夫」 · 奈叶 = 菲特的「要守护的人」 · 两人+薇薇欧 = 一家三口<br>
       <strong>CP名：</strong>奈菲（なのフェイ）—— 20年积累的最强粉丝群体<br>
       <strong>核心梗：</strong>「以炮交友」—— 全力轰击 → 对方臣服 → 成为终身挚友／家人
     </div>
   </div>
-
-  <div class="info-box tip">
-    <h4>💡 联动设计要点</h4>
-    <p>奈叶和菲特的<strong>双人互动</strong>是皮肤／卡面／PV的最高价值内容。背靠背、牵手、并肩飞行、对视微笑——都是粉丝最吃的内容。避免塑造成普通队友关系，要体现<strong>"家人／伴侣"</strong>的亲密感。建议至少设计<strong>一个明确的奈菲双人互动元素</strong>（双人胜利pose / 双人觉醒演出 / 特殊连携技）。</p>
-  </div>
 </section>
 
-<!-- ═══════════ 四、战斗风格与技能 ═══════════ -->
+<!-- ═══════════ 六、战斗风格与技能 ═══════════ -->
 <section>
   <div class="section-header">
-    <div class="section-num">Chapter 04</div>
-    <div class="section-title">
-      <span class="icon icon-gold">⚔️</span> 战斗风格与技能映射
-    </div>
+    <div class="section-num gold">Chapter 06</div>
+    <div class="section-title"><span class="icon icon-gold">⚔️</span> 战斗风格与技能 → GVG 映射</div>
     <div class="section-desc">星之翼是GVG类3D格斗游戏。奈叶系列角色的战斗方式——飞行、射击、近战切换、觉醒爆发——与游戏系统<strong>天然契合</strong>。</div>
   </div>
 
   <div class="table-wrap">
   <table>
-    <tr><th>角色</th><th>战斗风格</th><th>核心技能</th><th>→ GVG操作映射</th></tr>
+    <tr><th>角色</th><th>战斗风格</th><th>核心技能</th><th>→ GVG 操作映射</th></tr>
     <tr>
       <td><strong style="color:#c84068;">奈叶</strong></td>
-      <td>中远距离炮击型<br><small style="color:var(--text3);">高火力·大范围压制</small></td>
+      <td>中远距离炮击型<br><small style="color:var(--text3);">高火力 · 大范围压制</small></td>
+      <td>Divine Buster · Axel Shooter · <strong>Starlight Breaker</strong> · Exceed Mode</td>
       <td>
-        <strong>Divine Buster</strong> — 常规魔炮<br>
-        <strong>Axel Shooter</strong> — 追踪弹集群<br>
-        <strong>Starlight Breaker</strong> — 终极地图炮<br>
-        <strong>Exceed Mode</strong> — 极限驱动形态
-      </td>
-      <td>
-        <span class="badge-sm badge-pink">主射</span> Axel Shooter（诱导追踪弹）<br>
-        <span class="badge-sm badge-pink">CS</span> Divine Buster（高威力照射光束）<br>
-        <span class="badge-sm badge-pink">觉醒技</span> SLB（全屏AOE炮击）<br>
-        <span class="badge-sm badge-pink">定位</span> 3000 Cost 后卫炮击机
+        <span class="badge-sm badge-pink">主射</span> Axel Shooter<br>
+        <span class="badge-sm badge-pink">CS</span> Divine Buster<br>
+        <span class="badge-sm badge-pink">觉醒技</span> SLB 全屏 AOE<br>
+        <span class="badge-sm badge-pink">Cost</span> 3000 后卫炮击机
       </td>
     </tr>
     <tr>
-      <td><strong style="color:#b09020;">菲特</strong></td>
-      <td>高速近中距离突击型<br><small style="color:var(--text3);">高机动·雷光特效</small></td>
+      <td><strong style="color:#a08820;">菲特</strong></td>
+      <td>高速近中距离突击型<br><small style="color:var(--text3);">高机动 · 雷光特效</small></td>
+      <td>Thunder Smasher · Haken Saber · <strong>Zanber Form</strong> · Sonic Form</td>
       <td>
-        <strong>Thunder Smasher</strong> — 雷击炮<br>
-        <strong>Haken Saber</strong> — 巨镰斩击<br>
-        <strong>Zanber Form</strong> — 大剑形态<br>
-        <strong>Sonic Form</strong> — 超音速形态
-      </td>
-      <td>
-        <span class="badge-sm badge-gold">主射</span> Thunder Smasher（雷击光束）<br>
-        <span class="badge-sm badge-gold">格斗</span> Haken Saber（镰刀连段）<br>
-        <span class="badge-sm badge-gold">CS</span> Zanber（大剑横扫）<br>
-        <span class="badge-sm badge-gold">觉醒技</span> Riot Zamber（雷光全屏斩击）<br>
-        <span class="badge-sm badge-gold">定位</span> 3000 Cost 万能突击机
+        <span class="badge-sm badge-gold">主射</span> Thunder Smasher<br>
+        <span class="badge-sm badge-gold">格斗</span> Haken Saber 镰刀连段<br>
+        <span class="badge-sm badge-gold">觉醒技</span> Riot Zamber<br>
+        <span class="badge-sm badge-gold">Cost</span> 3000 万能突击机
       </td>
     </tr>
     <tr>
       <td><strong style="color:#c85830;">诗奈</strong></td>
       <td>中距离火焰炮击型<br><small style="color:var(--text3);">爆发式输出</small></td>
+      <td><strong>Fire Magic Blast</strong> · 魔人之力觉醒</td>
       <td>
-        <strong>Fire Magic Blast</strong> — 火焰魔炮<br>
-        <strong>魔人之力觉醒</strong> — 强化状态<br>
-        <small style="color:var(--text3);">（更多技能待动画揭露）</small>
-      </td>
-      <td>
-        <span class="badge-sm badge-orange">主射</span> 火焰弹／火焰炮<br>
-        <span class="badge-sm badge-orange">觉醒</span> 魔人化（全身火焰缠绕）<br>
-        <span class="badge-sm badge-orange">觉醒技</span> 全力Fire Magic Blast<br>
-        <span class="badge-sm badge-orange">定位</span> 2500-3000 Cost 中距离炮击机
+        <span class="badge-sm badge-orange">主射</span> 火焰炮<br>
+        <span class="badge-sm badge-orange">觉醒</span> 魔人化<br>
+        <span class="badge-sm badge-orange">觉醒技</span> 全力 Fire Magic Blast<br>
+        <span class="badge-sm badge-orange">Cost</span> 2500-3000 炮击机
       </td>
     </tr>
   </table>
   </div>
-
-  <div class="info-box tip" style="margin-top:16px;">
-    <h4>💡 天然契合度</h4>
-    <p>魔法阵展开 = 觉醒演出 · 防护服 = 机体皮肤 · 魔导器模式切换 = 形态变换 · 空中高速战斗 = 游戏核心玩法。这是<strong>极少数不需要强行改编的IP</strong>——直接翻译即可。</p>
-  </div>
 </section>
 
-<!-- ═══════════ 五、视觉设计参考 ═══════════ -->
+<!-- ═══════════ 七、联动PV脚本 ═══════════ -->
 <section>
   <div class="section-header">
-    <div class="section-num">Chapter 05</div>
-    <div class="section-title">
-      <span class="icon icon-pink">🎨</span> 视觉设计参考
+    <div class="section-num orange">Chapter 07</div>
+    <div class="section-title"><span class="icon icon-orange">🎬</span> 联动 PV 脚本框架（星之翼世界主场）</div>
+    <div class="section-desc">
+      核心设定：<strong>奈叶等人从魔法阵中穿越而来，闯入星之翼的世界。</strong>这是标准联动叙事——异世界来客 × 本地角色，先误会冲突再联手抗敌。<br>
+      制作策略：<strong>70%特效 + 20%镜头 + 10%角色动画</strong>，用强pose和特效弥补3D动画产能不足。
     </div>
   </div>
 
-  <div class="info-box" style="margin-bottom:24px;">
+  <!-- Phase 1 -->
+  <div class="pv-phase starward-phase">
+    <div class="phase-header">
+      <span class="phase-num" style="background:linear-gradient(135deg,var(--starward-cyan),#2898b8);">1</span>
+      <h4>星之翼的日常 — 平静被打破<span class="pv-world-tag starward">🌍 星之翼世界</span></h4>
+    </div>
+    <ul class="shot-list">
+      <li><strong>镜头1（3-4秒）：</strong>星之翼世界的空镜 —— 皇家星导学院 / 通天塔遗迹 / 蓝天白云下的飞行城市。展现星之翼世界观的标志性场景。（静态场景 + 缓慢camera drift，0角色动画）</li>
+      <li><strong>镜头2（3-4秒）：</strong><strong>光</strong>和<strong>风</strong>正在进行日常训练/巡逻，两人编队飞行，轻松对话。"今天也没什么异常呢。"（使用游戏内已有飞行/idle动画）</li>
+      <li><strong>镜头3（3-4秒）：</strong><strong>迪卡莉恩</strong>在遗迹中检测仪表突然报警 —— 能量读数飙升。她抬头望天，表情震惊："这个反应……不对，这不是我们的世界的……"（特写镜头 + 仪表UI特效）</li>
+      <li><strong>镜头4（2-3秒）：</strong>天空撕裂 —— 一个巨大的<strong>樱花色魔法阵</strong>在云端展开，旋转扩散。光芒笼罩大地。</li>
+      <li><strong>低成本要点：</strong>全部使用游戏内已有场景和角色动画。魔法阵是纯2D/3D特效层叠。不需要任何新角色动画。</li>
+      <li><strong>音效：</strong>轻松日常BGM → 迪卡莉恩台词时BGM骤停 → 低沉轰鸣 + 魔法阵展开的音效（水晶/铃音质感）</li>
+    </ul>
+  </div>
+
+  <!-- Phase 2 -->
+  <div class="pv-phase star-phase">
+    <div class="phase-header">
+      <span class="phase-num">2</span>
+      <h4>异世界来客 — 奈叶 & 菲特降临<span class="pv-world-tag nanoha">🔮 奈叶世界 → 星之翼</span></h4>
+    </div>
+    <ul class="shot-list">
+      <li><strong>镜头1（3-4秒）：</strong>魔法阵中心，<strong>奈叶</strong>的剪影从光芒中浮现 —— 逆光，樱色魔力翼展开，旭日之心握在手中。镜头从脚下仰拍，突出威严感。（角色只需一个浮空pose + 光翼特效）</li>
+      <li><strong>镜头2（2-3秒）：</strong>一道<strong>金色雷光</strong>从魔法阵中劈出 —— <strong>菲特</strong>高速突进的侧影，巴鲁迪修在雷光中展开巨镰形态。残影拖尾特效。</li>
+      <li><strong>镜头3（3-4秒）：</strong>奈叶和菲特<strong>背靠背</strong>悬浮在空中，环顾四周陌生的世界。镜头慢速环绕180°。（静态双人pose——PV性价比最高的镜头）</li>
+      <li><strong>镜头4（3-4秒）：</strong><strong>诗奈</strong>最后一个从魔法阵中落下，单膝着陆，火焰魔力在周身缠绕，眼睛扫视四周，警惕而困惑。</li>
+      <li><strong>低成本要点：</strong>奈叶菲特背靠背pose是经典构图的静态画面——放3秒+慢镜环绕就能撑满这个段落。角色不用同时动画。</li>
+      <li><strong>字幕：</strong>"来自异世界的访客——"</li>
+    </ul>
+  </div>
+
+  <!-- Phase 3 -->
+  <div class="pv-phase starward-phase">
+    <div class="phase-header">
+      <span class="phase-num" style="background:linear-gradient(135deg,var(--starward-cyan),#2898b8);">3</span>
+      <h4>接触与误会 — 初次交锋<span class="pv-world-tag crossover">⚡ 冲突</span></h4>
+    </div>
+    <ul class="shot-list">
+      <li><strong>镜头1（3-4秒）：</strong><strong>光</strong>挡在奈叶等人面前，武器出鞘，戒备姿态。"站住！你们是什么人？"（pose对峙——光持武器 vs 奈叶持旭日之心）</li>
+      <li><strong>镜头2（2-3秒）：</strong>奈叶微微歪头，露出经典的无害笑容 —— 但旭日之心已经开始蓄力发光。"啊，那个……我们不是敌人哦。"</li>
+      <li><strong>镜头3（3-4秒）：</strong><strong>快速交锋</strong>—— 光冲刺 → 奈叶闪避 + Axel Shooter 警告射击（故意打偏）→ 秋雨从侧面出剑 → 菲特瞬移格挡，巴鲁迪修与剑碰撞，金色雷光四溅。（使用游戏内基础攻击动作 + 特效放大）</li>
+      <li><strong>低成本要点：</strong>交锋段落每刀只有1-2秒，用镜头快速切换制造节奏感。核心是<strong>碰撞特效</strong>，不需要复杂的连续对打动画。</li>
+    </ul>
+  </div>
+
+  <!-- Phase 4 -->
+  <div class="pv-phase star-phase">
+    <div class="phase-header">
+      <span class="phase-num">4</span>
+      <h4>真正的敌人出现 — 联手<span class="pv-world-tag crossover">🤝 联手</span></h4>
+    </div>
+    <ul class="shot-list">
+      <li><strong>镜头1（2-3秒）：</strong>对峙中，天空再次撕裂 —— 这次是<strong>暗红色裂缝</strong>。侵略种/魔人的巨大身影从裂缝中涌出，咆哮。原来它们追着奈叶等人穿越过来了。</li>
+      <li><strong>镜头2（3-4秒）：</strong><strong>迪卡莉恩</strong>的分析台词："原来如此……她们不是敌人，真正的威胁是那个！" 光收起武器，看向奈叶，点头示意停战。</li>
+      <li><strong>镜头3（4-5秒）：</strong><strong>全员战斗姿态的集结镜头</strong>—— 奈叶/菲特/诗奈（左）+ 光/秋雨/风（右），两组人并肩面向敌人方向。镜头从背后低角度推向敌人。（群像pose + camera push，所有角色静态即可）</li>
+      <li><strong>字幕：</strong>"——要上了。"</li>
+    </ul>
+  </div>
+
+  <!-- Phase 5 -->
+  <div class="pv-phase star-phase">
+    <div class="phase-header">
+      <span class="phase-num">5</span>
+      <h4>全力全开 — GVG 风格战斗高潮<span class="pv-world-tag crossover">💥 决战</span></h4>
+    </div>
+    <ul class="shot-list">
+      <li><strong>镜头1（2秒）：</strong>奈叶 Axel Shooter 齐射 + 光同时突进斩击 —— 远近配合。（复用游戏内攻击动作）</li>
+      <li><strong>镜头2（2秒）：</strong>菲特 Haken Saber 巨镰横扫 + 秋雨剑技连携。（镰刀轨迹特效 + 剑光）</li>
+      <li><strong>镜头3（2秒）：</strong>诗奈 Fire Magic Blast 从侧翼轰入，火焰柱贯穿战场。</li>
+      <li><strong>镜头4（4-5秒）：</strong><strong>奈叶 SLB 终极轰击！</strong>旭日之心展开炮击模式 → 魔法阵层层叠叠 → 樱色光芒汇聚 → 全屏粉色爆炸。镜头从近拉远展示爆炸规模。（角色只需蓄力pose + 90%特效 + 镜头震动）</li>
+      <li><strong>镜头5（2-3秒）：</strong>敌人被击破的崩溃特效。烟尘散去，战场归于宁静。</li>
+      <li><strong>低成本要点：</strong>这个段落每刀极短（1-2秒），用快速跳切制造激烈感。SLB段落与之前方案一致——站桩 + 特效拉满。</li>
+    </ul>
+  </div>
+
+  <!-- Phase 6 -->
+  <div class="pv-phase starward-phase">
+    <div class="phase-header">
+      <span class="phase-num" style="background:linear-gradient(135deg,var(--starward-cyan),#2898b8);">6</span>
+      <h4> Ending — 新的羁绊<span class="pv-world-tag crossover">🌟 尾声</span></h4>
+    </div>
+    <ul class="shot-list">
+      <li><strong>镜头1（3-4秒）：</strong>战后，所有人站在星之翼世界的高处俯瞰风景。奈叶和菲特并肩，诗奈站在稍远处，光抱着手臂但嘴角微微上扬。</li>
+      <li><strong>镜头2（2-3秒）：</strong>奈叶转向光，伸出手——经典的「以炮交友」→「以手交友」。"从现在开始，我们就是朋友了。"（呼应系列核心梗！）</li>
+      <li><strong>镜头3（2-3秒）：</strong>光愣了一下，然后握住奈叶的手。画面定格。</li>
+      <li><strong>镜头4（3-4秒）：</strong><strong>星之翼 Logo</strong> 与 <strong>EXCEEDS Gun Blaze Vengeance Logo</strong> 并排出现。联动日期浮现。</li>
+      <li><strong>字幕：</strong>"星之翼 × 魔法少女奈叶 EXCEEDS Gun Blaze Vengeance"</li>
+      <li><strong>低成本要点：</strong>结尾是纯静态pose集合 + Logo平面设计。</li>
+    </ul>
+  </div>
+
+  <div class="info-box tip" style="margin-top:20px;">
+    <h4>💡 总制作策略</h4>
+    <div class="strategy-grid">
+      <div class="strategy-item">
+        <div class="big-emoji">💥</div><strong>70% 特效</strong><span>魔法阵 · 魔力光 · 爆炸 · 雷光 —— 奈叶自带「特效拉满」基因</span>
+      </div>
+      <div class="strategy-item">
+        <div class="big-emoji">🎥</div><strong>20% 镜头</strong><span>slow-mo环绕 · 快速跳切 · 震动 · 仰拍逆光</span>
+      </div>
+      <div class="strategy-item">
+        <div class="big-emoji">🧍</div><strong>10% 动画</strong><span>关键帧级精美pose · 复用已有攻击动作 · 静态也能出效果</span>
+      </div>
+      <div class="strategy-item">
+        <div class="big-emoji">🎙️</div><strong>声优语音</strong><span>田村由香里 + 水树奈奈原声是最大情感触发器</span>
+      </div>
+      <div class="strategy-item">
+        <div class="big-emoji">🎵</div><strong>主题曲</strong><span>水树奈奈《CRIMSON BULLET》如能授权，效果翻倍</span>
+      </div>
+      <div class="strategy-item">
+        <div class="big-emoji">🔄</div><strong>关键原则</strong><span>优先用已有3D资产的星之翼角色，减少新模型/绑定工作量</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ 八、视觉设计参考 ═══════════ -->
+<section>
+  <div class="section-header">
+    <div class="section-num pink">Chapter 08</div>
+    <div class="section-title"><span class="icon icon-pink">🎨</span> 视觉设计参考</div>
+  </div>
+
+  <div class="info-box">
     <h4>设计团队</h4>
     <p style="font-size:14px;color:var(--text2);">
       <strong>角色原案／防护服／魔导器原案：</strong>川上修一（漫画作画，系列老将）<br>
@@ -814,7 +837,7 @@ tr:hover td { background: #fefafc; }
   </div>
 
   <div class="swatch-group">
-    <h4>高町奈叶 — 配色方案</h4>
+    <h4>高町奈叶 — 配色</h4>
     <div class="swatches">
       <div class="swatch-item"><div class="swatch" style="background:#fefefe;"></div><span class="swatch-label">主色 白</span></div>
       <div class="swatch-item"><div class="swatch" style="background:#e85d8a;"></div><span class="swatch-label">魔力光 樱粉</span></div>
@@ -822,19 +845,17 @@ tr:hover td { background: #fefafc; }
       <div class="swatch-item"><div class="swatch" style="background:#4060c0;"></div><span class="swatch-label">点缀 蓝</span></div>
     </div>
   </div>
-
   <div class="swatch-group">
-    <h4>菲特·T·哈洛温 — 配色方案</h4>
+    <h4>菲特·T·哈洛温 — 配色</h4>
     <div class="swatches">
       <div class="swatch-item"><div class="swatch" style="background:#1a1a1a;"></div><span class="swatch-label">主色 黑</span></div>
-      <div class="swatch-item"><div class="swatch" style="background:#e8b830;"></div><span class="swatch-label">魔力光 金雷</span></div>
+      <div class="swatch-item"><div class="swatch" style="background:#d4a020;"></div><span class="swatch-label">魔力光 金雷</span></div>
       <div class="swatch-item"><div class="swatch" style="background:#c02030;"></div><span class="swatch-label">内衬 红</span></div>
       <div class="swatch-item"><div class="swatch" style="background:#f0ecf4;"></div><span class="swatch-label">斗篷 白</span></div>
     </div>
   </div>
-
   <div class="swatch-group">
-    <h4>久濑诗奈 — 配色方案</h4>
+    <h4>久濑诗奈 — 配色</h4>
     <div class="swatches">
       <div class="swatch-item"><div class="swatch" style="background:#e87040;"></div><span class="swatch-label">火焰 橙红</span></div>
       <div class="swatch-item"><div class="swatch" style="background:#2a2030;"></div><span class="swatch-label">服装 暗色</span></div>
@@ -846,7 +867,7 @@ tr:hover td { background: #fefafc; }
     <h4 style="margin-bottom:14px;color:#3a2848;">关键视觉标识对照</h4>
     <div class="table-wrap">
     <table>
-      <tr><th>元素</th><th style="color:#c84068;">奈叶</th><th style="color:#b09020;">菲特</th><th style="color:#c85830;">诗奈</th></tr>
+      <tr><th>元素</th><th style="color:#c84068;">奈叶</th><th style="color:#a08820;">菲特</th><th style="color:#c85830;">诗奈</th></tr>
       <tr><td>魔法阵</td><td>樱花粉圆形米德切尔达式</td><td>金色圆形米德切尔达式</td><td>火焰色（待确认）</td></tr>
       <tr><td>魔导器</td><td>旭日之心（杖型 → 炮击型）</td><td>巴鲁迪修（斧型 → 镰刀 → 大剑）</td><td>无传统魔导器（魔人之力）</td></tr>
       <tr><td>防护服</td><td>白色为主 · 全新设计</td><td>全黑底色 · 单马尾 · 回归初代风</td><td>猎人风便服／战斗服</td></tr>
@@ -857,189 +878,59 @@ tr:hover td { background: #fefafc; }
   </div>
 </section>
 
-<!-- ═══════════ 六、PV脚本框架 ═══════════ -->
+<!-- ═══════════ 九、参考资源 ═══════════ -->
 <section>
   <div class="section-header">
-    <div class="section-num">Chapter 06</div>
-    <div class="section-title">
-      <span class="icon icon-orange">🎬</span> 星之翼联动PV脚本框架
-    </div>
-    <div class="section-desc">考虑3D制作力限制的6段式分镜。核心策略：<strong>70%特效 + 20%镜头 + 10%角色动画</strong>。</div>
+    <div class="section-num gold">Chapter 09</div>
+    <div class="section-title"><span class="icon icon-gold">🔗</span> 参考资源</div>
   </div>
-
-  <div class="info-box warn">
-    <h4>⚠️ 制作约束假设</h4>
-    <p>制作力不高 = 避免复杂角色动画（表情细腻变化、长段对话口型）、避免大量新骨骼绑定（斗篷物理、头发大幅飘动）、优先使用游戏内已有动作系统 + 特效增强。用<strong>强pose + 镜头调度 + 特效</strong>弥补动画复杂度不足。</p>
-  </div>
-
-  <div class="pv-phase star-phase">
-    <div class="phase-header">
-      <span class="phase-num">1</span>
-      <h4>Opening — 世界观建立（8-12秒）</h4>
-    </div>
-    <ul class="shot-list">
-      <li><strong>镜头：</strong>黑暗废墟远景 → 侵略种剪影压迫 → 镜头快速推进至瑞穗国</li>
-      <li><strong>低成本要点：</strong>静态场景 + 慢速camera push + 粒子特效（火星/灰烬），不需要角色动画</li>
-      <li><strong>音效设计：</strong>沉重低音 + 警报/怪兽嘶吼 → 突然静音</li>
-      <li><strong>字幕：</strong>"30年前，世界濒临毁灭。"</li>
-    </ul>
-  </div>
-
-  <div class="pv-phase star-phase">
-    <div class="phase-header">
-      <span class="phase-num">2</span>
-      <h4>诗奈登场 — 新主角亮相（10-14秒）</h4>
-    </div>
-    <ul class="shot-list">
-      <li><strong>镜头1：</strong>火焰魔炮从屏幕一侧轰出（特效为主，角色只需一个发射pose）</li>
-      <li><strong>镜头2：</strong>诗奈半身特写，眼神坚定，火焰魔力周身缠绕（静态pose + 特效环绕）</li>
-      <li><strong>镜头3：</strong>雪奈的透明幻影在诗奈身后一闪而过（半透明模型 + 发光shader）</li>
-      <li><strong>字幕：</strong>"我只是想保护……唯一的家人。"</li>
-    </ul>
-  </div>
-
-  <div class="pv-phase star-phase">
-    <div class="phase-header">
-      <span class="phase-num">3</span>
-      <h4>⭐ 奈叶&菲特登场 — 情怀引爆（12-18秒）核心段落</h4>
-    </div>
-    <ul class="shot-list">
-      <li><strong>镜头1：</strong>樱花色魔法阵在屏幕中央展开 → 奈叶从阵中飞出剪影（逆光，轮廓 + 光翼特效）</li>
-      <li><strong>镜头2：</strong>金色雷光一闪 → 菲特高速突进侧影，巴鲁迪修展开巨镰形态</li>
-      <li><strong>镜头3：</strong>奈叶菲特<strong>背靠背</strong>经典pose（静态双人 + 镜头慢速环绕），樱粉/金色魔力交织</li>
-      <li><strong>镜头4：</strong>快速切镜 — 奈叶SLB蓄力特写（旭日之心展开 + 魔法阵层叠）、菲特雷光缠绕格斗姿态</li>
-      <li><strong>字幕：</strong>"高町奈叶。菲特·T·哈洛温。EXCEEDS调查员。"</li>
-    </ul>
-  </div>
-
-  <div class="pv-phase star-phase">
-    <div class="phase-header">
-      <span class="phase-num">4</span>
-      <h4>战斗高潮 — GVG风格动作展示（10-15秒）</h4>
-    </div>
-    <ul class="shot-list">
-      <li><strong>镜头1：</strong>三人编队飞行（诗奈/奈叶/菲特并排，侧拍平移，不需要复杂动画）</li>
-      <li><strong>镜头2：</strong>快速连切 — 奈叶Axel Shooter齐射 → 菲特巨镰斩击 → 诗奈火焰炮击</li>
-      <li><strong>镜头3：</strong>奈叶SLB全屏轰击！镜头拉远展示爆炸范围（90%靠特效）</li>
-      <li><strong>镜头4：</strong>侵略种/魔人被击破的崩溃效果</li>
-    </ul>
-  </div>
-
-  <div class="pv-phase star-phase">
-    <div class="phase-header">
-      <span class="phase-num">5</span>
-      <h4>觉醒/大招展示 — 星能爆发映射（6-10秒）</h4>
-    </div>
-    <ul class="shot-list">
-      <li><strong>奈叶觉醒：</strong>Exceed Mode — 旭日之心金色展开，魔力光爆发，魔法阵从脚下扩散（站桩+超大特效）</li>
-      <li><strong>菲特觉醒：</strong>Sonic Form — 全身雷光缠绕，速度线 + 瞬移残影效果</li>
-      <li><strong>诗奈觉醒：</strong>魔人之力解放 — 火焰柱冲天，眼睛变色/纹路发光</li>
-      <li><strong>低成本要点：</strong>觉醒 = 站桩pose + 超大特效 + 镜头震动。3D PV性价比最高的段落。</li>
-    </ul>
-  </div>
-
-  <div class="pv-phase star-phase">
-    <div class="phase-header">
-      <span class="phase-num">6</span>
-      <h4>Ending — Logo + 联动信息（6-8秒）</h4>
-    </div>
-    <ul class="shot-list">
-      <li><strong>镜头：</strong>三人站姿集合 → 星之翼Logo与EXCEEDS Logo并排 → 奈叶伸出手（呼应"以炮交友"→"以手交友"）</li>
-      <li><strong>字幕：</strong>"星之翼 × 魔法少女奈叶 EXCEEDS Gun Blaze Vengeance" + 联动日期</li>
-    </ul>
-  </div>
-
-  <div class="info-box tip" style="margin-top:20px;">
-    <h4>💡 总制作策略</h4>
-    <div class="strategy-grid">
-      <div class="strategy-item">
-        <div class="big-emoji">💥</div>
-        <strong>70% 特效</strong>
-        <span>魔法阵·魔力光·爆炸——奈叶自带「特效拉满」基因</span>
-      </div>
-      <div class="strategy-item">
-        <div class="big-emoji">🎥</div>
-        <strong>20% 镜头</strong>
-        <span>slow-mo环绕·快速推进·震动·跳切节奏</span>
-      </div>
-      <div class="strategy-item">
-        <div class="big-emoji">🧍</div>
-        <strong>10% 角色动画</strong>
-        <span>关键帧级精美pose，静态也能出效果</span>
-      </div>
-      <div class="strategy-item">
-        <div class="big-emoji">🎙️</div>
-        <strong>声优语音</strong>
-        <span>田村由香里+水树奈奈原声是最大情感触发器</span>
-      </div>
-      <div class="strategy-item">
-        <div class="big-emoji">🎵</div>
-        <strong>主题曲</strong>
-        <span>水树奈奈《CRIMSON BULLET》如能授权，效果翻倍</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════ 七、参考资源 ═══════════ -->
-<section>
-  <div class="section-header">
-    <div class="section-num">Chapter 07</div>
-    <div class="section-title">
-      <span class="icon icon-orange">🔗</span> 参考资源
-    </div>
-  </div>
-
   <div class="table-wrap">
   <table>
     <tr><th>类型</th><th>来源</th><th>说明</th></tr>
-    <tr><td>官方 X / Twitter</td><td>@exgv_official</td><td>最新视觉图、PV、情报发布 · 高清图直链</td></tr>
+    <tr><td>官方 X/Twitter</td><td><a href="https://x.com/exgv_official" target="_blank" style="color:var(--nanoha-pink);">@exgv_official</a></td><td>最新视觉图、PV、角色设定、情报发布 · 高清原图直链</td></tr>
+    <tr><td>动画官网</td><td><a href="https://nanoha.com/EXGV/" target="_blank" style="color:var(--nanoha-pink);">nanoha.com/EXGV/</a></td><td>Character 页面、STAFF/CAST、STORY 介绍</td></tr>
     <tr><td>漫画</td><td>讲谈社「星期三的天狼星」</td><td>奈叶13岁视角，前2卷已出版 · 川上修一作画</td></tr>
     <tr><td>中文正版播放</td><td>巴哈姆特动画疯 / LINE TV / 爱奇艺</td><td>曼迪传播代理中文区</td></tr>
-    <tr><td>主视觉图大图</td><td>pbs.twimg.com 官方推文直链</td><td>三弹主视觉图均有 4K 高清大图</td></tr>
-    <tr><td>萌娘百科</td><td>zh.moegirl.org.cn</td><td>角色/用语/梗的详细中文整理</td></tr>
-    <tr><td>百度百科</td><td>魔法少女奈叶 EXCEEDS</td><td>中文资料汇总</td></tr>
+    <tr><td>萌娘百科</td><td>zh.moegirl.org.cn</td><td>角色 / 用语 / 梗的详细中文整理</td></tr>
+    <tr><td>星之翼官网</td><td>xzy.shengtiangames.com</td><td>星之翼角色介绍、皮肤立绘参考</td></tr>
   </table>
   </div>
 </section>
 
-<!-- ═══════════ 八、联动风险 ═══════════ -->
+<!-- ═══════════ 十、联动风险 ═══════════ -->
 <section>
   <div class="section-header">
-    <div class="section-num">Chapter 08</div>
-    <div class="section-title">
-      <span class="icon icon-gold">⚠️</span> 联动风险与注意事项
-    </div>
+    <div class="section-num orange">Chapter 10</div>
+    <div class="section-title"><span class="icon icon-orange">⚠️</span> 联动风险与注意事项</div>
   </div>
 
   <div class="info-box warn">
-    <h4>🔴 风险1：动画刚开播，内容不完整</h4>
-    <p>诗奈的完整能力、最终形态、关键剧情转折均未公开。若联动在9月前上线，建议<strong>奈叶+菲特为主、诗奈为辅</strong>的策略——奈叶菲特有20年积累，诗奈只做基础展示。</p>
+    <h4>🔴 动画刚开播，内容不完整</h4>
+    <p>诗奈的完整能力、最终形态、关键剧情转折均未公开。若联动在9月前上线，建议<strong>奈叶+菲特为主、诗奈为辅</strong>。</p>
   </div>
-
   <div class="info-box warn">
-    <h4>🔴 风险2：版权范围限制</h4>
-    <p>授权仅覆盖EXCEEDS，不能使用系列前作角色设计。但奈叶菲特的核心性格、关系、经典pose属于角色本质特征。建议所有视觉设计<strong>严格以EXCEEDS官方公开的视觉图/动画截图为准</strong>。</p>
+    <h4>🔴 版权范围限制</h4>
+    <p>授权仅覆盖 EXCEEDS，不能使用系列前作的角色设计。所有视觉设计<strong>严格以 EXCEEDS 官方公开图为准</strong>。</p>
   </div>
-
   <div class="info-box warn">
-    <h4>🔴 风险3：粉丝期待管理</h4>
-    <p>奈叶系列粉丝对奈菲CP有极高情感投入。若两人互动被做成"普通同事"，会引发粉丝强烈不满。务必至少设计<strong>一个明确的双人互动元素</strong>。</p>
+    <h4>🔴 粉丝期待管理</h4>
+    <p>奈菲CP情感投入极高。务必至少设计<strong>一个明确的奈菲双人互动元素</strong>（双人pose/觉醒演出/连携技）。</p>
   </div>
-
   <div class="info-box tip">
-    <h4>🟢 建议：诗奈×雪奈 姐妹线作为第二情感轴</h4>
-    <p>除了奈菲CP，"诗奈×雪奈"的姐妹情深也非常有力。雪奈虽第1集就死了，但她的牺牲和力量传承是诗奈一切行动的动机。PV中用<strong>雪奈的幻影/声音</strong>作为诗奈觉醒的trigger，同样催泪——姐妹情 + 奈菲情 = 双情感线并行。</p>
+    <h4>🟢 诗奈×雪奈 姐妹线 = 第二情感轴</h4>
+    <p>PV中用<strong>雪奈的幻影/声音</strong>作为诗奈觉醒的trigger，姐妹情 + 奈菲情 = 双情感线并行。</p>
+  </div>
+  <div class="info-box tip">
+    <h4>🟢 PV 中星之翼角色的选择</h4>
+    <p>最终出场角色取决于<strong>哪些角色已有完整的3D模型和动画资产</strong>。光的「女武神」设定与奈叶的「以炮交友」有天然戏剧冲突（战士vs魔法少女），是最佳选择。</p>
   </div>
 </section>
 
-<!-- Footer -->
 <div class="footer">
   <p><strong>星之翼</strong> × <strong>魔法少女奈叶 EXCEEDS Gun Blaze Vengeance</strong> 联动参考文档</p>
   <p style="margin-top:6px;">数据截止：2026年7月 · 动画仅播出2-3集 · 持续更新中</p>
 </div>
 
-</div><!-- .container -->
-
+</div>
 </body>
 </html>
