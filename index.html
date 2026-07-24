@@ -6,929 +6,846 @@
 <title>魔法少女奈叶 EXCEEDS 联动参考文档 — 星之翼</title>
 <style>
 :root {
-  --nanoha-pink: #e85d8a;
-  --nanoha-pink-light: #fef0f5;
-  --nanoha-sakura: #f5a0bf;
-  --fate-gold: #d4a020;
-  --fate-gold-light: #fef9ee;
-  --shina-orange: #e87040;
-  --shina-orange-light: #fef3ee;
-  --yukina-blue: #5ba0d8;
-  --starward-cyan: #3cb8d0;
-  --bg: #fdfaf7;
-  --bg-card: #ffffff;
-  --text: #2c2440;
-  --text2: #6b5e7a;
-  --text3: #9a8eaa;
-  --border: #e8e0ed;
-  --border-strong: #d8cce4;
-  --shadow-sm: 0 2px 8px rgba(120,80,120,0.06);
-  --shadow-md: 0 4px 24px rgba(120,80,120,0.10);
-  --shadow-lg: 0 8px 40px rgba(120,80,120,0.14);
-  --radius: 14px;
-  --radius-sm: 8px;
+  --bg: #161218;
+  --bg2: #1c1820;
+  --surface: #221d28;
+  --surface2: #282230;
+  --border: #302838;
+  --border-light: #3a3244;
+  --text: #d8d2dc;
+  --text2: #a098a8;
+  --text3: #706878;
+  --shina: #e87040;
+  --towa: #48a8d8;
+  --nanoha: #e85d8a;
+  --fate: #d4a020;
+  --radius: 10px;
+  --radius-sm: 6px;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Noto Sans SC", "Microsoft YaHei", sans-serif;
-  line-height: 1.75;
-  min-height: 100vh;
-  overflow-x: hidden;
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Noto Sans SC","Microsoft YaHei",sans-serif;
+  line-height:1.75;
+  min-height:100vh;
+  overflow-x:hidden;
 }
 
-/* ── Background sparkles ── */
-body::before {
-  content: '';
-  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-  pointer-events: none; z-index: 0;
-  background:
-    radial-gradient(3px 3px at 12% 18%, rgba(232,93,138,0.28), transparent),
-    radial-gradient(3px 3px at 28% 60%, rgba(212,160,32,0.25), transparent),
-    radial-gradient(2px 2px at 55% 12%, rgba(232,93,138,0.22), transparent),
-    radial-gradient(3px 3px at 72% 32%, rgba(212,160,32,0.22), transparent),
-    radial-gradient(2px 2px at 85% 55%, rgba(232,93,138,0.25), transparent),
-    radial-gradient(3px 3px at 40% 80%, rgba(212,160,32,0.2), transparent),
-    radial-gradient(2px 2px at 68% 85%, rgba(232,93,138,0.18), transparent),
-    radial-gradient(3px 3px at 92% 10%, rgba(212,160,32,0.25), transparent),
-    radial-gradient(2px 2px at 18% 45%, rgba(200,150,200,0.2), transparent),
-    radial-gradient(3px 3px at 45% 50%, rgba(232,93,138,0.15), transparent);
+/* Subtle magic circle (far background) */
+body::before{
+  content:'';
+  position:fixed;top:-200px;right:-200px;
+  width:500px;height:500px;
+  pointer-events:none;z-index:0;
+  border-radius:50%;
+  border:1px solid rgba(232,93,138,0.06);
+  box-shadow:0 0 0 60px rgba(232,93,138,0.015),0 0 0 130px rgba(212,160,32,0.01);
 }
 
-/* ── Magic circle (top-right) ── */
-body::after {
-  content: '';
-  position: fixed; top: -140px; right: -140px;
-  width: 420px; height: 420px;
-  pointer-events: none; z-index: 0;
-  border-radius: 50%;
-  border: 2px solid rgba(232,93,138,0.10);
-  box-shadow: 0 0 0 55px rgba(232,93,138,0.025), 0 0 0 115px rgba(212,160,32,0.018);
+/* ═══ HERO ═══ */
+.hero{
+  position:relative;z-index:1;
+  background:linear-gradient(180deg,#1c1420 0%,#161218 100%);
+  border-bottom:1px solid var(--border);
+  padding:64px 20px 52px;
+  text-align:center;overflow:hidden;
+}
+.hero::before{
+  content:'';
+  position:absolute;top:30%;left:50%;
+  transform:translate(-50%,-50%);
+  width:280px;height:280px;
+  border-radius:50%;
+  border:1px solid rgba(232,112,64,0.08);
+  box-shadow:0 0 0 40px rgba(232,112,64,0.025),0 0 0 90px rgba(72,168,216,0.02);
+  z-index:0;
+  animation:heroPulse 8s ease-in-out infinite;
+}
+@keyframes heroPulse{
+  0%,100%{transform:translate(-50%,-50%)scale(1);opacity:.7}
+  50%{transform:translate(-50%,-50%)scale(1.06);opacity:1}
+}
+.hero>*{position:relative;z-index:2}
+.hero .tagline{
+  display:inline-block;
+  font-size:11px;font-weight:700;letter-spacing:3px;
+  color:var(--text3);margin-bottom:20px;
+  border:1px solid var(--border-light);padding:4px 18px;border-radius:2px;
+}
+.hero h1{
+  font-size:clamp(26px,5vw,50px);font-weight:900;
+  letter-spacing:2px;margin-bottom:10px;line-height:1.3;
+  color:#e0d4c8;
+}
+.hero h1 span{color:var(--shina)}
+.hero .subtitle{
+  color:var(--text2);font-size:clamp(13px,2vw,16px);margin-bottom:6px;
+}
+.hero .meta{
+  color:var(--text3);font-size:12px;margin-top:8px;
+}
+.hero .meta em{color:var(--shina);font-style:normal}
+
+/* ═══ CONTAINER ═══ */
+.container{max-width:960px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
+
+/* ═══ SECTIONS ═══ */
+section{margin:56px 0}
+.sec-num{
+  font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;
+  color:var(--shina);margin-bottom:4px;
+}
+.sec-title{
+  font-size:clamp(18px,3vw,26px);font-weight:800;
+  color:#d8ccc0;margin-bottom:6px;
+  padding-bottom:10px;border-bottom:1px solid var(--border);
+}
+.sec-desc{color:var(--text2);font-size:14px;margin-bottom:24px}
+
+/* ═══ DISCLAIMER ═══ */
+.disclaimer{
+  background:var(--surface);border:1px solid var(--border);
+  border-left:3px solid var(--shina);
+  padding:16px 22px;margin-bottom:32px;font-size:13px;color:var(--text2);
+  border-radius:0 var(--radius-sm) var(--radius-sm) 0;
 }
 
-/* ═══════════ HERO ═══════════ */
-.hero {
-  position: relative; z-index: 1;
-  background: linear-gradient(170deg, #fef5f8 0%, #fefaf5 30%, #fdf7fb 60%, #fef8f3 100%);
-  border-bottom: 2px solid var(--nanoha-pink-light);
-  padding: 70px 20px 60px;
-  text-align: center; overflow: hidden;
+/* ═══ CARDS ═══ */
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius);padding:24px;
+  transition:border-color .25s,box-shadow .25s;
+  position:relative;overflow:hidden;
 }
-.hero::before {
-  content: '';
-  position: absolute; top: 22%; left: 50%;
-  transform: translate(-50%, -50%);
-  width: 320px; height: 320px;
-  border-radius: 50%;
-  border: 1.5px solid rgba(232,93,138,0.13);
-  box-shadow: 0 0 0 38px rgba(232,93,138,0.035), 0 0 0 78px rgba(212,160,32,0.025), 0 0 0 125px rgba(232,93,138,0.015);
-  z-index: 0;
-  animation: magicPulse 7s ease-in-out infinite;
+.card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
 }
-@keyframes magicPulse {
-  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.75; }
-  50% { transform: translate(-50%, -50%) scale(1.07); opacity: 1; }
+.card:hover{border-color:var(--border-light)}
+.card h3{font-size:18px;margin-bottom:4px;letter-spacing:.5px}
+.card .sub{font-size:12px;color:var(--text3);margin-bottom:12px}
+.card .tags{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+.card .tags span{
+  font-size:11px;font-weight:600;padding:2px 10px;border-radius:2px;
+  background:var(--surface2);color:var(--text2);border:1px solid var(--border);
 }
-.hero::after {
-  content: '';
-  position: absolute; top: 22%; left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100px; height: 100px;
-  z-index: 0;
-  background: conic-gradient(from 0deg, transparent 0deg, rgba(232,93,138,0.10) 30deg, transparent 60deg,
-                              transparent 120deg, rgba(212,160,32,0.08) 150deg, transparent 180deg,
-                              transparent 240deg, rgba(232,93,138,0.08) 270deg, transparent 300deg);
-  border-radius: 50%;
-  border: 1px solid rgba(232,93,138,0.12);
-  animation: magicSpin 22s linear infinite;
+.card p{font-size:13.5px;color:var(--text2);margin-top:6px;line-height:1.75}
+
+/* Card accents */
+.card.shina::before{background:var(--shina)}
+.card.shina h3{color:var(--shina)}
+.card.shina:hover{border-color:rgba(232,112,64,.25)}
+.card.towa::before{background:var(--towa)}
+.card.towa h3{color:var(--towa)}
+.card.towa:hover{border-color:rgba(72,168,216,.25)}
+.card.nanoha::before{background:var(--nanoha)}
+.card.nanoha h3{color:var(--nanoha)}
+.card.nanoha:hover{border-color:rgba(232,93,138,.25)}
+.card.fate::before{background:var(--fate)}
+.card.fate h3{color:var(--fate)}
+.card.fate:hover{border-color:rgba(212,160,32,.25)}
+
+/* ═══ IMAGE STYLES ═══ */
+.img-block{margin:20px 0}
+.img-block img,.img-block video{
+  width:100%;height:auto;display:block;
+  border-radius:var(--radius-sm);border:1px solid var(--border);
+  background:var(--bg2);
 }
-@keyframes magicSpin {
-  from { transform: translate(-50%, -50%) rotate(0deg); }
-  to { transform: translate(-50%, -50%) rotate(360deg); }
+.img-block .caption{
+  font-size:12px;color:var(--text3);margin-top:6px;
+  padding-left:4px;border-left:2px solid var(--border-light);
 }
-.hero > * { position: relative; z-index: 2; }
-.hero .badge {
-  display: inline-block;
-  background: linear-gradient(135deg, var(--nanoha-pink), #d44d78);
-  color: #fff; font-size: 12px; font-weight: 700;
-  padding: 5px 22px; border-radius: 20px;
-  margin-bottom: 24px; letter-spacing: 3px;
-  box-shadow: 0 4px 18px rgba(232,93,138,0.25);
+.img-row{
+  display:grid;grid-template-columns:1fr 1fr;gap:14px;
+  margin:20px 0;
 }
-.hero h1 {
-  font-size: clamp(30px, 5.5vw, 56px); font-weight: 900;
-  letter-spacing: 3px; margin-bottom: 12px; line-height: 1.25;
-  background: linear-gradient(135deg, #d44d78 0%, #e87060 35%, #d4a020 70%, #b08018 100%);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+.img-row .item img,.img-row .item video{
+  width:100%;height:auto;display:block;
+  border-radius:var(--radius-sm);border:1px solid var(--border);
+  background:var(--bg2);
 }
-.hero .subtitle {
-  color: var(--text2); font-size: clamp(14px, 2vw, 18px); margin-bottom: 8px; font-weight: 500;
+.img-row .item .caption{
+  font-size:11px;color:var(--text3);margin-top:4px;text-align:center;
 }
-.hero .highlight-text {
-  display: inline-block;
-  background: linear-gradient(135deg, var(--nanoha-pink-light), var(--fate-gold-light));
-  padding: 2px 12px; border-radius: 6px; font-weight: 700; color: #c04060;
+.img-grid-3{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:12px;
+  margin:20px 0;
 }
-.hero .meta { color: var(--text3); font-size: 13px; }
-.hero .deco-star {
-  position: absolute; z-index: 0; opacity: 0.22; font-size: 20px;
-  animation: starFloat 4.5s ease-in-out infinite;
+.img-grid-3 img{
+  width:100%;height:auto;display:block;
+  border-radius:var(--radius-sm);border:1px solid var(--border);
+  background:var(--bg2);
 }
-@keyframes starFloat {
-  0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.22; }
-  50% { transform: translateY(-16px) rotate(10deg); opacity: 0.42; }
+@media(max-width:600px){
+  .img-row,.img-grid-3{grid-template-columns:1fr}
 }
 
-/* ═══════════ CONTAINER ═══════════ */
-.container {
-  max-width: 960px; margin: 0 auto; padding: 0 24px;
-  position: relative; z-index: 1;
+/* Character portrait (official art centered) */
+.char-portrait{
+  text-align:center;margin:16px 0;
+}
+.char-portrait img{
+  max-width:320px;width:100%;height:auto;
+  border-radius:var(--radius);border:1px solid var(--border);
 }
 
-/* ═══════════ SECTION HEADERS ═══════════ */
-section { margin: 56px 0; }
-.section-header { margin-bottom: 24px; }
-.section-num {
-  display: inline-block; font-size: 11px; font-weight: 800;
-  letter-spacing: 2.5px; text-transform: uppercase; margin-bottom: 4px;
+/* ═══ TABLES ═══ */
+.table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:var(--radius)}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--border)}
+th{
+  background:var(--surface2);font-weight:700;color:var(--shina);
+  font-size:11px;text-transform:uppercase;letter-spacing:1.5px;
 }
-.section-num.pink { color: var(--nanoha-pink); }
-.section-num.gold { color: var(--fate-gold); }
-.section-num.orange { color: var(--shina-orange); }
-.section-num.cyan { color: var(--starward-cyan); }
+td{background:var(--surface);color:var(--text2)}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:var(--surface2)}
 
-.section-title {
-  font-size: clamp(20px, 3vw, 28px); font-weight: 800;
-  display: flex; align-items: center; gap: 12px; color: #3a2848;
+/* ═══ INFO BOX ═══ */
+.info-box{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius);padding:18px 22px;margin:14px 0;
 }
-.section-title .icon {
-  display: inline-flex; align-items: center; justify-content: center;
-  width: 42px; height: 42px; border-radius: 12px; font-size: 1.15em; flex-shrink: 0;
-}
-.icon-pink   { background: var(--nanoha-pink-light); }
-.icon-gold   { background: var(--fate-gold-light); }
-.icon-orange { background: var(--shina-orange-light); }
-.icon-cyan   { background: rgba(60,184,208,0.10); }
-.section-desc {
-  color: var(--text2); font-size: 14px; margin-top: 6px; padding-left: 54px;
-}
+.info-box.warn{border-left:3px solid #e8a040}
+.info-box.tip{border-left:3px solid #40b880}
+.info-box h4{font-size:14px;margin-bottom:6px;color:var(--text)}
 
-/* ═══════════ CARDS ═══════════ */
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 18px;
+/* ═══ PV PHASES ═══ */
+.pv-phase{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius);padding:20px 24px;margin:12px 0;
+  transition:border-color .2s;
 }
-.card {
-  background: var(--bg-card); border: 1px solid var(--border);
-  border-radius: var(--radius); padding: 26px;
-  box-shadow: var(--shadow-sm);
-  transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
-  position: relative; overflow: hidden;
+.pv-phase:hover{border-color:var(--border-light)}
+.pv-phase .ph-num{
+  display:inline-flex;align-items:center;justify-content:center;
+  background:var(--shina);color:#fff;width:28px;height:28px;
+  border-radius:50%;font-size:13px;font-weight:800;margin-right:8px;flex-shrink:0;
 }
-.card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
-.card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
-.card h3 { font-size: 19px; margin-bottom: 2px; letter-spacing: 0.5px; }
-.card .cv { font-size: 12px; color: var(--text3); margin-bottom: 14px; }
-.card .tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0; }
-.tag {
-  display: inline-block; padding: 3px 12px; border-radius: 12px;
-  font-size: 12px; font-weight: 600;
-}
-.card.nanoha  { border-color: rgba(232,93,138,0.25); }
-.card.nanoha::after  { background: linear-gradient(90deg, var(--nanoha-pink), var(--nanoha-sakura)); }
-.card.nanoha:hover   { border-color: var(--nanoha-pink); box-shadow: var(--shadow-md), 0 0 0 5px rgba(232,93,138,0.06); }
-.card.nanoha .tag    { background: var(--nanoha-pink-light); color: #b84060; }
-.card.nanoha h3      { color: #c84068; }
-.card.fate    { border-color: rgba(212,160,32,0.30); }
-.card.fate::after    { background: linear-gradient(90deg, var(--fate-gold), #e8c840); }
-.card.fate:hover     { border-color: var(--fate-gold); box-shadow: var(--shadow-md), 0 0 0 5px rgba(212,160,32,0.07); }
-.card.fate .tag      { background: var(--fate-gold-light); color: #907020; }
-.card.fate h3        { color: #a08820; }
-.card.shina   { border-color: rgba(232,112,64,0.25); }
-.card.shina::after   { background: linear-gradient(90deg, var(--shina-orange), #f09060); }
-.card.shina:hover    { border-color: var(--shina-orange); box-shadow: var(--shadow-md), 0 0 0 5px rgba(232,112,64,0.06); }
-.card.shina .tag     { background: var(--shina-orange-light); color: #b85830; }
-.card.shina h3       { color: #c85830; }
-.card.yukina  { border-color: rgba(91,160,216,0.25); }
-.card.yukina::after  { background: linear-gradient(90deg, var(--yukina-blue), #80c0f0); }
-.card.yukina:hover   { border-color: var(--yukina-blue); box-shadow: var(--shadow-md), 0 0 0 5px rgba(91,160,216,0.06); }
-.card.yukina .tag    { background: rgba(91,160,216,0.10); color: #3878b0; }
-.card.yukina h3      { color: #3878b0; }
+.pv-phase .ph-head{display:flex;align-items:center;margin-bottom:12px}
+.pv-phase h4{font-size:16px}
+.pv-phase ul{padding-left:20px}
+.pv-phase li{margin:5px 0;font-size:13px;color:var(--text2)}
+.pv-phase li strong{color:var(--text)}
 
-/* Starward cards */
-.card.starward { border-color: rgba(60,184,208,0.25); }
-.card.starward::after { background: linear-gradient(90deg, var(--starward-cyan), #60d8f0); }
-.card.starward:hover  { border-color: var(--starward-cyan); box-shadow: var(--shadow-md), 0 0 0 5px rgba(60,184,208,0.06); }
-.card.starward .tag   { background: rgba(60,184,208,0.08); color: #2878a0; }
-.card.starward h3     { color: #2078a0; }
-
-/* ═══════════ IMAGE GALLERY ═══════════ */
-.img-gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 16px;
-  margin: 16px 0;
+/* PV timeline */
+.pv-timeline{position:relative;padding-left:20px}
+.pv-timeline::before{
+  content:'';position:absolute;left:8px;top:8px;bottom:8px;
+  width:2px;background:var(--border);
 }
-.img-card {
-  background: var(--bg-card); border: 1px solid var(--border);
-  border-radius: var(--radius); overflow: hidden;
-  box-shadow: var(--shadow-sm); transition: box-shadow 0.25s;
+.pv-tl-item{
+  position:relative;padding:12px 0 12px 22px;border-bottom:1px solid var(--border);
 }
-.img-card:hover { box-shadow: var(--shadow-lg); }
-.img-card img {
-  width: 100%; height: auto; display: block;
-  object-fit: cover; aspect-ratio: 16/10;
-  background: #f8f4fa;
+.pv-tl-item:last-child{border-bottom:none}
+.pv-tl-item .time{
+  font-size:11px;font-weight:700;color:var(--shina);
+  position:absolute;left:0;top:14px;
 }
-.img-card .img-label {
-  padding: 10px 14px; font-size: 13px; color: var(--text2);
-  text-align: center; border-top: 1px solid var(--border);
+.pv-tl-item::before{
+  content:'';position:absolute;left:-4px;top:18px;
+  width:10px;height:10px;border-radius:50%;
+  background:var(--surface);border:2px solid var(--border-light);
 }
 
-/* ═══════════ INFO BOXES ═══════════ */
-.info-box {
-  background: var(--bg-card); border: 1px solid var(--border);
-  border-radius: var(--radius); padding: 20px 26px;
-  margin: 16px 0; box-shadow: var(--shadow-sm);
+/* ═══ REF VIDEO ═══ */
+.ref-video{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius);padding:16px 20px;margin:10px 0;
 }
-.info-box.warn { border-left: 4px solid #e8a040; background: #fffdf7; }
-.info-box.tip  { border-left: 4px solid #40b880; background: #f7fdf9; }
-.info-box h4   { font-size: 15px; margin-bottom: 8px; }
+.ref-video .ref-num{
+  display:inline-block;background:var(--surface2);color:var(--shina);
+  font-size:12px;font-weight:800;padding:2px 10px;border-radius:2px;margin-bottom:8px;
+}
+.ref-video h5{font-size:15px;margin-bottom:4px}
+.ref-video p{font-size:13px;color:var(--text2)}
+.ref-video a{color:var(--towa);font-size:12px;word-break:break-all}
 
-/* ═══════════ TABLES ═══════════ */
-.table-wrap {
-  overflow-x: auto; border-radius: var(--radius);
-  border: 1px solid var(--border); box-shadow: var(--shadow-sm);
+/* ═══ SECTION DIVIDER ═══ */
+.divider{
+  text-align:center;margin:40px 0;color:var(--text3);
+  font-size:12px;letter-spacing:4px;
 }
-table { width: 100%; border-collapse: collapse; font-size: 14px; }
-th, td { padding: 12px 16px; text-align: left; }
-th {
-  background: #fdf5f8; font-weight: 700; color: #8a4060;
-  font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px;
-  border-bottom: 2px solid var(--nanoha-pink-light);
-}
-td { border-bottom: 1px solid var(--border); background: var(--bg-card); }
-tr:last-child td { border-bottom: none; }
-tr:hover td { background: #fefafc; }
-
-/* ═══════════ RELATIONSHIP ═══════════ */
-.rel-box {
-  display: grid; grid-template-columns: 1fr auto 1fr;
-  align-items: center; background: var(--bg-card);
-  border: 1px solid var(--border); border-radius: var(--radius);
-  padding: 36px 28px; margin: 16px 0; text-align: center;
-  box-shadow: var(--shadow-sm); position: relative; overflow: hidden;
-}
-.rel-box::before {
-  content: ''; position: absolute; top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  width: 160px; height: 160px; border-radius: 50%;
-  border: 1px solid rgba(232,93,138,0.09);
-  box-shadow: 0 0 0 38px rgba(232,93,138,0.025), 0 0 0 76px rgba(212,160,32,0.015);
-}
-.rel-center { font-size: 36px; padding: 0 10px; position: relative; z-index: 1; }
-.rel-left, .rel-right { position: relative; z-index: 1; }
-.rel-left h3 { color: #c84068; font-size: 20px; }
-.rel-right h3 { color: #a08820; font-size: 20px; }
-.rel-detail {
-  grid-column: 1 / -1; margin-top: 18px; padding-top: 18px;
-  border-top: 1px solid var(--border); font-size: 13.5px;
-  color: var(--text2); line-height: 1.9;
+.divider::before,.divider::after{
+  content:' ── ';color:var(--border);
 }
 
-/* ═══════════ PV SCRIPT ═══════════ */
-.pv-phase {
-  background: var(--bg-card); border: 1px solid var(--border);
-  border-radius: var(--radius); padding: 22px 26px;
-  margin: 14px 0; box-shadow: var(--shadow-sm);
-  transition: box-shadow 0.2s;
+/* ═══ FOOTER ═══ */
+.footer{
+  text-align:center;padding:44px 20px;border-top:1px solid var(--border);
+  color:var(--text3);font-size:12px;margin-top:60px;
 }
-.pv-phase:hover { box-shadow: var(--shadow-md); }
-.pv-phase .phase-num {
-  display: inline-flex; align-items: center; justify-content: center;
-  background: linear-gradient(135deg, var(--nanoha-pink), #d44d78);
-  color: #fff; width: 30px; height: 30px; border-radius: 50%;
-  font-size: 14px; font-weight: 800; margin-right: 8px; flex-shrink: 0;
-}
-.pv-phase .phase-header { display: flex; align-items: center; margin-bottom: 14px; }
-.pv-phase h4 { font-size: 17px; line-height: 1.3; }
-.pv-phase .shot-list { padding-left: 20px; }
-.pv-phase .shot-list li { margin: 7px 0; font-size: 14px; color: var(--text2); }
-.pv-phase .shot-list li strong { color: var(--text); }
-.pv-phase.star-phase { border-left: 3px solid var(--nanoha-pink); }
-.pv-phase.starward-phase { border-left: 3px solid var(--starward-cyan); }
+.footer strong{color:var(--shina)}
 
-.pv-world-tag {
-  display: inline-block; font-size: 10px; font-weight: 700;
-  padding: 2px 10px; border-radius: 10px; letter-spacing: 1px;
-  margin-left: 8px; vertical-align: middle;
-}
-.pv-world-tag.starward { background: rgba(60,184,208,0.12); color: #2890b0; }
-.pv-world-tag.nanoha   { background: var(--nanoha-pink-light); color: #b84060; }
-.pv-world-tag.crossover { background: rgba(160,100,200,0.10); color: #8050a0; }
-
-/* ═══════════ COLOR SWATCHES ═══════════ */
-.swatch-group { margin-bottom: 28px; }
-.swatch-group h4 { font-size: 15px; margin-bottom: 12px; color: #3a2848; }
-.swatches { display: flex; flex-wrap: wrap; gap: 14px; }
-.swatch-item {
-  display: flex; align-items: center; gap: 10px;
-  background: var(--bg-card); border: 1px solid var(--border);
-  border-radius: var(--radius-sm); padding: 8px 14px 8px 8px; box-shadow: var(--shadow-sm);
-}
-.swatch { width: 44px; height: 44px; border-radius: 10px; border: 2px solid rgba(0,0,0,0.06); flex-shrink: 0; }
-.swatch-label { font-size: 13px; color: var(--text2); }
-
-/* ═══════════ STRATEGY GRID ═══════════ */
-.strategy-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 12px; margin-top: 14px;
-}
-.strategy-item {
-  background: var(--bg-card); border: 1px solid var(--border);
-  border-radius: var(--radius-sm); padding: 16px 18px;
-  text-align: center; box-shadow: var(--shadow-sm);
-}
-.strategy-item .big-emoji { font-size: 30px; margin-bottom: 6px; }
-.strategy-item strong { display: block; font-size: 14px; margin-bottom: 4px; }
-.strategy-item span { font-size: 12px; color: var(--text2); }
-
-/* Badges */
-.badge-sm {
-  font-size: 11px; font-weight: 700; padding: 3px 10px;
-  border-radius: 10px; letter-spacing: 0.5px;
-}
-.badge-pink   { background: var(--nanoha-pink-light); color: #b84060; }
-.badge-gold   { background: var(--fate-gold-light); color: #907020; }
-.badge-orange { background: var(--shina-orange-light); color: #b85830; }
-.badge-cyan   { background: rgba(60,184,208,0.10); color: #2880a0; }
-
-.highlight {
-  background: linear-gradient(135deg, rgba(232,93,138,0.10), rgba(212,160,32,0.10));
-  padding: 2px 10px; border-radius: 5px; font-weight: 600; white-space: nowrap;
+@media(max-width:600px){
+  .card-grid{grid-template-columns:1fr}
+  section{margin:36px 0}
+  .hero{padding:44px 16px 36px}
 }
 
-/* ═══════════ FOOTER ═══════════ */
-.footer {
-  text-align: center; padding: 44px 20px;
-  border-top: 1px solid var(--border); color: var(--text3);
-  font-size: 13px; margin-top: 60px; position: relative; z-index: 1;
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(10px)}
+  to{opacity:1;transform:translateY(0)}
 }
-.footer strong { color: var(--nanoha-pink); }
-
-/* ═══════════ RESPONSIVE ═══════════ */
-@media (max-width: 600px) {
-  .rel-box { grid-template-columns: 1fr; }
-  .rel-center { transform: rotate(90deg); padding: 10px 0; font-size: 28px; }
-  .rel-left, .rel-right { margin: 6px 0; }
-  .card-grid, .img-gallery { grid-template-columns: 1fr; }
-  .strategy-grid { grid-template-columns: 1fr 1fr; }
-  section { margin: 34px 0; }
-  .hero { padding: 44px 16px 36px; }
-  .section-desc { padding-left: 0; }
-}
-
-/* Animations */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(12px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.card, .info-box, .pv-phase, .rel-box, .img-card {
-  animation: fadeIn 0.5s ease-out backwards;
-}
+.card,.pv-phase,.img-block,.img-row,.info-box{animation:fadeIn .4s ease-out backwards}
 </style>
 </head>
 <body>
 
 <!-- ═══════════ HERO ═══════════ -->
 <div class="hero">
-  <span class="deco-star" style="top:14%;left:8%;">✦</span>
-  <span class="deco-star" style="top:72%;left:10%;">✧</span>
-  <span class="deco-star" style="top:10%;right:10%;">✦</span>
-  <span class="deco-star" style="top:68%;right:6%;">✧</span>
-  <span class="deco-star" style="top:40%;left:92%;font-size:14px;">✧</span>
-  <span class="deco-star" style="top:55%;left:4%;font-size:14px;">✦</span>
-
-  <div class="badge">MAGICAL GIRL LYRICAL NANOHA · 20TH ANNIVERSARY</div>
-  <h1>魔法少女奈叶 EXCEEDS<br>Gun Blaze Vengeance</h1>
-  <p class="subtitle">
-    <span class="highlight-text">星之翼</span> × 魔法少女奈叶 联动参考文档
-  </p>
-  <p class="meta">2026年7月4日首播 · 全12话 · Seven Arcs 制作 · 原作／脚本：都筑真纪 · 导演：滨名孝行</p>
+  <div class="tagline">20TH ANNIVERSARY · SEVEN ARCS</div>
+  <h1>魔法少女奈叶 <span>EXCEEDS</span><br>Gun Blaze Vengeance</h1>
+  <p class="subtitle">星之翼 × 魔法少女奈叶 联动参考文档</p>
+  <p class="meta">原作／脚本：都筑真纪 · 导演：滨名孝行 · 角色设计：新垣一成 · <em>2026年7月4日首播</em></p>
 </div>
 
 <div class="container">
 
-<!-- ═══════════ 一、作品概览 ═══════════ -->
+<!-- ═══════════ 声明 ═══════════ -->
+<div class="disclaimer">
+  <strong>📋 文档说明</strong><br>
+  以下信息基于 TV 动画《魔法少女奈叶 EXCEEDS Gun Blaze Vengeance》<strong>前三集</strong>实际播出内容及官方已公开资料提取。动画目前仍在播出中（全12话），部分设定和角色弧光尚未完全展开。本文档将随播出进度更新。
+</div>
+
+<!-- ═══════════ 一、世界观 ═══════════ -->
 <section>
-  <div class="section-header">
-    <div class="section-num pink">Chapter 01</div>
-    <div class="section-title"><span class="icon icon-pink">📋</span> 作品概览</div>
-    <div class="section-desc">《魔法少女奈叶 EXCEEDS》是系列20周年纪念企划，包含<strong>漫画</strong>与<strong>TV动画</strong>两部作品。动画于2026年7月4日首播（全12话），是时隔8年的完全新作TV动画。</div>
+  <div class="sec-num">Chapter 01</div>
+  <div class="sec-title">世界观设定</div>
+  <div class="sec-desc">EXCEEDS 构建了一个与系列前作截然不同的独立世界观——末日生存、军武机构、魔人与侵略种的黑暗共生。</div>
+
+  <div class="img-block">
+    <img src="images/KV群像定妆照？.png" alt="EXCEEDS KV群像" loading="lazy">
+    <div class="caption">▲ EXCEEDS 全角色群像定妆照 — 包含诗奈、奈叶、菲特、疾风、夜海及反派阵营</div>
+  </div>
+
+  <div class="img-row">
+    <div class="item">
+      <img src="images/侵略种，小怪，精英怪介绍.png" alt="侵略种介绍" loading="lazy">
+      <div class="caption">▲ 侵略种 — 30年前出现的不明生物，人类持续与之争夺生存空间</div>
+    </div>
+    <div class="item">
+      <img src="images/大型魔物登场介绍图.png" alt="大型魔物" loading="lazy">
+      <div class="caption">▲ 大型侵略种 — 体长可达120米，人类称之为"害兽"</div>
+    </div>
+  </div>
+
+  <div class="img-block">
+    <img src="images/剧情-国际联合组织建立.png" alt="EXCEEDS组织" loading="lazy">
+    <div class="caption">▲ 国际联合危险生物调查机构「EXCEEDS」—— 八神疾风任总督，奈叶与菲特为核心战力</div>
+  </div>
+
+  <p style="font-size:14px;color:var(--text2);margin-top:16px;line-height:1.9;">
+    <strong style="color:var(--text);">核心设定：</strong><br>
+    · <strong style="color:var(--shina);">侵略种</strong> — 30年前突然出现的不明外来生物，人类与之战争持续至今。有各种体型的变种，大型个体可达120米。<br>
+    · <strong style="color:var(--towa);">魔人</strong> — 拥有超常力量的存在。形成方式有两种：天生自然觉醒（如久濑雪奈），或通过药物强制诱发。药物诱发者"基本都会丧失自我"，沦为实验体。魔人的力量可以转移给他人。<br>
+    · <strong style="color:var(--text);">EXCEEDS</strong> — 联合国危险生物调查机构，疾风创立并任总督，奈叶担任前线调查员，菲特任执务官。组织理念是"只有魔人才能打败魔人"，因此在世界各地寻找成功魔人化的协作者。<br>
+    · <strong style="color:var(--text);">世界基调</strong> — 末日生存感强烈，人类安全圈勉强维持，但随时可能崩坏。整体氛围阴暗沉重，区别于系列前作的明亮魔法少女调性。
+  </p>
+</section>
+
+<div class="divider">· · ·</div>
+
+<!-- ═══════════ 二、与系列前作的关系 ═══════════ -->
+<section>
+  <div class="sec-num">Chapter 02</div>
+  <div class="sec-title">与系列前作的关系</div>
+  <div class="sec-desc">这一点对联动至关重要：EXCEEDS 是一部独立重启作品，不是系列前作的直接续篇。</div>
+
+  <div class="info-box warn">
+    <h4>⚠️ 联动中不可混用前作设定</h4>
+    <p style="font-size:13px;color:var(--text2);">
+      EXCEEDS 中的奈叶与菲特，虽然沿用了系列经典角色的名字、声优和基础外观，但处于<strong>完全独立的世界线</strong>中。她们不是前作中那个9岁与尤诺相遇、一步步成长的小学生——在这里，奈叶13岁就是 EXCEEDS 的调查员，菲特是执务官。两人的性格、成长背景、人际关系均仅以本作前三集实际呈现的为准。<br><br>
+      <strong>简单来说：</strong>同名同脸的独立角色。联动设计时<strong>不要引用前作（无印/A's/StrikerS）的任何剧情梗或人设细节</strong>——版权范围也仅覆盖 EXCEEDS。
+    </p>
+  </div>
+
+  <p style="font-size:13px;color:var(--text3);margin-top:12px;">
+    ※ 这也是粉丝社区中争议较大的一点——前作中"暴君"奈叶的强势主动、"金色闪电"菲特的冷峻凌厉，在 EXCEEDS 中都有明显收敛。详见下文角色介绍。
+  </p>
+</section>
+
+<div class="divider">· · ·</div>
+
+<!-- ═══════════ 三、前三集剧情 ═══════════ -->
+<section>
+  <div class="sec-num">Chapter 03</div>
+  <div class="sec-title">前三集剧情梗概</div>
+  <div class="sec-desc">以新主角久濑诗奈的视角展开——捡到魔人妹妹、失去妹妹、获得力量、被 EXCEEDS 盯上、与夜海永远的宿命交错。</div>
+
+  <!-- 序章：捡到雪奈 -->
+  <h4 style="color:var(--text);font-size:15px;margin:24px 0 12px;">▎ 序章 · 捡到一个妹妹</h4>
+  <div class="img-row">
+    <div class="item">
+      <img src="images/动漫久濑诗奈登场介绍图.png" alt="诗奈登场" loading="lazy">
+      <div class="caption">▲ 久濑诗奈 — 离岛猎人高中生</div>
+    </div>
+    <div class="item">
+      <img src="images/动漫久濑雪奈登场介绍图.png" alt="雪奈登场" loading="lazy">
+      <div class="caption">▲ 久濑雪奈 — 被诗奈捡到的魔人少女</div>
+    </div>
+  </div>
+  <div class="img-block">
+    <img src="images/剧情，诗奈捡到雪奈.png" alt="诗奈捡到雪奈" loading="lazy">
+    <div class="caption">▲ 数年前，诗奈在废墟中发现了雪奈，将她带回家抚养。两人成为没有血缘但相依为命的姐妹。</div>
+  </div>
+
+  <!-- 第一幕：危机 -->
+  <h4 style="color:var(--text);font-size:15px;margin:28px 0 12px;">▎ 第一幕 · 被魔人找上门</h4>
+  <div class="img-row">
+    <div class="item">
+      <img src="images/剧情-姐妹两人遇到危险.png" alt="姐妹遇险" loading="lazy">
+      <div class="caption">▲ 敌对魔人突然出现追杀姐妹</div>
+    </div>
+    <div class="item">
+      <img src="images/剧情-妹妹魔人化.png" alt="雪奈魔人化" loading="lazy">
+      <div class="caption">▲ 雪奈被迫解放隐藏的魔人之力</div>
+    </div>
+  </div>
+  <div class="img-block">
+    <img src="images/剧情-姐妹二人被魔人双杀.png" alt="姐妹双杀" loading="lazy">
+    <div class="caption">▲ 雪奈拼死保护诗奈，但最终肉体被敌方魔人吞噬。临终前，她将魔人之力完整转移给了姐姐。</div>
+  </div>
+
+  <!-- 第二幕：爆种 -->
+  <h4 style="color:var(--text);font-size:15px;margin:28px 0 12px;">▎ 第二幕 · 继承遗志，魔人觉醒</h4>
+  <div class="img-row">
+    <div class="item">
+      <img src="images/剧情-姐姐继承妹妹遗志，魔人化爆种.png" alt="诗奈爆种" loading="lazy">
+      <div class="caption">▲ 诗奈继承雪奈的力量后首次魔人化觉醒</div>
+    </div>
+    <div class="item">
+      <img src="images/剧情-姐姐魔人化给枪械附魔.png" alt="枪械附魔" loading="lazy">
+      <div class="caption">▲ 魔人之力赋予枪械火焰附魔</div>
+    </div>
+  </div>
+  <div class="img-block">
+    <img src="images/剧情-姐姐魔人化给枪械附魔大招.png" alt="火焰魔炮" loading="lazy">
+    <div class="caption">▲ Fire Magic Blast（火焰魔炮）— 诗奈以觉醒的力量一击反杀敌方魔人</div>
+  </div>
+  <div class="img-row">
+    <div class="item">
+      <img src="images/剧情-女主魔人化装束.png" alt="魔人化装束" loading="lazy">
+      <div class="caption">▲ 诗奈魔人化后的战斗装束</div>
+    </div>
+    <div class="item">
+      <img src="images/诗乃飞行跳跃能力.png" alt="飞行跳跃" loading="lazy">
+      <div class="caption">▲ 魔人化带来的飞行与跳跃能力提升</div>
+    </div>
+  </div>
+  <div class="img-row">
+    <div class="item">
+      <img src="images/剧情-女主动漫拔刀斩.png" alt="拔刀斩" loading="lazy">
+      <div class="caption">▲ 诗奈的近战能力 — 拔刀斩</div>
+    </div>
+    <div class="item">
+      <img src="images/剧情-女主动漫拔刀斩2.png" alt="拔刀斩2" loading="lazy">
+      <div class="caption">▲ 火焰缠绕的剑技</div>
+    </div>
+  </div>
+
+  <!-- 第三幕：奈叶登场 + EXCEEDS诏安 -->
+  <h4 style="color:var(--text);font-size:15px;margin:28px 0 12px;">▎ 第三幕 · 奈叶登场，EXCEEDS 诏安</h4>
+  <div class="img-block">
+    <img src="images/剧情-奈叶初登场.png" alt="奈叶初登场" loading="lazy">
+    <div class="caption">▲ 诗奈在对抗大型侵略种时，一位比她还小的少女从天而降——EXCEEDS 调查员·高町奈叶</div>
+  </div>
+  <p style="font-size:13px;color:var(--text2);line-height:1.85;margin-top:8px;">
+    失去妹妹后，诗奈前往本岛独自接讨伐侵略种的委托。某次面对120米级大型侵略种时，奈叶以压倒性的魔力轻松击倒巨兽——在本作世界中"使用魔力比较困难"，但奈叶的实力依然碾压常人。EXCEEDS 随即接触诗奈，原因很明确：<strong>诗奈是极其罕见的"成功魔人化"案例</strong>（药物诱发者大多丧失自我），而 EXCEEDS 的理念是"只有魔人才能打败魔人"。他们希望培养诗奈，让她不断吸收侵略种和魔人的力量变强，最终<strong>吞噬"原初种"</strong>。
+  </p>
+
+  <!-- 第四幕：夜海永远 -->
+  <h4 style="color:var(--text);font-size:15px;margin:28px 0 12px;">▎ 第四幕 · 夜海永远 — 冰之魔人与宿命的交错</h4>
+  <div class="img-block">
+    <img src="images/夜海登场介绍图.png" alt="夜海登场" loading="lazy">
+    <div class="caption">▲ 夜海永远（Towa）— 冰系魔人，太刀使，女高中生魔人组织的创建者</div>
+  </div>
+  <div class="img-row">
+    <div class="item">
+      <img src="images/剧情-夜海永远跟女主初次见面.png" alt="夜海诗奈初遇" loading="lazy">
+      <div class="caption">▲ 夜海与诗奈在日常生活偶然相遇，彼此不知对方真实身份，逐渐成为朋友</div>
+    </div>
+    <div class="item">
+      <img src="images/剧情-夜海半魔人化.png" alt="夜海半魔人化" loading="lazy">
+      <div class="caption">▲ 夜海的半魔人化形态 —— 冰系能力 + 太刀</div>
+    </div>
+  </div>
+  <p style="font-size:13px;color:var(--text2);line-height:1.85;">
+    夜海永远对"药物制造魔人"的行为深恶痛绝，已亲手捣毁了一个散播魔人药的组织。她的另一重执念：<strong>数年前在父母死亡的现场看到了雪奈</strong>，从此认定"火焰魔人"是害死父母的人。如今她一路追查着火焰魔人——也就是诗奈——却不知道她日常中交到的那个朋友，正是自己追猎的目标。<br><br>
+    同时，市面上一对<strong>神秘二人组反派</strong>正在大规模散发能让人变成魔人的药物，制造混乱。诗奈、夜海、EXCEEDS、反派——四股力量的齿轮正在咬合。
+  </p>
+  <div class="img-block">
+    <img src="images/剧情-最大反派登场，神秘二人组.png" alt="反派二人组" loading="lazy">
+    <div class="caption">▲ 神秘反派二人组 — 在市面散发魔人药物的幕后黑手</div>
+  </div>
+</section>
+
+<div class="divider">· · ·</div>
+
+<!-- ═══════════ 四、联动角色 ═══════════ -->
+<section>
+  <div class="sec-num">Chapter 04</div>
+  <div class="sec-title">联动角色档案</div>
+  <div class="sec-desc">仅基于 EXCEEDS 前三集的实际表现。不引用系列前作设定。</div>
+
+  <!-- 诗奈 -->
+  <div class="card-grid" style="margin-bottom:32px;">
+    <div class="card shina">
+      <h3>久濑诗奈</h3>
+      <div class="sub">Kuze Shiina · CV：橘杏咲 · 魔人之力：火焰</div>
+      <div class="tags"><span>猎人少女</span><span>火焰魔炮</span><span>魔人继承者</span></div>
+      <p>
+        <strong>身份：</strong>离岛高中生，以驱除侵略种维生的猎人。数年前捡到魔人少女雪奈，作为义妹抚养。妹妹被敌对魔人杀害后，继承了妹妹的魔人之力。<br>
+        <strong>能力：</strong>Fire Magic Blast（火焰魔炮）、枪械火焰附魔、拔刀斩。特殊能力是<strong>吸收侵略种和魔人的尸体</strong>来让自己不断变强。<br>
+        <strong>性格（前三集）：</strong>坚强但内心背负着失去妹妹的创伤。对人戒备但本质善良。面对奈叶的纠缠表现抗拒但逐渐松动。
+      </p>
+    </div>
+  </div>
+  <div class="img-row">
+    <div class="item">
+      <img src="images/官方人设图-诗乃.png" alt="诗奈人设" loading="lazy">
+      <div class="caption">▲ 官方人设图 — 久濑诗奈</div>
+    </div>
+    <div class="item">
+      <img src="images/官方人设图诗奈武器介绍.png" alt="诗奈武器" loading="lazy">
+      <div class="caption">▲ 诗奈的枪械武器设定</div>
+    </div>
+  </div>
+  <div class="img-block">
+    <video src="images/动漫诗奈战斗片段.mp4" autoplay loop muted playsinline controls width="100%" style="border-radius:var(--radius-sm);border:1px solid var(--border);"></video>
+    <div class="caption">▲ 诗奈战斗片段 — 火焰炮击 + 拔刀近战切换</div>
+  </div>
+
+  <!-- 夜海 -->
+  <div class="card-grid" style="margin:32px 0;">
+    <div class="card towa">
+      <h3>夜海永远</h3>
+      <div class="sub">Yami Towa · CV：结川麻希 · 魔人之力：冰 + 太刀</div>
+      <div class="tags"><span>冰系魔人</span><span>太刀使</span><span>女高中生组织领袖</span></div>
+      <p>
+        <strong>身份：</strong>冰系魔人，创建了一个女高中生魔人组织。憎恨药物魔人化行为，已捣毁一个制药组织。<br>
+        <strong>执念：</strong>数年前在父母死亡的现场目击了雪奈（火焰魔人），从此认定火焰魔人是凶手。正追查诗奈，却不知日常中已与她成为朋友。<br>
+        <strong>性格（前三集）：</strong>日常形态下开朗友善，魔人形态下冷静果决。对魔人药的憎恨源于父母之死的创伤。
+      </p>
+    </div>
+  </div>
+  <div class="img-row">
+    <div class="item">
+      <img src="images/官方人设图-夜海日常形象.png" alt="夜海日常" loading="lazy">
+      <div class="caption">▲ 官方人设图 — 夜海永远（日常）</div>
+    </div>
+    <div class="item">
+      <img src="images/官方人设图-夜海魔人形象.png" alt="夜海魔人" loading="lazy">
+      <div class="caption">▲ 官方人设图 — 夜海永远（魔人形态）</div>
+    </div>
+  </div>
+
+  <!-- 奈叶 -->
+  <div class="card-grid" style="margin:32px 0;">
+    <div class="card nanoha">
+      <h3>高町奈叶</h3>
+      <div class="sub">Takamachi Nanoha · CV：田村由香里 · EXCEEDS 调查员</div>
+      <div class="tags"><span>EXCEEDS调查员</span><span>旭日之心</span><span>实力被NERF</span></div>
+      <p>
+        <strong>身份：</strong>13岁，EXCEEDS 前线调查员。在本作世界中魔力使用受限（"使用魔力比较困难"），但依然是压倒性战力——类似"一拳超人"般在关键时刻介入。<br>
+        <strong>性格（前三集）：</strong>不是前作中那个主动轰人的"暴君"。本作中更像<strong>沉稳可靠的前辈/引路人</strong>。对诗奈态度友善但有明确的任务目的——代表 EXCEEDS 招募她。说话温和但不失严肃。<br>
+        <strong>注意：</strong>粉丝社区对奈叶"不再暴君"的改编存在争议。
+      </p>
+    </div>
+  </div>
+  <div class="img-row">
+    <div class="item">
+      <img src="images/官方人设图-奈叶.png" alt="奈叶人设" loading="lazy">
+      <div class="caption">▲ 官方人设图 — 高町奈叶（EXCEEDS版防护服）</div>
+    </div>
+    <div class="item">
+      <img src="images/剧情-奈叶初登场.png" alt="奈叶初登场" loading="lazy">
+      <div class="caption">▲ 奈叶初登场 — 在诗奈面对巨型侵略种时从天而降</div>
+    </div>
+  </div>
+  <div class="img-block">
+    <video src="images/动漫奈叶战斗片段.mp4" autoplay loop muted playsinline controls width="100%" style="border-radius:var(--radius-sm);border:1px solid var(--border);"></video>
+    <div class="caption">▲ 奈叶战斗片段（前三集）— 旭日之心炮击 · 飞行魔力翼</div>
+  </div>
+
+  <!-- 菲特 -->
+  <div class="card-grid" style="margin:32px 0;">
+    <div class="card fate">
+      <h3>菲特·T·哈洛温</h3>
+      <div class="sub">Fate Testarossa Harlaown · CV：水树奈奈 · EXCEEDS 执务官</div>
+      <div class="tags"><span>EXCEEDS执务官</span><span>巴鲁迪修</span><span>沉稳温柔</span></div>
+      <p>
+        <strong>身份：</strong>EXCEEDS 执务官，奈叶的搭档。在本作中以执务官身份冷静分析战况，稳稳支持前线攻击手奈叶。两人配合"如呼吸般自然"（水树奈奈访谈）。<br>
+        <strong>性格（前三集）：</strong><strong>温柔、沉稳、可靠</strong>——不是前作中那个冷峻凌厉的"金色闪电"。粉丝对此变化存在争议，但这是 EXCEEDS 版菲特的真实呈现。在有限的前三集出场中，她更多以支援和辅助奈叶的角色出现。<br>
+        <strong>设计变化：</strong>防护服为全黑底色、单马尾造型（区别于前作双马尾）。
+      </p>
+    </div>
+  </div>
+  <div class="img-block">
+    <img src="images/官方人设图-菲特.png" alt="菲特人设" loading="lazy">
+    <div class="caption">▲ 官方人设图 — 菲特·T·哈洛温（EXCEEDS版 · 黑色防护服 + 单马尾）</div>
+  </div>
+  <div class="img-row">
+    <div class="item">
+      <video src="images/动漫菲特战斗片段.mp4" autoplay loop muted playsinline controls width="100%" style="border-radius:var(--radius-sm);border:1px solid var(--border);"></video>
+      <div class="caption">▲ 菲特战斗片段（前三集）— 雷光 + 巴鲁迪修</div>
+    </div>
+    <div class="item">
+      <video src="images/动漫中奈叶菲特双人高速战斗.mp4" autoplay loop muted playsinline controls width="100%" style="border-radius:var(--radius-sm);border:1px solid var(--border);"></video>
+      <div class="caption">▲ 奈叶菲特双人协同高速战斗</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider">· · ·</div>
+
+<!-- ═══════════ 五、建议 ═══════════ -->
+<section>
+  <div class="sec-num">Chapter 05</div>
+  <div class="sec-title">联动设计建议</div>
+
+  <div class="info-box tip">
+    <h4>🟢 以诗奈为叙事核心</h4>
+    <p style="font-size:13px;color:var(--text2);">
+      前三集中诗奈是绝对的叙事主角——她的失去、觉醒、被诏安构成完整的情感弧线。奈叶菲特在PV中作为"压轴援军"出现更有冲击力，也不必承担过多的性格塑造负担。<strong>诗奈负责情感，奈叶菲特负责排面。</strong>
+    </p>
+  </div>
+
+  <div class="info-box tip">
+    <h4>🟢 夜海可作为"亦敌亦友"的PV看点</h4>
+    <p style="font-size:13px;color:var(--text2);">
+      夜海永远和诗奈的"日常是朋友、战场上是对手"的双重身份是前三集中最有戏剧张力的设定。PV中可以暗示这种关系——两人日常并肩→魔人形态对峙→面对共同敌人时不得不联手。这比单纯的好友组队更有叙事深度。
+    </p>
+  </div>
+
+  <div class="info-box tip">
+    <h4>🟢 奈叶菲特双人 = 压轴排面</h4>
+    <p style="font-size:13px;color:var(--text2);">
+      30秒PV中两人出场时间不要超过8秒，但在那8秒里必须极致——双人编队飞行、并肩炮击、背靠背魔法阵。不废话，直接视觉轰炸。这是整个PV的"高光时刻"，其他内容都是为这几秒做铺垫。
+    </p>
   </div>
 
   <div class="info-box warn">
-    <h4>⚠️ 关键情报</h4>
-    <p>TV动画<strong>2026年7月4日首播</strong>，截至文档编写时仅播出2-3集。大量角色细节、最终形态、名场面尚未公开。联动方案应预留弹性空间，或在动画完结（9月）后做最终调整。</p>
+    <h4>🔴 奈叶菲特性格不要"脑补"</h4>
+    <p style="font-size:13px;color:var(--text2);">
+      PV中奈叶只需要一个沉稳的点头/伸手动作，菲特只需要一个温柔的微笑/支援镜头。不要说台词（没配音），不需要表情特写。用行动和画面传达就够了。不要试图在30秒内塑造人物性格——做不到，反而容易露馅。
+    </p>
   </div>
 
-  <div class="table-wrap">
-  <table>
-    <tr><th>项目</th><th>漫画 EXCEEDS</th><th>TV动画 Gun Blaze Vengeance</th></tr>
-    <tr><td>主角</td><td>高町奈叶（13岁）</td><td>久濑诗奈（新主角）</td></tr>
-    <tr><td>时间线</td><td>接续剧场版 Detonation，填补9→19岁空白</td><td>30年后末日世界观 · 侵略种威胁下的极东岛国「瑞穗」</td></tr>
-    <tr><td>连载／播出</td><td>2025年4月起 · 讲谈社「星期三的天狼星」</td><td>2026年7月4日 · 全12话 · 首集1小时SP</td></tr>
-    <tr><td>作画／设计</td><td>川上修一</td><td>角色设计：新垣一成 · 原案：川上修一</td></tr>
-    <tr><td>奈叶＆菲特定位</td><td>绝对主角</td><td>EXCEEDS 组织调查员 · 经典角色登场</td></tr>
-  </table>
-  </div>
-</section>
-
-<!-- ═══════════ 二、官方视觉图 / 设定图 ═══════════ -->
-<section>
-  <div class="section-header">
-    <div class="section-num pink">Chapter 02</div>
-    <div class="section-title"><span class="icon icon-pink">🖼️</span> 官方视觉图 / 设定参考</div>
-    <div class="section-desc">以下为 EXCEEDS 官方已公开的视觉图，点击可查看大图。所有图片来自官方 X 账号 <strong>@exgv_official</strong> 发布的高清原图（pbs.twimg.com）。</div>
-  </div>
-
-  <div class="img-gallery">
-    <div class="img-card">
-      <img src="https://pbs.twimg.com/media/HEQoHI2aIAAGGTl.jpg?format=jpg&name=large"
-           alt="Visual Story Vol.3 — 奈叶与菲特全新防护服"
-           loading="lazy"
-           onerror="this.parentElement.style.display='none'">
-      <div class="img-label">📸 Visual Story Vol.3 — 奈叶 & 菲特 · 全新 Barrier Jacket 立于烈焰之前</div>
-    </div>
-    <div class="img-card">
-      <img src="https://pbs.twimg.com/media/HEQoZ9hbMAABoUI.jpg?format=jpg&name=large"
-           alt="Visual Story Vol.3 — 菲特单独视觉"
-           loading="lazy"
-           onerror="this.parentElement.style.display='none'">
-      <div class="img-label">📸 Visual Story Vol.3 — 菲特单人 · 黑色防护服 + 单马尾新造型</div>
-    </div>
-    <div class="img-card">
-      <img src="https://pbs.twimg.com/media/HLVGd_oaoAAlLeb.jpg?format=jpg&name=large"
-           alt="PV第2弹视觉图 — 左右阵营"
-           loading="lazy"
-           onerror="this.parentElement.style.display='none'">
-      <div class="img-label">📸 PV第2弹 主视觉图 — 诗奈阵营 vs 敌方魔人 · 全角色集结</div>
-    </div>
-    <div class="img-card">
-      <img src="https://pbs.twimg.com/media/HLaOSYJbMAA_Fir.jpg?format=jpg&name=large"
-           alt="Visual Story Vol.4"
-           loading="lazy"
-           onerror="this.parentElement.style.display='none'">
-      <div class="img-label">📸 Visual Story Vol.4 — EXCEEDS 组织全景 · 奈叶/菲特/疾风/琳齐聚</div>
-    </div>
-  </div>
-
-  <div class="info-box tip" style="margin-top:16px;">
-    <h4>💡 更多图片资源获取方式</h4>
-    <p>
-      <strong>官方 X：</strong><a href="https://x.com/exgv_official" target="_blank" style="color:var(--nanoha-pink);">@exgv_official</a> — 所有主视觉图、角色设定图均在此首发<br>
-      <strong>动画官网：</strong><a href="https://nanoha.com/EXGV/" target="_blank" style="color:var(--nanoha-pink);">nanoha.com/EXGV/</a> — Character 页面有角色介绍与设定图<br>
-      <strong>微博：</strong>搜索「魔法少女奈叶 EXCEEDS」— 奈叶/菲特/疾风/琳的单人角色设定图已由官方同步公开<br>
-      <strong>提示：</strong>由于动画刚开播，完整设定集尚未出版。随着动画播出，官网和官X会陆续公开更多角色立绘与设定稿。
+  <div class="info-box warn">
+    <h4>🔴 版权边界</h4>
+    <p style="font-size:13px;color:var(--text2);">
+      所有角色视觉严格以 EXCEEDS 官方人设图和动画截图为准。不引用前作的服装设计、剧情梗、名场面。EXCEEDS 版奈叶的防护服、菲特的单马尾黑防护服是明确的视觉标识。
     </p>
   </div>
 </section>
 
-<!-- ═══════════ 三、核心角色档案 ═══════════ -->
+<div class="divider">· · ·</div>
+
+<!-- ═══════════ 六、PV脚本 ═══════════ -->
 <section>
-  <div class="section-header">
-    <div class="section-num pink">Chapter 03</div>
-    <div class="section-title"><span class="icon icon-pink">👤</span> EXCEEDS 核心角色档案</div>
-    <div class="section-desc">按联动优先级排列。奈叶和菲特是粉丝认知度的核心，诗奈是本作正式女主角。</div>
+  <div class="sec-num">Chapter 06</div>
+  <div class="sec-title">联动PV脚本</div>
+  <div class="sec-desc">
+    条件约束：<strong>无配音 · 30秒 · 3D制作 · 制作力有限</strong>。<br>
+    核心策略：文字卡叙事 + 强pose + 特效 + 快速跳切。不靠复杂动画，靠节奏和视觉冲击。
   </div>
 
-  <div class="card-grid">
+  <!-- 参考视频 -->
+  <h4 style="color:var(--text);font-size:15px;margin:24px 0 12px;">▎ 参考视频</h4>
 
-    <div class="card nanoha">
-      <h3>高町奈叶</h3>
-      <div class="cv">Takamachi Nanoha · CV：田村由香里（20年未更换）</div>
-      <div class="tag-row">
-        <span class="tag">暴君</span><span class="tag">白色恶魔</span><span class="tag">以炮交友</span><span class="tag">全力全开</span>
-      </div>
-      <p style="margin-top:12px;font-size:14px;">
-        本作中<strong>13岁</strong>，隶属联合国危险生物调查机关<strong>EXCEEDS</strong>担任前线调查员。性格固执、正义感爆棚、不服输。<span class="highlight">战斗哲学：先把你轰趴再跟你讲道理。</span>
-      </p>
-      <p style="font-size:14px;margin-top:8px;">
-        <strong>本作新设计：</strong>全新防护服（Barrier Jacket），身材更修长纤细。旭日之心（Raising Heart）魔导器保留。第三弹主视觉图中与菲特并肩立于烈焰之前。
-      </p>
-    </div>
-
-    <div class="card fate">
-      <h3>菲特·T·哈洛温</h3>
-      <div class="cv">Fate Testarossa Harlaown · CV：水树奈奈（兼 OP 演唱）</div>
-      <div class="tag-row">
-        <span class="tag">宠妃</span><span class="tag">金色闪电</span><span class="tag">雷光战斧</span><span class="tag">奈叶的「丈夫」</span>
-      </div>
-      <p style="margin-top:12px;font-size:14px;">
-        奈叶的<strong>伴侣</strong>（官方设定：菲特 = 奈叶的"丈夫"）。被奈叶"以炮交友"收服后变得温柔。防护服回归<strong>全黑底色</strong>初代风格，发型为<strong>单马尾</strong>。
-      </p>
-    </div>
-
-    <div class="card shina">
-      <h3>久濑诗奈</h3>
-      <div class="cv">Kuze Shiina · CV：橘杏咲</div>
-      <div class="tag-row">
-        <span class="tag">EXCEEDS 新主角</span><span class="tag">猎人少女</span><span class="tag">火焰魔炮</span><span class="tag">魔人之力继承者</span>
-      </div>
-      <p style="margin-top:12px;font-size:14px;">
-        <strong>本作正式女主角。</strong>离岛高中生猎人。第1集妹妹雪奈为保护她被吞噬，临终前将<strong>魔人之力全部转移</strong>。诗奈以<strong>Fire Magic Blast（火焰魔炮）</strong>消灭敌方。此后前往本岛，遇到 EXCEEDS 调查员奈叶。
-      </p>
-    </div>
-
-    <div class="card yukina">
-      <h3>久濑雪奈</h3>
-      <div class="cv">Kuze Setsuna · CV：日高里菜</div>
-      <div class="tag-row">
-        <span class="tag">义妹</span><span class="tag">魔人</span><span class="tag">牺牲与传承</span><span class="tag">诗奈的力量之源</span>
-      </div>
-      <p style="margin-top:12px;font-size:14px;">
-        诗奈的<strong>义妹（无血缘）</strong>，真实身份为「魔人」。第1集为保护姐姐牺牲，力量完整转移给诗奈。联动中可作为诗奈觉醒演出的情感 trigger（幻影/声音）。
-      </p>
-    </div>
+  <div class="ref-video">
+    <span class="ref-num">REF 01</span>
+    <h5>噬神者 × 深空之眼「神谕绝响」</h5>
+    <p>参考：战斗场景 + 角色登场 + <strong>无新配音情况下的文字/画面叙事</strong>。两代神机使在未被荒神吞噬的世界首次相遇。</p>
+    <a href="https://www.bilibili.com/video/BV1TL7HzeEME/" target="_blank">bilibili.com/video/BV1TL7HzeEME/</a>
   </div>
-</section>
-
-<!-- ═══════════ 四、星之翼侧角色（PV出场候选） ═══════════ -->
-<section>
-  <div class="section-header">
-    <div class="section-num cyan">Chapter 04</div>
-    <div class="section-title"><span class="icon icon-cyan">🎮</span> 星之翼侧 · PV出场角色候选</div>
-    <div class="section-desc">联动PV的世界观主场地在<strong>星之翼侧</strong>——奈叶等人作为「异世界来客」闯入星之翼的世界。以下是适合在PV中出场的星之翼角色，优先选择有主角相、认知度高的角色。</div>
+  <div class="ref-video">
+    <span class="ref-num">REF 02</span>
+    <h5>晶核 × 尼尔：机械纪元</h5>
+    <p>参考：<strong>全程无配音</strong>的表现力。本地角色先陷入苦战 → 联动角色（2B）从天而降救援。机械生命体入侵 → 2B参战的反转结构。</p>
+    <a href="https://www.bilibili.com/video/BV1uxRyB1Eow/" target="_blank">bilibili.com/video/BV1uxRyB1Eow/</a>
+  </div>
+  <div class="ref-video">
+    <span class="ref-num">REF 03</span>
+    <h5>剑与远征：启程 × 迷宫饭</h5>
+    <p>参考：<strong>高成本标杆</strong>——全程配音、动画时间长、角色性格完美融入（料理+迷宫探索）。联动角色做符合人设的事。成本太高，我们做不了，但可学习<strong>"让角色做符合自己设定的事"</strong>这个原则。</p>
+    <a href="https://www.bilibili.com/video/BV1brCZBXEdm/" target="_blank">bilibili.com/video/BV1brCZBXEdm/</a>
+  </div>
+  <div class="ref-video">
+    <span class="ref-num">REF 04</span>
+    <h5>战双帕弥什 联动PV</h5>
+    <p>参考：<strong>无配音 + PvP对抗型叙事</strong>——直接让两边角色对抗而非协作打怪。这种手法天然契合星之翼的2v2 GVG玩法基因。PV中可考虑加入"短暂误会交锋"的瞬间。</p>
+    <a href="https://www.bilibili.com/video/BV1eHGyzFEaQ/" target="_blank">bilibili.com/video/BV1eHGyzFEaQ/</a>
   </div>
 
-  <div class="card-grid">
-    <div class="card starward">
-      <h3>光（HIKARI）</h3>
-      <div class="cv">皇家星导学院 · 自称「女武神」</div>
-      <div class="tag-row">
-        <span class="tag">⭐ PV首选</span><span class="tag">主角格</span><span class="tag">近战特化</span>
-      </div>
-      <p style="margin-top:12px;font-size:14px;">
-        星之翼中最具<strong>「主角感」</strong>的角色。性格尖锐但通情达理，自称女武神的插班生。适合作为PV中<strong>最先发现异常</strong>、<strong>最先与奈叶等人接触</strong>的星之翼侧代表。
-      </p>
-    </div>
-    <div class="card starward">
-      <h3>迪卡莉恩（DEUCALION）</h3>
-      <div class="cv">通天塔 · 自称「探求者」</div>
-      <div class="tag-row">
-        <span class="tag">天才少女</span><span class="tag">遗迹调查</span><span class="tag">智囊担当</span>
-      </div>
-      <p style="margin-top:12px;font-size:14px;">
-        调查各地遗迹的天才少女。适合作为PV中<strong>分析异世界魔法阵/能量反应</strong>的角色，用台词解释「有什么东西要过来了」。
-      </p>
-    </div>
-    <div class="card starward">
-      <h3>秋雨（QIUYU）</h3>
-      <div class="cv">东洲 · 自称「虚剑行」</div>
-      <div class="tag-row">
-        <span class="tag">高人气</span><span class="tag">剑士</span><span class="tag">皮肤多</span>
-      </div>
-      <p style="margin-top:12px;font-size:14px;">
-        游历世界行侠仗义的神秘少女，高人气角色（有多个皮肤）。适合作为PV战斗段落中的<strong>星之翼侧主战力</strong>，与奈叶菲特并肩作战。
-      </p>
-    </div>
-    <div class="card starward">
-      <h3>风（KAZE）</h3>
-      <div class="cv">皇家星导学院 · 光的后辈</div>
-      <div class="tag-row">
-        <span class="tag">远程型</span><span class="tag">光的搭档</span>
-      </div>
-      <p style="margin-top:12px;font-size:14px;">
-        光的后辈，性格更平易近人，擅长远程攻击。与光组成搭档出场，增加星之翼侧的<strong>角色厚度</strong>。
-      </p>
-    </div>
-  </div>
-
-  <div class="info-box tip" style="margin-top:16px;">
-    <h4>💡 PV角色选择建议</h4>
-    <p>上述4个角色不需要全部出场。预算有限的情况下，<strong>光 + 迪卡莉恩</strong>是最精简方案（一个战斗担当 + 一个解说担当）。预算充足可以加上秋雨（增加人气角色）和风（完善编队感）。具体还要看你们内部哪个角色已有现成的3D模型和动画资源——<strong>优先用已有资产的</strong>。</p>
-  </div>
-</section>
-
-<!-- ═══════════ 五、奈叶×菲特 CP ═══════════ -->
-<section>
-  <div class="section-header">
-    <div class="section-num gold">Chapter 05</div>
-    <div class="section-title"><span class="icon icon-gold">💕</span> 奈叶×菲特 — 最大情感卖点</div>
-    <div class="section-desc">这对CP是系列最核心资产。任何涉及两人互动的设计都<strong>必须尊重这层关系</strong>。</div>
-  </div>
-
-  <div class="rel-box">
-    <div class="rel-left">
-      <h3>高町奈叶</h3>
-      <p style="font-size:13px;color:var(--text2);margin-top:4px;">「暴君」／ 白色恶魔</p>
-      <p style="font-size:13px;color:var(--text3);">旭日之心 · 星光爆裂</p>
-    </div>
-    <div class="rel-center">💍</div>
-    <div class="rel-right">
-      <h3>菲特·T·哈洛温</h3>
-      <p style="font-size:13px;color:var(--text2);margin-top:4px;">「宠妃」／ 金色闪电</p>
-      <p style="font-size:13px;color:var(--text3);">巴鲁迪修 · 雷光战斧</p>
-    </div>
-    <div class="rel-detail">
-      <strong>关系演变：</strong>敌人 → 被 SLB 轰入海中 → 挚友 → 伴侣 → 共同抚养女儿薇薇欧<br>
-      <strong>官方设定：</strong>菲特 = 奈叶的「丈夫」 · 奈叶 = 菲特的「要守护的人」 · 两人+薇薇欧 = 一家三口<br>
-      <strong>CP名：</strong>奈菲（なのフェイ）—— 20年积累的最强粉丝群体<br>
-      <strong>核心梗：</strong>「以炮交友」—— 全力轰击 → 对方臣服 → 成为终身挚友／家人
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════ 六、战斗风格与技能 ═══════════ -->
-<section>
-  <div class="section-header">
-    <div class="section-num gold">Chapter 06</div>
-    <div class="section-title"><span class="icon icon-gold">⚔️</span> 战斗风格与技能 → GVG 映射</div>
-    <div class="section-desc">星之翼是GVG类3D格斗游戏。奈叶系列角色的战斗方式——飞行、射击、近战切换、觉醒爆发——与游戏系统<strong>天然契合</strong>。</div>
-  </div>
+  <!-- 30秒分镜表 -->
+  <h4 style="color:var(--text);font-size:15px;margin:28px 0 12px;">▎ 30秒时间轴分镜</h4>
 
   <div class="table-wrap">
   <table>
-    <tr><th>角色</th><th>战斗风格</th><th>核心技能</th><th>→ GVG 操作映射</th></tr>
+    <tr><th style="width:8%;">秒</th><th style="width:22%;">画面</th><th style="width:15%;">文字卡</th><th>音效</th></tr>
     <tr>
-      <td><strong style="color:#c84068;">奈叶</strong></td>
-      <td>中远距离炮击型<br><small style="color:var(--text3);">高火力 · 大范围压制</small></td>
-      <td>Divine Buster · Axel Shooter · <strong>Starlight Breaker</strong> · Exceed Mode</td>
-      <td>
-        <span class="badge-sm badge-pink">主射</span> Axel Shooter<br>
-        <span class="badge-sm badge-pink">CS</span> Divine Buster<br>
-        <span class="badge-sm badge-pink">觉醒技</span> SLB 全屏 AOE<br>
-        <span class="badge-sm badge-pink">Cost</span> 3000 后卫炮击机
-      </td>
+      <td><strong style="color:var(--shina);">0-4</strong></td>
+      <td>暗色背景 + 快速闪切侵略种/魔人的静态画面 → 文字卡叠在画面上</td>
+      <td>"30年前，侵略种出现"<br>"如今，魔人的阴影笼罩一切"<br>"只有魔人，才能打败魔人"</td>
+      <td>沉重低频+警报嗡鸣 → 第四秒骤停</td>
     </tr>
     <tr>
-      <td><strong style="color:#a08820;">菲特</strong></td>
-      <td>高速近中距离突击型<br><small style="color:var(--text3);">高机动 · 雷光特效</small></td>
-      <td>Thunder Smasher · Haken Saber · <strong>Zanber Form</strong> · Sonic Form</td>
+      <td><strong style="color:var(--shina);">4-9</strong></td>
       <td>
-        <span class="badge-sm badge-gold">主射</span> Thunder Smasher<br>
-        <span class="badge-sm badge-gold">格斗</span> Haken Saber 镰刀连段<br>
-        <span class="badge-sm badge-gold">觉醒技</span> Riot Zamber<br>
-        <span class="badge-sm badge-gold">Cost</span> 3000 万能突击机
+        <strong>诗奈</strong>火焰炮轰小怪群 → <strong>夜海</strong>冰刃+太刀斩杀另一侧小怪。<br>
+        两人分屏或交叉剪辑，眼神坚毅但疲惫。怪物不断涌出。
       </td>
+      <td>—</td>
+      <td>火焰 + 冰刃音效 · BGM渐入</td>
     </tr>
     <tr>
-      <td><strong style="color:#c85830;">诗奈</strong></td>
-      <td>中距离火焰炮击型<br><small style="color:var(--text3);">爆发式输出</small></td>
-      <td><strong>Fire Magic Blast</strong> · 魔人之力觉醒</td>
+      <td><strong style="color:var(--shina);">9-12</strong></td>
       <td>
-        <span class="badge-sm badge-orange">主射</span> 火焰炮<br>
-        <span class="badge-sm badge-orange">觉醒</span> 魔人化<br>
-        <span class="badge-sm badge-orange">觉醒技</span> 全力 Fire Magic Blast<br>
-        <span class="badge-sm badge-orange">Cost</span> 2500-3000 炮击机
+        怪物数量压倒性增多，诗奈/夜海陷入苦战。<br>
+        → <strong>秋云（太刀+火）</strong>和<strong>弗利德（魔女型）</strong>从侧面突入救场！四人背靠背摆出战斗pose。
       </td>
+      <td>—</td>
+      <td>BGM节奏上扬 · 武器碰撞/魔法爆发</td>
+    </tr>
+    <tr>
+      <td><strong style="color:var(--shina);">12-16</strong></td>
+      <td>
+        更大的巨型侵略种从阴影中现身，咆哮召唤更多小怪。<br>
+        四人抬头，表情凝重。画面色调变暗，压迫感拉满。
+      </td>
+      <td>—</td>
+      <td>低音咆哮 · BGM下沉 · 心跳声</td>
+    </tr>
+    <tr>
+      <td><strong style="color:var(--nanoha);">16-22</strong></td>
+      <td>
+        远方天空亮起<strong>樱花色+金色</strong>两道光芒。<br>
+        → <strong>奈叶+菲特</strong>双人编队高速飞来！奈叶魔力翼展开，菲特雷光缠绕。<br>
+        两人直接切入战场——SLB蓄力+菲特Zanber横扫，全屏清怪。
+      </td>
+      <td>"EXCEEDS——"</td>
+      <td>BGM高潮 · 魔法阵展开音效 · 樱色+金色音色交叠</td>
+    </tr>
+    <tr>
+      <td><strong style="color:var(--nanoha);">22-27</strong></td>
+      <td>
+        <strong>双人联合必杀</strong>——奈叶的樱花粉魔法阵与菲特的金色魔法阵交叠旋转 → 蓄力 → 释放！<br>
+        全屏白光，巨型侵略种被彻底蒸发。
+      </td>
+      <td>—</td>
+      <td>蓄力嗡鸣 → 爆发 → 白光静默1秒</td>
+    </tr>
+    <tr>
+      <td><strong>27-30</strong></td>
+      <td>
+        白光淡出 → 六人（诗奈+夜海+秋云+弗利德+奈叶+菲特）群像站姿。<br>
+        <strong>星之翼Logo</strong> × <strong>EXCEEDS Logo</strong> 并排浮现。<br>
+        联动日期。
+      </td>
+      <td>"星之翼 × EXCEEDS"</td>
+      <td>BGM收束 · Logo出现时的金属/水晶音</td>
     </tr>
   </table>
   </div>
+
+  <!-- 实现细节 -->
+  <h4 style="color:var(--text);font-size:15px;margin:24px 0 12px;">▎ 实现注意事项</h4>
+
+  <div class="pv-phase">
+    <div class="ph-head"><span class="ph-num">1</span><h4>文字卡开场 — 不配音但有信息量</h4></div>
+    <ul>
+      <li>纯黑底 + 白字，逐句闪现，每句停留约1.2秒</li>
+      <li>字体用无衬线粗体，与EXCEEDS的军武气质一致</li>
+      <li>背景可以叠淡淡的侵略种剪影/魔法阵纹理（极低透明度）</li>
+      <li>参考：噬神者×深空之眼的文字叙事法</li>
+    </ul>
+  </div>
+
+  <div class="pv-phase">
+    <div class="ph-head"><span class="ph-num">2</span><h4>诗奈+夜海战斗 — 建立"这个世界"</h4></div>
+    <ul>
+      <li>诗奈用火焰魔炮+拔刀斩动作，夜海用冰系特效+太刀</li>
+      <li>两人分屏或快速切镜，传达"两个猎人各自战斗但尚未联手"</li>
+      <li><strong>复用游戏内已有攻击动作 + 特效放大</strong></li>
+    </ul>
+  </div>
+
+  <div class="pv-phase">
+    <div class="ph-head"><span class="ph-num">3</span><h4>星之翼角色救场 — 秋云 + 弗利德</h4></div>
+    <ul>
+      <li>秋云：太刀+火焰，与诗奈的火焰魔炮有视觉呼应</li>
+      <li>弗利德：魔女型角色，与奈叶菲特的"魔法少女"主题呼应</li>
+      <li>救场 = 一个突入pose + 一个攻击动作，每人1.5秒，不拖</li>
+      <li><strong>优先选有完整3D模型和动画资产的星之翼角色</strong></li>
+    </ul>
+  </div>
+
+  <div class="pv-phase">
+    <div class="ph-head"><span class="ph-num">4</span><h4>巨型怪物出现 — 危机感反转</h4></div>
+    <ul>
+      <li>用阴影、镜头仰拍、怪物咆哮口部特写，放大压迫感</li>
+      <li>四人抬头reaction镜头（可复用游戏内的受击/警戒pose）</li>
+      <li>参考：晶核×尼尔PV中机械生命体压倒性出现的画面</li>
+    </ul>
+  </div>
+
+  <div class="pv-phase">
+    <div class="ph-head"><span class="ph-num" style="background:var(--nanoha);">5</span><h4>奈叶+菲特登场 — PV最高光段落</h4></div>
+    <ul>
+      <li><strong>这是整个PV的灵魂段落，预算和时间都要倾斜到这里</strong></li>
+      <li>①远方天空亮起两道光 → ②快速推进看到两人编队飞行 → ③切入战场瞬间清屏</li>
+      <li>奈叶的樱色魔力翼 + 菲特的雷光缠绕 = 两种颜色在画面上交织</li>
+      <li>不需要台词。靠画面+音效+音乐就够了</li>
+      <li>如果水树奈奈的《CRIMSON BULLET》能拿到授权（哪怕30秒片段），BGM在这里进高潮</li>
+    </ul>
+  </div>
+
+  <div class="pv-phase">
+    <div class="ph-head"><span class="ph-num">6</span><h4>双人联合必杀 — 魔法阵重叠</h4></div>
+    <ul>
+      <li>奈叶脚下展开樱花粉圆阵 + 菲特脚下展开金色圆阵 → 两个魔法阵交叠旋转</li>
+      <li>蓄力 → 释放 → 全屏白光（白光是最省成本的高潮处理方式）</li>
+      <li>1秒静默白屏 → 给观众喘息 → 然后Logo出现</li>
+    </ul>
+  </div>
+
+  <div class="pv-phase">
+    <div class="ph-head"><span class="ph-num">7</span><h4>收尾 — Logo + 六人群像</h4></div>
+    <ul>
+      <li>六人站位：中间奈叶菲特背靠背（经典构图），左侧诗奈+秋云，右侧夜海+弗利德</li>
+      <li>星之翼Logo与EXCEEDS Logo并排</li>
+      <li>3秒足够，不拖</li>
+    </ul>
+  </div>
+
 </section>
 
-<!-- ═══════════ 七、联动PV脚本 ═══════════ -->
+<div class="divider">· · ·</div>
+
+<!-- ═══════════ 七、参考资源 ═══════════ -->
 <section>
-  <div class="section-header">
-    <div class="section-num orange">Chapter 07</div>
-    <div class="section-title"><span class="icon icon-orange">🎬</span> 联动 PV 脚本框架（星之翼世界主场）</div>
-    <div class="section-desc">
-      核心设定：<strong>奈叶等人从魔法阵中穿越而来，闯入星之翼的世界。</strong>这是标准联动叙事——异世界来客 × 本地角色，先误会冲突再联手抗敌。<br>
-      制作策略：<strong>70%特效 + 20%镜头 + 10%角色动画</strong>，用强pose和特效弥补3D动画产能不足。
-    </div>
-  </div>
-
-  <!-- Phase 1 -->
-  <div class="pv-phase starward-phase">
-    <div class="phase-header">
-      <span class="phase-num" style="background:linear-gradient(135deg,var(--starward-cyan),#2898b8);">1</span>
-      <h4>星之翼的日常 — 平静被打破<span class="pv-world-tag starward">🌍 星之翼世界</span></h4>
-    </div>
-    <ul class="shot-list">
-      <li><strong>镜头1（3-4秒）：</strong>星之翼世界的空镜 —— 皇家星导学院 / 通天塔遗迹 / 蓝天白云下的飞行城市。展现星之翼世界观的标志性场景。（静态场景 + 缓慢camera drift，0角色动画）</li>
-      <li><strong>镜头2（3-4秒）：</strong><strong>光</strong>和<strong>风</strong>正在进行日常训练/巡逻，两人编队飞行，轻松对话。"今天也没什么异常呢。"（使用游戏内已有飞行/idle动画）</li>
-      <li><strong>镜头3（3-4秒）：</strong><strong>迪卡莉恩</strong>在遗迹中检测仪表突然报警 —— 能量读数飙升。她抬头望天，表情震惊："这个反应……不对，这不是我们的世界的……"（特写镜头 + 仪表UI特效）</li>
-      <li><strong>镜头4（2-3秒）：</strong>天空撕裂 —— 一个巨大的<strong>樱花色魔法阵</strong>在云端展开，旋转扩散。光芒笼罩大地。</li>
-      <li><strong>低成本要点：</strong>全部使用游戏内已有场景和角色动画。魔法阵是纯2D/3D特效层叠。不需要任何新角色动画。</li>
-      <li><strong>音效：</strong>轻松日常BGM → 迪卡莉恩台词时BGM骤停 → 低沉轰鸣 + 魔法阵展开的音效（水晶/铃音质感）</li>
-    </ul>
-  </div>
-
-  <!-- Phase 2 -->
-  <div class="pv-phase star-phase">
-    <div class="phase-header">
-      <span class="phase-num">2</span>
-      <h4>异世界来客 — 奈叶 & 菲特降临<span class="pv-world-tag nanoha">🔮 奈叶世界 → 星之翼</span></h4>
-    </div>
-    <ul class="shot-list">
-      <li><strong>镜头1（3-4秒）：</strong>魔法阵中心，<strong>奈叶</strong>的剪影从光芒中浮现 —— 逆光，樱色魔力翼展开，旭日之心握在手中。镜头从脚下仰拍，突出威严感。（角色只需一个浮空pose + 光翼特效）</li>
-      <li><strong>镜头2（2-3秒）：</strong>一道<strong>金色雷光</strong>从魔法阵中劈出 —— <strong>菲特</strong>高速突进的侧影，巴鲁迪修在雷光中展开巨镰形态。残影拖尾特效。</li>
-      <li><strong>镜头3（3-4秒）：</strong>奈叶和菲特<strong>背靠背</strong>悬浮在空中，环顾四周陌生的世界。镜头慢速环绕180°。（静态双人pose——PV性价比最高的镜头）</li>
-      <li><strong>镜头4（3-4秒）：</strong><strong>诗奈</strong>最后一个从魔法阵中落下，单膝着陆，火焰魔力在周身缠绕，眼睛扫视四周，警惕而困惑。</li>
-      <li><strong>低成本要点：</strong>奈叶菲特背靠背pose是经典构图的静态画面——放3秒+慢镜环绕就能撑满这个段落。角色不用同时动画。</li>
-      <li><strong>字幕：</strong>"来自异世界的访客——"</li>
-    </ul>
-  </div>
-
-  <!-- Phase 3 -->
-  <div class="pv-phase starward-phase">
-    <div class="phase-header">
-      <span class="phase-num" style="background:linear-gradient(135deg,var(--starward-cyan),#2898b8);">3</span>
-      <h4>接触与误会 — 初次交锋<span class="pv-world-tag crossover">⚡ 冲突</span></h4>
-    </div>
-    <ul class="shot-list">
-      <li><strong>镜头1（3-4秒）：</strong><strong>光</strong>挡在奈叶等人面前，武器出鞘，戒备姿态。"站住！你们是什么人？"（pose对峙——光持武器 vs 奈叶持旭日之心）</li>
-      <li><strong>镜头2（2-3秒）：</strong>奈叶微微歪头，露出经典的无害笑容 —— 但旭日之心已经开始蓄力发光。"啊，那个……我们不是敌人哦。"</li>
-      <li><strong>镜头3（3-4秒）：</strong><strong>快速交锋</strong>—— 光冲刺 → 奈叶闪避 + Axel Shooter 警告射击（故意打偏）→ 秋雨从侧面出剑 → 菲特瞬移格挡，巴鲁迪修与剑碰撞，金色雷光四溅。（使用游戏内基础攻击动作 + 特效放大）</li>
-      <li><strong>低成本要点：</strong>交锋段落每刀只有1-2秒，用镜头快速切换制造节奏感。核心是<strong>碰撞特效</strong>，不需要复杂的连续对打动画。</li>
-    </ul>
-  </div>
-
-  <!-- Phase 4 -->
-  <div class="pv-phase star-phase">
-    <div class="phase-header">
-      <span class="phase-num">4</span>
-      <h4>真正的敌人出现 — 联手<span class="pv-world-tag crossover">🤝 联手</span></h4>
-    </div>
-    <ul class="shot-list">
-      <li><strong>镜头1（2-3秒）：</strong>对峙中，天空再次撕裂 —— 这次是<strong>暗红色裂缝</strong>。侵略种/魔人的巨大身影从裂缝中涌出，咆哮。原来它们追着奈叶等人穿越过来了。</li>
-      <li><strong>镜头2（3-4秒）：</strong><strong>迪卡莉恩</strong>的分析台词："原来如此……她们不是敌人，真正的威胁是那个！" 光收起武器，看向奈叶，点头示意停战。</li>
-      <li><strong>镜头3（4-5秒）：</strong><strong>全员战斗姿态的集结镜头</strong>—— 奈叶/菲特/诗奈（左）+ 光/秋雨/风（右），两组人并肩面向敌人方向。镜头从背后低角度推向敌人。（群像pose + camera push，所有角色静态即可）</li>
-      <li><strong>字幕：</strong>"——要上了。"</li>
-    </ul>
-  </div>
-
-  <!-- Phase 5 -->
-  <div class="pv-phase star-phase">
-    <div class="phase-header">
-      <span class="phase-num">5</span>
-      <h4>全力全开 — GVG 风格战斗高潮<span class="pv-world-tag crossover">💥 决战</span></h4>
-    </div>
-    <ul class="shot-list">
-      <li><strong>镜头1（2秒）：</strong>奈叶 Axel Shooter 齐射 + 光同时突进斩击 —— 远近配合。（复用游戏内攻击动作）</li>
-      <li><strong>镜头2（2秒）：</strong>菲特 Haken Saber 巨镰横扫 + 秋雨剑技连携。（镰刀轨迹特效 + 剑光）</li>
-      <li><strong>镜头3（2秒）：</strong>诗奈 Fire Magic Blast 从侧翼轰入，火焰柱贯穿战场。</li>
-      <li><strong>镜头4（4-5秒）：</strong><strong>奈叶 SLB 终极轰击！</strong>旭日之心展开炮击模式 → 魔法阵层层叠叠 → 樱色光芒汇聚 → 全屏粉色爆炸。镜头从近拉远展示爆炸规模。（角色只需蓄力pose + 90%特效 + 镜头震动）</li>
-      <li><strong>镜头5（2-3秒）：</strong>敌人被击破的崩溃特效。烟尘散去，战场归于宁静。</li>
-      <li><strong>低成本要点：</strong>这个段落每刀极短（1-2秒），用快速跳切制造激烈感。SLB段落与之前方案一致——站桩 + 特效拉满。</li>
-    </ul>
-  </div>
-
-  <!-- Phase 6 -->
-  <div class="pv-phase starward-phase">
-    <div class="phase-header">
-      <span class="phase-num" style="background:linear-gradient(135deg,var(--starward-cyan),#2898b8);">6</span>
-      <h4> Ending — 新的羁绊<span class="pv-world-tag crossover">🌟 尾声</span></h4>
-    </div>
-    <ul class="shot-list">
-      <li><strong>镜头1（3-4秒）：</strong>战后，所有人站在星之翼世界的高处俯瞰风景。奈叶和菲特并肩，诗奈站在稍远处，光抱着手臂但嘴角微微上扬。</li>
-      <li><strong>镜头2（2-3秒）：</strong>奈叶转向光，伸出手——经典的「以炮交友」→「以手交友」。"从现在开始，我们就是朋友了。"（呼应系列核心梗！）</li>
-      <li><strong>镜头3（2-3秒）：</strong>光愣了一下，然后握住奈叶的手。画面定格。</li>
-      <li><strong>镜头4（3-4秒）：</strong><strong>星之翼 Logo</strong> 与 <strong>EXCEEDS Gun Blaze Vengeance Logo</strong> 并排出现。联动日期浮现。</li>
-      <li><strong>字幕：</strong>"星之翼 × 魔法少女奈叶 EXCEEDS Gun Blaze Vengeance"</li>
-      <li><strong>低成本要点：</strong>结尾是纯静态pose集合 + Logo平面设计。</li>
-    </ul>
-  </div>
-
-  <div class="info-box tip" style="margin-top:20px;">
-    <h4>💡 总制作策略</h4>
-    <div class="strategy-grid">
-      <div class="strategy-item">
-        <div class="big-emoji">💥</div><strong>70% 特效</strong><span>魔法阵 · 魔力光 · 爆炸 · 雷光 —— 奈叶自带「特效拉满」基因</span>
-      </div>
-      <div class="strategy-item">
-        <div class="big-emoji">🎥</div><strong>20% 镜头</strong><span>slow-mo环绕 · 快速跳切 · 震动 · 仰拍逆光</span>
-      </div>
-      <div class="strategy-item">
-        <div class="big-emoji">🧍</div><strong>10% 动画</strong><span>关键帧级精美pose · 复用已有攻击动作 · 静态也能出效果</span>
-      </div>
-      <div class="strategy-item">
-        <div class="big-emoji">🎙️</div><strong>声优语音</strong><span>田村由香里 + 水树奈奈原声是最大情感触发器</span>
-      </div>
-      <div class="strategy-item">
-        <div class="big-emoji">🎵</div><strong>主题曲</strong><span>水树奈奈《CRIMSON BULLET》如能授权，效果翻倍</span>
-      </div>
-      <div class="strategy-item">
-        <div class="big-emoji">🔄</div><strong>关键原则</strong><span>优先用已有3D资产的星之翼角色，减少新模型/绑定工作量</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════ 八、视觉设计参考 ═══════════ -->
-<section>
-  <div class="section-header">
-    <div class="section-num pink">Chapter 08</div>
-    <div class="section-title"><span class="icon icon-pink">🎨</span> 视觉设计参考</div>
-  </div>
-
-  <div class="info-box">
-    <h4>设计团队</h4>
-    <p style="font-size:14px;color:var(--text2);">
-      <strong>角色原案／防护服／魔导器原案：</strong>川上修一（漫画作画，系列老将）<br>
-      <strong>角色设计／总作画监督：</strong>新垣一成（曾参与 Detonation）<br>
-      <strong>动画制作：</strong>Seven Arcs（系列一贯制作公司）
-    </p>
-  </div>
-
-  <div class="swatch-group">
-    <h4>高町奈叶 — 配色</h4>
-    <div class="swatches">
-      <div class="swatch-item"><div class="swatch" style="background:#fefefe;"></div><span class="swatch-label">主色 白</span></div>
-      <div class="swatch-item"><div class="swatch" style="background:#e85d8a;"></div><span class="swatch-label">魔力光 樱粉</span></div>
-      <div class="swatch-item"><div class="swatch" style="background:#d44d78;"></div><span class="swatch-label">Exceed 深粉</span></div>
-      <div class="swatch-item"><div class="swatch" style="background:#4060c0;"></div><span class="swatch-label">点缀 蓝</span></div>
-    </div>
-  </div>
-  <div class="swatch-group">
-    <h4>菲特·T·哈洛温 — 配色</h4>
-    <div class="swatches">
-      <div class="swatch-item"><div class="swatch" style="background:#1a1a1a;"></div><span class="swatch-label">主色 黑</span></div>
-      <div class="swatch-item"><div class="swatch" style="background:#d4a020;"></div><span class="swatch-label">魔力光 金雷</span></div>
-      <div class="swatch-item"><div class="swatch" style="background:#c02030;"></div><span class="swatch-label">内衬 红</span></div>
-      <div class="swatch-item"><div class="swatch" style="background:#f0ecf4;"></div><span class="swatch-label">斗篷 白</span></div>
-    </div>
-  </div>
-  <div class="swatch-group">
-    <h4>久濑诗奈 — 配色</h4>
-    <div class="swatches">
-      <div class="swatch-item"><div class="swatch" style="background:#e87040;"></div><span class="swatch-label">火焰 橙红</span></div>
-      <div class="swatch-item"><div class="swatch" style="background:#2a2030;"></div><span class="swatch-label">服装 暗色</span></div>
-      <div class="swatch-item"><div class="swatch" style="background:#f0a040;"></div><span class="swatch-label">魔人光 金橙</span></div>
-    </div>
-  </div>
-
-  <div style="margin-top:32px;">
-    <h4 style="margin-bottom:14px;color:#3a2848;">关键视觉标识对照</h4>
-    <div class="table-wrap">
-    <table>
-      <tr><th>元素</th><th style="color:#c84068;">奈叶</th><th style="color:#a08820;">菲特</th><th style="color:#c85830;">诗奈</th></tr>
-      <tr><td>魔法阵</td><td>樱花粉圆形米德切尔达式</td><td>金色圆形米德切尔达式</td><td>火焰色（待确认）</td></tr>
-      <tr><td>魔导器</td><td>旭日之心（杖型 → 炮击型）</td><td>巴鲁迪修（斧型 → 镰刀 → 大剑）</td><td>无传统魔导器（魔人之力）</td></tr>
-      <tr><td>防护服</td><td>白色为主 · 全新设计</td><td>全黑底色 · 单马尾 · 回归初代风</td><td>猎人风便服／战斗服</td></tr>
-      <tr><td>翅膀／飞行</td><td>魔力翼（樱色光翼）</td><td>魔力翼（金色光翼）</td><td>待揭露</td></tr>
-      <tr><td>标志性 Pose</td><td>单手前指炮击 · SLB蓄力（魔法阵展开）</td><td>巨镰挥砍 · 雷光突击 · 背靠奈叶</td><td>火焰缠绕炮击姿态</td></tr>
-    </table>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════ 九、参考资源 ═══════════ -->
-<section>
-  <div class="section-header">
-    <div class="section-num gold">Chapter 09</div>
-    <div class="section-title"><span class="icon icon-gold">🔗</span> 参考资源</div>
-  </div>
+  <div class="sec-num">Chapter 07</div>
+  <div class="sec-title">参考资源</div>
   <div class="table-wrap">
   <table>
     <tr><th>类型</th><th>来源</th><th>说明</th></tr>
-    <tr><td>官方 X/Twitter</td><td><a href="https://x.com/exgv_official" target="_blank" style="color:var(--nanoha-pink);">@exgv_official</a></td><td>最新视觉图、PV、角色设定、情报发布 · 高清原图直链</td></tr>
-    <tr><td>动画官网</td><td><a href="https://nanoha.com/EXGV/" target="_blank" style="color:var(--nanoha-pink);">nanoha.com/EXGV/</a></td><td>Character 页面、STAFF/CAST、STORY 介绍</td></tr>
-    <tr><td>漫画</td><td>讲谈社「星期三的天狼星」</td><td>奈叶13岁视角，前2卷已出版 · 川上修一作画</td></tr>
-    <tr><td>中文正版播放</td><td>巴哈姆特动画疯 / LINE TV / 爱奇艺</td><td>曼迪传播代理中文区</td></tr>
-    <tr><td>萌娘百科</td><td>zh.moegirl.org.cn</td><td>角色 / 用语 / 梗的详细中文整理</td></tr>
-    <tr><td>星之翼官网</td><td>xzy.shengtiangames.com</td><td>星之翼角色介绍、皮肤立绘参考</td></tr>
+    <tr><td>官方X</td><td><a href="https://x.com/exgv_official" target="_blank" style="color:var(--towa);">@exgv_official</a></td><td>最新视觉图·PV·角色设定</td></tr>
+    <tr><td>动画官网</td><td><a href="https://nanoha.com/EXGV/" target="_blank" style="color:var(--towa);">nanoha.com/EXGV/</a></td><td>角色介绍·STAFF/CAST</td></tr>
+    <tr><td>中文正版</td><td>巴哈姆特动画疯 / LINE TV / 爱奇艺</td><td>曼迪传播代理中文区</td></tr>
+    <tr><td>漫画</td><td>讲谈社「星期三的天狼星」</td><td>川上修一作画 · 前2卷已出版</td></tr>
+    <tr><td>萌娘百科</td><td>zh.moegirl.org.cn</td><td>角色/用语整理</td></tr>
   </table>
-  </div>
-</section>
-
-<!-- ═══════════ 十、联动风险 ═══════════ -->
-<section>
-  <div class="section-header">
-    <div class="section-num orange">Chapter 10</div>
-    <div class="section-title"><span class="icon icon-orange">⚠️</span> 联动风险与注意事项</div>
-  </div>
-
-  <div class="info-box warn">
-    <h4>🔴 动画刚开播，内容不完整</h4>
-    <p>诗奈的完整能力、最终形态、关键剧情转折均未公开。若联动在9月前上线，建议<strong>奈叶+菲特为主、诗奈为辅</strong>。</p>
-  </div>
-  <div class="info-box warn">
-    <h4>🔴 版权范围限制</h4>
-    <p>授权仅覆盖 EXCEEDS，不能使用系列前作的角色设计。所有视觉设计<strong>严格以 EXCEEDS 官方公开图为准</strong>。</p>
-  </div>
-  <div class="info-box warn">
-    <h4>🔴 粉丝期待管理</h4>
-    <p>奈菲CP情感投入极高。务必至少设计<strong>一个明确的奈菲双人互动元素</strong>（双人pose/觉醒演出/连携技）。</p>
-  </div>
-  <div class="info-box tip">
-    <h4>🟢 诗奈×雪奈 姐妹线 = 第二情感轴</h4>
-    <p>PV中用<strong>雪奈的幻影/声音</strong>作为诗奈觉醒的trigger，姐妹情 + 奈菲情 = 双情感线并行。</p>
-  </div>
-  <div class="info-box tip">
-    <h4>🟢 PV 中星之翼角色的选择</h4>
-    <p>最终出场角色取决于<strong>哪些角色已有完整的3D模型和动画资产</strong>。光的「女武神」设定与奈叶的「以炮交友」有天然戏剧冲突（战士vs魔法少女），是最佳选择。</p>
   </div>
 </section>
 
 <div class="footer">
   <p><strong>星之翼</strong> × <strong>魔法少女奈叶 EXCEEDS Gun Blaze Vengeance</strong> 联动参考文档</p>
-  <p style="margin-top:6px;">数据截止：2026年7月 · 动画仅播出2-3集 · 持续更新中</p>
+  <p style="margin-top:4px;">基于动画前三集 · 2026年7月 · 持续更新</p>
 </div>
 
 </div>
