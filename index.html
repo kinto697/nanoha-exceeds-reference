@@ -6,291 +6,343 @@
 <title>魔法少女奈叶 EXCEEDS 联动参考文档 — 星之翼</title>
 <style>
 :root {
-  --bg: #161218;
-  --bg2: #1c1820;
-  --surface: #221d28;
-  --surface2: #282230;
-  --border: #302838;
-  --border-light: #3a3244;
-  --text: #d8d2dc;
-  --text2: #a098a8;
-  --text3: #706878;
-  --shina: #e87040;
-  --towa: #48a8d8;
-  --nanoha: #e85d8a;
-  --fate: #d4a020;
-  --radius: 10px;
-  --radius-sm: 6px;
+  --nanoha-pink: #e85d8a;
+  --nanoha-pink-light: #fef0f5;
+  --nanoha-sakura: #f5a0bf;
+  --fate-gold: #d4a020;
+  --fate-gold-light: #fef9ee;
+  --shina-orange: #e87040;
+  --shina-orange-light: #fef3ee;
+  --towa-blue: #48a8d8;
+  --towa-blue-light: #eef8fc;
+  --starward-cyan: #3cb8d0;
+  --bg: #fdfaf7;
+  --bg-card: #ffffff;
+  --text: #2c2440;
+  --text2: #6b5e7a;
+  --text3: #9a8eaa;
+  --border: #e8e0ed;
+  --border-strong: #d8cce4;
+  --shadow-sm: 0 2px 8px rgba(120,80,120,0.06);
+  --shadow-md: 0 4px 24px rgba(120,80,120,0.10);
+  --shadow-lg: 0 8px 40px rgba(120,80,120,0.14);
+  --radius: 14px;
+  --radius-sm: 8px;
 }
 
-*{margin:0;padding:0;box-sizing:border-box}
-body{
-  background:var(--bg);
-  color:var(--text);
-  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Noto Sans SC","Microsoft YaHei",sans-serif;
-  line-height:1.75;
-  min-height:100vh;
-  overflow-x:hidden;
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+  line-height: 1.75;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
-/* Subtle magic circle (far background) */
-body::before{
-  content:'';
-  position:fixed;top:-200px;right:-200px;
-  width:500px;height:500px;
-  pointer-events:none;z-index:0;
-  border-radius:50%;
-  border:1px solid rgba(232,93,138,0.06);
-  box-shadow:0 0 0 60px rgba(232,93,138,0.015),0 0 0 130px rgba(212,160,32,0.01);
+/* Background sparkles */
+body::before {
+  content: '';
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none; z-index: 0;
+  background:
+    radial-gradient(3px 3px at 12% 18%, rgba(232,93,138,0.28), transparent),
+    radial-gradient(3px 3px at 28% 60%, rgba(212,160,32,0.25), transparent),
+    radial-gradient(2px 2px at 55% 12%, rgba(232,93,138,0.22), transparent),
+    radial-gradient(3px 3px at 72% 32%, rgba(212,160,32,0.22), transparent),
+    radial-gradient(2px 2px at 85% 55%, rgba(232,93,138,0.25), transparent),
+    radial-gradient(3px 3px at 40% 80%, rgba(212,160,32,0.2), transparent),
+    radial-gradient(2px 2px at 68% 85%, rgba(232,93,138,0.18), transparent),
+    radial-gradient(3px 3px at 92% 10%, rgba(212,160,32,0.25), transparent),
+    radial-gradient(2px 2px at 18% 45%, rgba(200,150,200,0.2), transparent),
+    radial-gradient(3px 3px at 45% 50%, rgba(232,93,138,0.15), transparent);
+}
+
+/* Magic circle (top-right) */
+body::after {
+  content: '';
+  position: fixed; top: -140px; right: -140px;
+  width: 420px; height: 420px;
+  pointer-events: none; z-index: 0;
+  border-radius: 50%;
+  border: 2px solid rgba(232,93,138,0.10);
+  box-shadow: 0 0 0 55px rgba(232,93,138,0.025), 0 0 0 115px rgba(212,160,32,0.018);
 }
 
 /* ═══ HERO ═══ */
-.hero{
-  position:relative;z-index:1;
-  background:linear-gradient(180deg,#1c1420 0%,#161218 100%);
-  border-bottom:1px solid var(--border);
-  padding:64px 20px 52px;
-  text-align:center;overflow:hidden;
+.hero {
+  position: relative; z-index: 1;
+  background: linear-gradient(170deg, #fef5f8 0%, #fefaf5 30%, #fdf7fb 60%, #fef8f3 100%);
+  border-bottom: 2px solid var(--nanoha-pink-light);
+  padding: 70px 20px 60px;
+  text-align: center; overflow: hidden;
 }
-.hero::before{
-  content:'';
-  position:absolute;top:30%;left:50%;
-  transform:translate(-50%,-50%);
-  width:280px;height:280px;
-  border-radius:50%;
-  border:1px solid rgba(232,112,64,0.08);
-  box-shadow:0 0 0 40px rgba(232,112,64,0.025),0 0 0 90px rgba(72,168,216,0.02);
-  z-index:0;
-  animation:heroPulse 8s ease-in-out infinite;
+.hero::before {
+  content: '';
+  position: absolute; top: 22%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 320px; height: 320px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(232,93,138,0.13);
+  box-shadow: 0 0 0 38px rgba(232,93,138,0.035), 0 0 0 78px rgba(212,160,32,0.025), 0 0 0 125px rgba(232,93,138,0.015);
+  z-index: 0;
+  animation: magicPulse 7s ease-in-out infinite;
 }
-@keyframes heroPulse{
-  0%,100%{transform:translate(-50%,-50%)scale(1);opacity:.7}
-  50%{transform:translate(-50%,-50%)scale(1.06);opacity:1}
+@keyframes magicPulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.75; }
+  50% { transform: translate(-50%, -50%) scale(1.07); opacity: 1; }
 }
-.hero>*{position:relative;z-index:2}
-.hero .tagline{
-  display:inline-block;
-  font-size:11px;font-weight:700;letter-spacing:3px;
-  color:var(--text3);margin-bottom:20px;
-  border:1px solid var(--border-light);padding:4px 18px;border-radius:2px;
+.hero::after {
+  content: '';
+  position: absolute; top: 22%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100px; height: 100px;
+  z-index: 0;
+  background: conic-gradient(from 0deg, transparent 0deg, rgba(232,93,138,0.10) 30deg, transparent 60deg,
+                              transparent 120deg, rgba(212,160,32,0.08) 150deg, transparent 180deg,
+                              transparent 240deg, rgba(232,93,138,0.08) 270deg, transparent 300deg);
+  border-radius: 50%;
+  border: 1px solid rgba(232,93,138,0.12);
+  animation: magicSpin 22s linear infinite;
 }
-.hero h1{
-  font-size:clamp(26px,5vw,50px);font-weight:900;
-  letter-spacing:2px;margin-bottom:10px;line-height:1.3;
-  color:#e0d4c8;
+@keyframes magicSpin {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
 }
-.hero h1 span{color:var(--shina)}
-.hero .subtitle{
-  color:var(--text2);font-size:clamp(13px,2vw,16px);margin-bottom:6px;
+.hero > * { position: relative; z-index: 2; }
+.hero .tagline {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--nanoha-pink), #d44d78);
+  color: #fff; font-size: 12px; font-weight: 700;
+  padding: 5px 22px; border-radius: 20px;
+  margin-bottom: 24px; letter-spacing: 3px;
+  box-shadow: 0 4px 18px rgba(232,93,138,0.25);
 }
-.hero .meta{
-  color:var(--text3);font-size:12px;margin-top:8px;
+.hero h1 {
+  font-size: clamp(30px, 5.5vw, 56px); font-weight: 900;
+  letter-spacing: 3px; margin-bottom: 12px; line-height: 1.25;
+  background: linear-gradient(135deg, #d44d78 0%, #e87060 35%, #d4a020 70%, #b08018 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
-.hero .meta em{color:var(--shina);font-style:normal}
+.hero h1 span {
+  background: linear-gradient(135deg, var(--shina-orange), #f09060);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.hero .subtitle {
+  color: var(--text2); font-size: clamp(14px, 2vw, 18px); margin-bottom: 8px; font-weight: 500;
+}
+.hero .meta {
+  color: var(--text3); font-size: 13px; margin-top: 8px;
+}
 
 /* ═══ CONTAINER ═══ */
-.container{max-width:960px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
+.container { max-width: 960px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
 
 /* ═══ SECTIONS ═══ */
-section{margin:56px 0}
-.sec-num{
-  font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;
-  color:var(--shina);margin-bottom:4px;
+section { margin: 56px 0; }
+.sec-num {
+  display: inline-block; font-size: 11px; font-weight: 800;
+  letter-spacing: 2.5px; text-transform: uppercase; margin-bottom: 4px;
+  color: var(--nanoha-pink);
 }
-.sec-title{
-  font-size:clamp(18px,3vw,26px);font-weight:800;
-  color:#d8ccc0;margin-bottom:6px;
-  padding-bottom:10px;border-bottom:1px solid var(--border);
+.sec-title {
+  font-size: clamp(20px, 3vw, 28px); font-weight: 800;
+  color: #3a2848; margin-bottom: 6px;
+  padding-bottom: 10px; border-bottom: 1px solid var(--border);
 }
-.sec-desc{color:var(--text2);font-size:14px;margin-bottom:24px}
+.sec-desc { color: var(--text2); font-size: 14px; margin-bottom: 24px; }
 
 /* ═══ DISCLAIMER ═══ */
-.disclaimer{
-  background:var(--surface);border:1px solid var(--border);
-  border-left:3px solid var(--shina);
-  padding:16px 22px;margin-bottom:32px;font-size:13px;color:var(--text2);
-  border-radius:0 var(--radius-sm) var(--radius-sm) 0;
+.disclaimer {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-left: 4px solid var(--nanoha-pink);
+  padding: 16px 22px; margin-bottom: 32px; font-size: 13px; color: var(--text2);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  box-shadow: var(--shadow-sm);
 }
 
 /* ═══ CARDS ═══ */
-.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
-.card{
-  background:var(--surface);border:1px solid var(--border);
-  border-radius:var(--radius);padding:24px;
-  transition:border-color .25s,box-shadow .25s;
-  position:relative;overflow:hidden;
+.card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 18px; }
+.card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 26px;
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+  position: relative; overflow: hidden;
 }
-.card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+.card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+.card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+.card h3 { font-size: 19px; margin-bottom: 4px; letter-spacing: 0.5px; }
+.card .sub { font-size: 12px; color: var(--text3); margin-bottom: 12px; }
+.card .tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0; }
+.card .tags span {
+  font-size: 12px; font-weight: 600; padding: 3px 12px; border-radius: 12px;
+  background: var(--nanoha-pink-light); color: #b84060;
 }
-.card:hover{border-color:var(--border-light)}
-.card h3{font-size:18px;margin-bottom:4px;letter-spacing:.5px}
-.card .sub{font-size:12px;color:var(--text3);margin-bottom:12px}
-.card .tags{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
-.card .tags span{
-  font-size:11px;font-weight:600;padding:2px 10px;border-radius:2px;
-  background:var(--surface2);color:var(--text2);border:1px solid var(--border);
-}
-.card p{font-size:13.5px;color:var(--text2);margin-top:6px;line-height:1.75}
+.card p { font-size: 14px; color: var(--text2); margin-top: 6px; line-height: 1.75; }
 
-/* Card accents */
-.card.shina::before{background:var(--shina)}
-.card.shina h3{color:var(--shina)}
-.card.shina:hover{border-color:rgba(232,112,64,.25)}
-.card.towa::before{background:var(--towa)}
-.card.towa h3{color:var(--towa)}
-.card.towa:hover{border-color:rgba(72,168,216,.25)}
-.card.nanoha::before{background:var(--nanoha)}
-.card.nanoha h3{color:var(--nanoha)}
-.card.nanoha:hover{border-color:rgba(232,93,138,.25)}
-.card.fate::before{background:var(--fate)}
-.card.fate h3{color:var(--fate)}
-.card.fate:hover{border-color:rgba(212,160,32,.25)}
+.card.shina::before { background: linear-gradient(90deg, var(--shina-orange), #f09060); }
+.card.shina h3 { color: #c85830; }
+.card.shina:hover { border-color: var(--shina-orange); box-shadow: var(--shadow-md), 0 0 0 5px rgba(232,112,64,0.06); }
+.card.shina .tags span { background: var(--shina-orange-light); color: #b85830; }
 
-/* ═══ IMAGE STYLES ═══ */
-.img-block{margin:20px 0}
-.img-block img,.img-block video{
-  width:100%;height:auto;display:block;
-  border-radius:var(--radius-sm);border:1px solid var(--border);
-  background:var(--bg2);
-}
-.img-block .caption{
-  font-size:12px;color:var(--text3);margin-top:6px;
-  padding-left:4px;border-left:2px solid var(--border-light);
-}
-.img-row{
-  display:grid;grid-template-columns:1fr 1fr;gap:14px;
-  margin:20px 0;
-}
-.img-row .item img,.img-row .item video{
-  width:100%;height:auto;display:block;
-  border-radius:var(--radius-sm);border:1px solid var(--border);
-  background:var(--bg2);
-}
-.img-row .item .caption{
-  font-size:11px;color:var(--text3);margin-top:4px;text-align:center;
-}
-.img-grid-3{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:12px;
-  margin:20px 0;
-}
-.img-grid-3 img{
-  width:100%;height:auto;display:block;
-  border-radius:var(--radius-sm);border:1px solid var(--border);
-  background:var(--bg2);
-}
-@media(max-width:600px){
-  .img-row,.img-grid-3{grid-template-columns:1fr}
-}
+.card.towa::before { background: linear-gradient(90deg, var(--towa-blue), #68c8f0); }
+.card.towa h3 { color: #2890b8; }
+.card.towa:hover { border-color: var(--towa-blue); box-shadow: var(--shadow-md), 0 0 0 5px rgba(72,168,216,0.06); }
+.card.towa .tags span { background: var(--towa-blue-light); color: #2878a0; }
 
-/* Character portrait (official art centered) */
-.char-portrait{
-  text-align:center;margin:16px 0;
+.card.nanoha::before { background: linear-gradient(90deg, var(--nanoha-pink), var(--nanoha-sakura)); }
+.card.nanoha h3 { color: #c84068; }
+.card.nanoha:hover { border-color: var(--nanoha-pink); box-shadow: var(--shadow-md), 0 0 0 5px rgba(232,93,138,0.06); }
+.card.nanoha .tags span { background: var(--nanoha-pink-light); color: #b84060; }
+
+.card.fate::before { background: linear-gradient(90deg, var(--fate-gold), #e8c840); }
+.card.fate h3 { color: #a08820; }
+.card.fate:hover { border-color: var(--fate-gold); box-shadow: var(--shadow-md), 0 0 0 5px rgba(212,160,32,0.07); }
+.card.fate .tags span { background: var(--fate-gold-light); color: #907020; }
+
+/* ═══ IMAGES ═══ */
+.img-block { margin: 20px 0; }
+.img-block img, .img-block video {
+  width: 100%; height: auto; display: block;
+  border-radius: var(--radius-sm); border: 1px solid var(--border);
+  background: #f8f4fa; box-shadow: var(--shadow-sm);
 }
-.char-portrait img{
-  max-width:320px;width:100%;height:auto;
-  border-radius:var(--radius);border:1px solid var(--border);
+.img-block .caption {
+  font-size: 12px; color: var(--text3); margin-top: 6px;
+  padding-left: 10px; border-left: 2px solid var(--nanoha-pink-light);
+}
+.img-row {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+  margin: 20px 0;
+}
+.img-row .item img, .img-row .item video {
+  width: 100%; height: auto; display: block;
+  border-radius: var(--radius-sm); border: 1px solid var(--border);
+  background: #f8f4fa; box-shadow: var(--shadow-sm);
+}
+.img-row .item .caption {
+  font-size: 11px; color: var(--text3); margin-top: 4px; text-align: center;
+}
+.char-portrait {
+  text-align: center; margin: 16px 0;
+}
+.char-portrait img {
+  max-width: 320px; width: 100%; height: auto;
+  border-radius: var(--radius); border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
 }
 
 /* ═══ TABLES ═══ */
-.table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:var(--radius)}
-table{width:100%;border-collapse:collapse;font-size:13px}
-th,td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--border)}
-th{
-  background:var(--surface2);font-weight:700;color:var(--shina);
-  font-size:11px;text-transform:uppercase;letter-spacing:1.5px;
+.table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow-sm); }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th, td { padding: 12px 16px; text-align: left; border-bottom: 1px solid var(--border); }
+th {
+  background: #fdf5f8; font-weight: 700; color: #8a4060;
+  font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px;
+  border-bottom: 2px solid var(--nanoha-pink-light);
 }
-td{background:var(--surface);color:var(--text2)}
-tr:last-child td{border-bottom:none}
-tr:hover td{background:var(--surface2)}
+td { background: var(--bg-card); color: var(--text2); }
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: #fefafc; }
 
 /* ═══ INFO BOX ═══ */
-.info-box{
-  background:var(--surface);border:1px solid var(--border);
-  border-radius:var(--radius);padding:18px 22px;margin:14px 0;
+.info-box {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 18px 22px; margin: 14px 0;
+  box-shadow: var(--shadow-sm);
 }
-.info-box.warn{border-left:3px solid #e8a040}
-.info-box.tip{border-left:3px solid #40b880}
-.info-box h4{font-size:14px;margin-bottom:6px;color:var(--text)}
+.info-box.warn { border-left: 4px solid #e8a040; background: #fffdf7; }
+.info-box.tip { border-left: 4px solid #40b880; background: #f7fdf9; }
+.info-box h4 { font-size: 15px; margin-bottom: 8px; color: var(--text); }
 
 /* ═══ PV PHASES ═══ */
-.pv-phase{
-  background:var(--surface);border:1px solid var(--border);
-  border-radius:var(--radius);padding:20px 24px;margin:12px 0;
-  transition:border-color .2s;
+.pv-phase {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 22px 26px; margin: 14px 0;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.2s;
 }
-.pv-phase:hover{border-color:var(--border-light)}
-.pv-phase .ph-num{
-  display:inline-flex;align-items:center;justify-content:center;
-  background:var(--shina);color:#fff;width:28px;height:28px;
-  border-radius:50%;font-size:13px;font-weight:800;margin-right:8px;flex-shrink:0;
+.pv-phase:hover { box-shadow: var(--shadow-md); }
+.pv-phase .ph-num {
+  display: inline-flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, var(--nanoha-pink), #d44d78);
+  color: #fff; width: 30px; height: 30px;
+  border-radius: 50%; font-size: 14px; font-weight: 800; margin-right: 8px; flex-shrink: 0;
 }
-.pv-phase .ph-head{display:flex;align-items:center;margin-bottom:12px}
-.pv-phase h4{font-size:16px}
-.pv-phase ul{padding-left:20px}
-.pv-phase li{margin:5px 0;font-size:13px;color:var(--text2)}
-.pv-phase li strong{color:var(--text)}
+.pv-phase .ph-head { display: flex; align-items: center; margin-bottom: 14px; }
+.pv-phase h4 { font-size: 17px; }
+.pv-phase ul { padding-left: 20px; }
+.pv-phase li { margin: 7px 0; font-size: 14px; color: var(--text2); }
+.pv-phase li strong { color: var(--text); }
 
 /* PV timeline */
-.pv-timeline{position:relative;padding-left:20px}
-.pv-timeline::before{
-  content:'';position:absolute;left:8px;top:8px;bottom:8px;
-  width:2px;background:var(--border);
+.pv-timeline { position: relative; padding-left: 20px; }
+.pv-timeline::before {
+  content: ''; position: absolute; left: 8px; top: 8px; bottom: 8px;
+  width: 2px; background: var(--border);
 }
-.pv-tl-item{
-  position:relative;padding:12px 0 12px 22px;border-bottom:1px solid var(--border);
+.pv-tl-item {
+  position: relative; padding: 12px 0 12px 22px; border-bottom: 1px solid var(--border);
 }
-.pv-tl-item:last-child{border-bottom:none}
-.pv-tl-item .time{
-  font-size:11px;font-weight:700;color:var(--shina);
-  position:absolute;left:0;top:14px;
+.pv-tl-item:last-child { border-bottom: none; }
+.pv-tl-item .time {
+  font-size: 11px; font-weight: 700; color: var(--nanoha-pink);
+  position: absolute; left: 0; top: 14px;
 }
-.pv-tl-item::before{
-  content:'';position:absolute;left:-4px;top:18px;
-  width:10px;height:10px;border-radius:50%;
-  background:var(--surface);border:2px solid var(--border-light);
+.pv-tl-item::before {
+  content: ''; position: absolute; left: -4px; top: 18px;
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--bg); border: 2px solid var(--nanoha-pink-light);
 }
 
 /* ═══ REF VIDEO ═══ */
-.ref-video{
-  background:var(--surface);border:1px solid var(--border);
-  border-radius:var(--radius);padding:16px 20px;margin:10px 0;
+.ref-video {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 16px 20px; margin: 10px 0;
+  box-shadow: var(--shadow-sm);
 }
-.ref-video .ref-num{
-  display:inline-block;background:var(--surface2);color:var(--shina);
-  font-size:12px;font-weight:800;padding:2px 10px;border-radius:2px;margin-bottom:8px;
+.ref-video .ref-num {
+  display: inline-block;
+  background: var(--nanoha-pink-light); color: #b84060;
+  font-size: 12px; font-weight: 800; padding: 2px 10px; border-radius: 12px; margin-bottom: 8px;
 }
-.ref-video h5{font-size:15px;margin-bottom:4px}
-.ref-video p{font-size:13px;color:var(--text2)}
-.ref-video a{color:var(--towa);font-size:12px;word-break:break-all}
+.ref-video h5 { font-size: 15px; margin-bottom: 4px; }
+.ref-video p { font-size: 13px; color: var(--text2); }
+.ref-video a { color: var(--towa-blue); font-size: 12px; word-break: break-all; }
 
-/* ═══ SECTION DIVIDER ═══ */
-.divider{
-  text-align:center;margin:40px 0;color:var(--text3);
-  font-size:12px;letter-spacing:4px;
+/* ═══ DIVIDER ═══ */
+.divider {
+  text-align: center; margin: 40px 0; color: var(--text3);
+  font-size: 12px; letter-spacing: 4px;
 }
-.divider::before,.divider::after{
-  content:' ── ';color:var(--border);
-}
+.divider::before, .divider::after { content: ' ── '; color: var(--border); }
 
 /* ═══ FOOTER ═══ */
-.footer{
-  text-align:center;padding:44px 20px;border-top:1px solid var(--border);
-  color:var(--text3);font-size:12px;margin-top:60px;
+.footer {
+  text-align: center; padding: 44px 20px;
+  border-top: 1px solid var(--border);
+  color: var(--text3); font-size: 13px; margin-top: 60px; position: relative; z-index: 1;
 }
-.footer strong{color:var(--shina)}
+.footer strong { color: var(--nanoha-pink); }
 
-@media(max-width:600px){
-  .card-grid{grid-template-columns:1fr}
-  section{margin:36px 0}
-  .hero{padding:44px 16px 36px}
+/* ═══ RESPONSIVE ═══ */
+@media (max-width: 600px) {
+  .card-grid { grid-template-columns: 1fr; }
+  .img-row { grid-template-columns: 1fr; }
+  section { margin: 36px 0; }
+  .hero { padding: 44px 16px 36px; }
 }
 
-@keyframes fadeIn{
-  from{opacity:0;transform:translateY(10px)}
-  to{opacity:1;transform:translateY(0)}
+/* ═══ ANIMATIONS ═══ */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
 }
-.card,.pv-phase,.img-block,.img-row,.info-box{animation:fadeIn .4s ease-out backwards}
+.card, .pv-phase, .img-block, .img-row, .info-box {
+  animation: fadeIn 0.5s ease-out backwards;
+}
 </style>
 </head>
 <body>
@@ -318,23 +370,23 @@ tr:hover td{background:var(--surface2)}
   <div class="sec-desc">EXCEEDS 构建了一个与系列前作截然不同的独立世界观——末日生存、军武机构、魔人与侵略种的黑暗共生。</div>
 
   <div class="img-block">
-    <img src="images/KV群像定妆照？.png" alt="EXCEEDS KV群像" loading="lazy">
+    <img src="images/kv-group-visual.png" alt="EXCEEDS KV群像" loading="lazy">
     <div class="caption">▲ EXCEEDS 全角色群像定妆照 — 包含诗奈、奈叶、菲特、疾风、夜海及反派阵营</div>
   </div>
 
   <div class="img-row">
     <div class="item">
-      <img src="images/侵略种，小怪，精英怪介绍.png" alt="侵略种介绍" loading="lazy">
+      <img src="images/world-invaders.png" alt="侵略种介绍" loading="lazy">
       <div class="caption">▲ 侵略种 — 30年前出现的不明生物，人类持续与之争夺生存空间</div>
     </div>
     <div class="item">
-      <img src="images/大型魔物登场介绍图.png" alt="大型魔物" loading="lazy">
+      <img src="images/world-large-monster.png" alt="大型魔物" loading="lazy">
       <div class="caption">▲ 大型侵略种 — 体长可达120米，人类称之为"害兽"</div>
     </div>
   </div>
 
   <div class="img-block">
-    <img src="images/剧情-国际联合组织建立.png" alt="EXCEEDS组织" loading="lazy">
+    <img src="images/story-exceeds-org.png" alt="EXCEEDS组织" loading="lazy">
     <div class="caption">▲ 国际联合危险生物调查机构「EXCEEDS」—— 八神疾风任总督，奈叶与菲特为核心战力</div>
   </div>
 
@@ -380,16 +432,16 @@ tr:hover td{background:var(--surface2)}
   <h4 style="color:var(--text);font-size:15px;margin:24px 0 12px;">▎ 序章 · 捡到一个妹妹</h4>
   <div class="img-row">
     <div class="item">
-      <img src="images/动漫久濑诗奈登场介绍图.png" alt="诗奈登场" loading="lazy">
+      <img src="images/intro-shina.png" alt="诗奈登场" loading="lazy">
       <div class="caption">▲ 久濑诗奈 — 离岛猎人高中生</div>
     </div>
     <div class="item">
-      <img src="images/动漫久濑雪奈登场介绍图.png" alt="雪奈登场" loading="lazy">
+      <img src="images/intro-yukina.png" alt="雪奈登场" loading="lazy">
       <div class="caption">▲ 久濑雪奈 — 被诗奈捡到的魔人少女</div>
     </div>
   </div>
   <div class="img-block">
-    <img src="images/剧情，诗奈捡到雪奈.png" alt="诗奈捡到雪奈" loading="lazy">
+    <img src="images/story-shina-finds-yukina.png" alt="诗奈捡到雪奈" loading="lazy">
     <div class="caption">▲ 数年前，诗奈在废墟中发现了雪奈，将她带回家抚养。两人成为没有血缘但相依为命的姐妹。</div>
   </div>
 
@@ -397,16 +449,16 @@ tr:hover td{background:var(--surface2)}
   <h4 style="color:var(--text);font-size:15px;margin:28px 0 12px;">▎ 第一幕 · 被魔人找上门</h4>
   <div class="img-row">
     <div class="item">
-      <img src="images/剧情-姐妹两人遇到危险.png" alt="姐妹遇险" loading="lazy">
+      <img src="images/story-sisters-danger.png" alt="姐妹遇险" loading="lazy">
       <div class="caption">▲ 敌对魔人突然出现追杀姐妹</div>
     </div>
     <div class="item">
-      <img src="images/剧情-妹妹魔人化.png" alt="雪奈魔人化" loading="lazy">
+      <img src="images/story-yukina-demon.png" alt="雪奈魔人化" loading="lazy">
       <div class="caption">▲ 雪奈被迫解放隐藏的魔人之力</div>
     </div>
   </div>
   <div class="img-block">
-    <img src="images/剧情-姐妹二人被魔人双杀.png" alt="姐妹双杀" loading="lazy">
+    <img src="images/story-sisters-defeated.png" alt="姐妹双杀" loading="lazy">
     <div class="caption">▲ 雪奈拼死保护诗奈，但最终肉体被敌方魔人吞噬。临终前，她将魔人之力完整转移给了姐姐。</div>
   </div>
 
@@ -414,35 +466,35 @@ tr:hover td{background:var(--surface2)}
   <h4 style="color:var(--text);font-size:15px;margin:28px 0 12px;">▎ 第二幕 · 继承遗志，魔人觉醒</h4>
   <div class="img-row">
     <div class="item">
-      <img src="images/剧情-姐姐继承妹妹遗志，魔人化爆种.png" alt="诗奈爆种" loading="lazy">
+      <img src="images/story-shina-awakening.png" alt="诗奈爆种" loading="lazy">
       <div class="caption">▲ 诗奈继承雪奈的力量后首次魔人化觉醒</div>
     </div>
     <div class="item">
-      <img src="images/剧情-姐姐魔人化给枪械附魔.png" alt="枪械附魔" loading="lazy">
+      <img src="images/story-shina-gun-enchant.png" alt="枪械附魔" loading="lazy">
       <div class="caption">▲ 魔人之力赋予枪械火焰附魔</div>
     </div>
   </div>
   <div class="img-block">
-    <img src="images/剧情-姐姐魔人化给枪械附魔大招.png" alt="火焰魔炮" loading="lazy">
+    <img src="images/story-shina-fire-blast.png" alt="火焰魔炮" loading="lazy">
     <div class="caption">▲ Fire Magic Blast（火焰魔炮）— 诗奈以觉醒的力量一击反杀敌方魔人</div>
   </div>
   <div class="img-row">
     <div class="item">
-      <img src="images/剧情-女主魔人化装束.png" alt="魔人化装束" loading="lazy">
+      <img src="images/story-shina-demon-form.png" alt="魔人化装束" loading="lazy">
       <div class="caption">▲ 诗奈魔人化后的战斗装束</div>
     </div>
     <div class="item">
-      <img src="images/诗乃飞行跳跃能力.png" alt="飞行跳跃" loading="lazy">
+      <img src="images/shina-flight.png" alt="飞行跳跃" loading="lazy">
       <div class="caption">▲ 魔人化带来的飞行与跳跃能力提升</div>
     </div>
   </div>
   <div class="img-row">
     <div class="item">
-      <img src="images/剧情-女主动漫拔刀斩.png" alt="拔刀斩" loading="lazy">
+      <img src="images/story-shina-slash.png" alt="拔刀斩" loading="lazy">
       <div class="caption">▲ 诗奈的近战能力 — 拔刀斩</div>
     </div>
     <div class="item">
-      <img src="images/剧情-女主动漫拔刀斩2.png" alt="拔刀斩2" loading="lazy">
+      <img src="images/story-shina-slash2.png" alt="拔刀斩2" loading="lazy">
       <div class="caption">▲ 火焰缠绕的剑技</div>
     </div>
   </div>
@@ -450,7 +502,7 @@ tr:hover td{background:var(--surface2)}
   <!-- 第三幕：奈叶登场 + EXCEEDS诏安 -->
   <h4 style="color:var(--text);font-size:15px;margin:28px 0 12px;">▎ 第三幕 · 奈叶登场，EXCEEDS 诏安</h4>
   <div class="img-block">
-    <img src="images/剧情-奈叶初登场.png" alt="奈叶初登场" loading="lazy">
+    <img src="images/story-nanoha-debut.png" alt="奈叶初登场" loading="lazy">
     <div class="caption">▲ 诗奈在对抗大型侵略种时，一位比她还小的少女从天而降——EXCEEDS 调查员·高町奈叶</div>
   </div>
   <p style="font-size:13px;color:var(--text2);line-height:1.85;margin-top:8px;">
@@ -460,16 +512,16 @@ tr:hover td{background:var(--surface2)}
   <!-- 第四幕：夜海永远 -->
   <h4 style="color:var(--text);font-size:15px;margin:28px 0 12px;">▎ 第四幕 · 夜海永远 — 冰之魔人与宿命的交错</h4>
   <div class="img-block">
-    <img src="images/夜海登场介绍图.png" alt="夜海登场" loading="lazy">
+    <img src="images/intro-towa.png" alt="夜海登场" loading="lazy">
     <div class="caption">▲ 夜海永远（Towa）— 冰系魔人，太刀使，女高中生魔人组织的创建者</div>
   </div>
   <div class="img-row">
     <div class="item">
-      <img src="images/剧情-夜海永远跟女主初次见面.png" alt="夜海诗奈初遇" loading="lazy">
+      <img src="images/story-towa-meets-shina.png" alt="夜海诗奈初遇" loading="lazy">
       <div class="caption">▲ 夜海与诗奈在日常生活偶然相遇，彼此不知对方真实身份，逐渐成为朋友</div>
     </div>
     <div class="item">
-      <img src="images/剧情-夜海半魔人化.png" alt="夜海半魔人化" loading="lazy">
+      <img src="images/story-towa-half-demon.png" alt="夜海半魔人化" loading="lazy">
       <div class="caption">▲ 夜海的半魔人化形态 —— 冰系能力 + 太刀</div>
     </div>
   </div>
@@ -478,7 +530,7 @@ tr:hover td{background:var(--surface2)}
     同时，市面上一对<strong>神秘二人组反派</strong>正在大规模散发能让人变成魔人的药物，制造混乱。诗奈、夜海、EXCEEDS、反派——四股力量的齿轮正在咬合。
   </p>
   <div class="img-block">
-    <img src="images/剧情-最大反派登场，神秘二人组.png" alt="反派二人组" loading="lazy">
+    <img src="images/story-villains.png" alt="反派二人组" loading="lazy">
     <div class="caption">▲ 神秘反派二人组 — 在市面散发魔人药物的幕后黑手</div>
   </div>
 </section>
@@ -506,16 +558,16 @@ tr:hover td{background:var(--surface2)}
   </div>
   <div class="img-row">
     <div class="item">
-      <img src="images/官方人设图-诗乃.png" alt="诗奈人设" loading="lazy">
+      <img src="images/design-shina.png" alt="诗奈人设" loading="lazy">
       <div class="caption">▲ 官方人设图 — 久濑诗奈</div>
     </div>
     <div class="item">
-      <img src="images/官方人设图诗奈武器介绍.png" alt="诗奈武器" loading="lazy">
+      <img src="images/design-shina-weapon.png" alt="诗奈武器" loading="lazy">
       <div class="caption">▲ 诗奈的枪械武器设定</div>
     </div>
   </div>
   <div class="img-block">
-    <video src="images/动漫诗奈战斗片段.mp4" autoplay loop muted playsinline controls width="100%" style="border-radius:var(--radius-sm);border:1px solid var(--border);"></video>
+    <video src="images/fight-shina.mp4" autoplay loop muted playsinline controls width="100%" style="border-radius:var(--radius-sm);border:1px solid var(--border);"></video>
     <div class="caption">▲ 诗奈战斗片段 — 火焰炮击 + 拔刀近战切换</div>
   </div>
 
@@ -534,11 +586,11 @@ tr:hover td{background:var(--surface2)}
   </div>
   <div class="img-row">
     <div class="item">
-      <img src="images/官方人设图-夜海日常形象.png" alt="夜海日常" loading="lazy">
+      <img src="images/design-towa-casual.png" alt="夜海日常" loading="lazy">
       <div class="caption">▲ 官方人设图 — 夜海永远（日常）</div>
     </div>
     <div class="item">
-      <img src="images/官方人设图-夜海魔人形象.png" alt="夜海魔人" loading="lazy">
+      <img src="images/design-towa-demon.png" alt="夜海魔人" loading="lazy">
       <div class="caption">▲ 官方人设图 — 夜海永远（魔人形态）</div>
     </div>
   </div>
@@ -558,16 +610,16 @@ tr:hover td{background:var(--surface2)}
   </div>
   <div class="img-row">
     <div class="item">
-      <img src="images/官方人设图-奈叶.png" alt="奈叶人设" loading="lazy">
+      <img src="images/design-nanoha.png" alt="奈叶人设" loading="lazy">
       <div class="caption">▲ 官方人设图 — 高町奈叶（EXCEEDS版防护服）</div>
     </div>
     <div class="item">
-      <img src="images/剧情-奈叶初登场.png" alt="奈叶初登场" loading="lazy">
+      <img src="images/story-nanoha-debut.png" alt="奈叶初登场" loading="lazy">
       <div class="caption">▲ 奈叶初登场 — 在诗奈面对巨型侵略种时从天而降</div>
     </div>
   </div>
   <div class="img-block">
-    <video src="images/动漫奈叶战斗片段.mp4" autoplay loop muted playsinline controls width="100%" style="border-radius:var(--radius-sm);border:1px solid var(--border);"></video>
+    <video src="images/fight-nanoha.mp4" autoplay loop muted playsinline controls width="100%" style="border-radius:var(--radius-sm);border:1px solid var(--border);"></video>
     <div class="caption">▲ 奈叶战斗片段（前三集）— 旭日之心炮击 · 飞行魔力翼</div>
   </div>
 
@@ -585,16 +637,16 @@ tr:hover td{background:var(--surface2)}
     </div>
   </div>
   <div class="img-block">
-    <img src="images/官方人设图-菲特.png" alt="菲特人设" loading="lazy">
+    <img src="images/design-fate.png" alt="菲特人设" loading="lazy">
     <div class="caption">▲ 官方人设图 — 菲特·T·哈洛温（EXCEEDS版 · 黑色防护服 + 单马尾）</div>
   </div>
   <div class="img-row">
     <div class="item">
-      <video src="images/动漫菲特战斗片段.mp4" autoplay loop muted playsinline controls width="100%" style="border-radius:var(--radius-sm);border:1px solid var(--border);"></video>
+      <video src="images/fight-fate.mp4" autoplay loop muted playsinline controls width="100%" style="border-radius:var(--radius-sm);border:1px solid var(--border);"></video>
       <div class="caption">▲ 菲特战斗片段（前三集）— 雷光 + 巴鲁迪修</div>
     </div>
     <div class="item">
-      <video src="images/动漫中奈叶菲特双人高速战斗.mp4" autoplay loop muted playsinline controls width="100%" style="border-radius:var(--radius-sm);border:1px solid var(--border);"></video>
+      <video src="images/fight-nanoha-fate-duo.mp4" autoplay loop muted playsinline controls width="100%" style="border-radius:var(--radius-sm);border:1px solid var(--border);"></video>
       <div class="caption">▲ 奈叶菲特双人协同高速战斗</div>
     </div>
   </div>
